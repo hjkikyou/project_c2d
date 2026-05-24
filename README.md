@@ -1,4 +1,4 @@
-# project C2D #
+# Project C2D #
 
 컴퓨터 구매&렌탈 서비스 사이트 개발
 
