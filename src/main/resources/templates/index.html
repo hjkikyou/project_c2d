@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>TEST</title>
+	<!-- 1. CSS 파일 연결하기 (head 태그 안쪽에) -->
+   	<!-- <link rel="stylesheet" href="/css/style.css"> : 기본형 -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<!-- 2. 이미지 띄우기 (경로는 이곳 src에 적습니다) -->
+    <!-- <img src="/images/power&nyako.png" class="main-img" alt="메인 이미지"> -->
+   
+    <!-- 2. 타임리프를 적용한 이미지 띄우기 -->
+	<img th:src="@{/images/power&nyako.png}" class="main-img" alt="메인 이미지">
+	
+		<div>
+			<h3>NEXT HORIZON</h3>
+		</div>
+		
+		<!-- 전체 콘텐츠를 감싸는 컨테이너 -->
+    <div class="main-container">
+        
+        	<h2>사진 갤러리</h2>
+       	 <div class="photo-section">
+            <img th:src="@{/images/photo1.jpg}" alt="사진 1" class="item-photo">
+            <img th:src="@{/images/photo2.jpg}" alt="사진 2" class="item-photo">
+            <img th:src="@{/images/photo3.jpg}" alt="사진 3" class="item-photo">
+            <img th:src="@{/images/photo4.jpg}" alt="사진 4" class="item-photo">
+        </div>
+	
+        <h2>아이콘 모음</h2>
+        <div class="icon-section">
+            <img th:src="@{/images/icon1.png}" alt="아이콘 1" class="item-icon">
+            <img th:src="@{/images/icon2.png}" alt="아이콘 2" class="item-icon">
+            <img th:src="@{/images/icon3.png}" alt="아이콘 3" class="item-icon">
+            <img th:src="@{/images/icon4.png}" alt="아이콘 4" class="item-icon">
+        </div>
+
+        <h2>기능 버튼</h2>
+        <div class="button-section">
+            <button id="hello-btn" class="action-btn">버튼 1</button>
+            <button class="action-btn">버튼 2</button>
+            <button class="action-btn">버튼 3</button>
+            <button class="action-btn">버튼 4</button>
+        </div>
+
+   	 </div>
+		
+		<div>
+			<table border="1">
+				<thead>
+					<tr>
+						<th>등록번호</th>
+						<th>컴퓨터명</th>
+						<th>제조사</th>
+						<th>가격</th>
+						<th>관리</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr>
+						<td>001</td>
+						<td>gram</td>
+						<td>LG</td>
+						<td>1,000,000</td>
+						<td></td>
+					</tr>
+				</tbody>
+				
+				<tfoot>
+					<tr>
+						<td colspan="5">
+							<div>처음</div>
+							<div>다음</div>
+							<div>이전</div>
+							<div>마지막</div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>	
+	 <!-- 기존에 길게 적었던 코드는 지우고, 외부 파일을 연결하는 한 줄만 남깁니다! -->
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>
