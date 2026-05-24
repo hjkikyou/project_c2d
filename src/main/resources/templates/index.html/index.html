@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+	img {
+		width: 300px;
+		height: auto;
+		border-radius: 10px;
+		box-shadow: 5px 5px 15px rgba(0,0,0,0,3);
+	}
+	
+	.main-img{
+		border: 3px solid #007bff;
+	}
+</style>
+</head>
+<body>
+
+	<img th:src="@{/images/power&nyako.png}" alt="홈페이지 이미지" class="main-img">
+	
+	<div>
+		<h3>NEXT HORIZON</h3>
+	</div>
+	
+	<div>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>등록번호</th>
+					<th>컴퓨터명</th>
+					<th>제조사</th>
+					<th>가격</th>
+					<th>관리</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr>
+					<td>001</td>
+					<td>gram</td>
+					<td>LG</td>
+					<td>1,000,000</td>
+					<td></td>
+				</tr>
+			</tbody>
+			
+			<tfoot>
+				<tr>
+					<td colspan="5">
+						<div>처음</div>
+						<div>다음</div>
+						<div>이전</div>
+						<div>마지막</div>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+		</div>
+					
+</body>
+</html>
