@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<div>
+		<div>
+			<h3>사용자 목록</h3>
+		</div>
+	</div>
+	
+	<div>
+		<form>
+			<div>
+				<select name="search">
+					<option value="1">아이디</option>
+					<option value="2">성명</option>
+					<option value="3">전화번호</option>				
+				</select>
+			</div>
+			<div><input name="keyword" type="text"></div>
+			<div><button>검색</button></div>
+		</form>
+	</div>
+
+	<div>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>이메일</th>
+					<th>비밀번호</th>
+					<th>성명</th>
+					<th>전화번호</th>
+					<th>회원구분</th>
+					<th>구독여부</th>
+					<th>가입일</th>
+					<th>수정</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>user1@example.com</td>
+					<td>********</td>
+					<td>김철수</td>
+					<td>010-1234-5678</td>
+					<td>PERSONAL</td>
+					<td>1</td>
+					<td>2026-05-25 10:00:00</td>
+					<td><a href="/member/edit?id=1">수정</a></td>
+					<td><a href="/member/delete?id=1">삭제</a></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="10">
+						<a href="/member/add">회원추가</a>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+	
+
+</body>
+</html>
