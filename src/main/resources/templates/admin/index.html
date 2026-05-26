@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<div>
+		<div>
+			<h3>COMDOG SHOP 관리자 페이지</h3>
+		</div>
+		
+		<div>
+    		<div><a th:href="@{/admin/product/list}">상품관리</a></div>
+    		<div><a th:href="@{/admin/member/list}">사용자관리</a></div>
+    		<div><a th:href="@{/admin/orders/list}">주문관리</a></div>
+		</div>
+	</div>
+</body>
+</html>
