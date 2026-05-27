@@ -25,36 +25,48 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>상품명</td>
-					<td>브랜드</td>
-					<td>모델명</td>
-					<td>출고가</td>
-					<td>재고 수량</td>
-					<td>상품 설명</td>
-					<td>수정</td><!-- 기능 추가 -->
-					<td>삭제</td> <!-- 기능 추가 -->
+				<tr th:if="${list.isEmpty()}">
+					<td colspan="5">검색 된 도서가 없습니다</td>
+				</tr>
+				
+				<tr th:each="item : ${list}">
+					<td th:text="${item.name}">상품명</td>
+					<td th:text="${item.brand}">브랜드</td>
+					<td th:text="${item.modelName}">모델명</td>
+					<td th:text="${#numbers.formatInteger(item.basePrice, 3, 'COMMA') + '원'}">출고가</td>
+					<td th:text="${#numbers.formatInteger(item.stockQuantity, 3, 'COMMA') + '개'}">재고
+					수량</td>
+					<td th:text="${item.id}">상품 ID (혹은 설명)</td>
+					<td><a th:href="@{/product/edit/{id}(id=${item.id})}"
+						class="btn btn-sm btn-warning">수정</a></td>
+					<td><a th:href="@{/product/delete/{id}(id=${item.id})}"
+						class="btn btn-sm btn-danger"
+						onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a></td>
 				</tr>
 			</tbody>
 			<tfoot>
 				<tr>
-                    <td colspan="5">
-                        <div>처음</div> <!-- 기능 추가 -->
-                        <div>이전</div> <!-- 기능 추가 -->
-                        <div>페이지 숫자들</div>	<!-- 기능 추가 -->		
-                        <div>다음</div> <!-- 기능 추가 -->
-                        <div>마지막</div> <!-- 기능 추가 -->
-                    </td>
+					<td colspan="5">
+						<div>처음</div> <!-- 기능 추가 -->
+						<div>이전</div> <!-- 기능 추가 -->
+						<div>페이지 숫자들</div> <!-- 기능 추가 -->
+						<div>다음</div> <!-- 기능 추가 -->
+						<div>마지막</div> <!-- 기능 추가 -->
+					</td>
 				</tr>
 			</tfoot>
 		</table>
 	</div>
 
-    <div>
-        <div>상품 추가</div> <!-- 기능 추가 -->
-        <div>더미 데이터 추가</div> <!-- 기능 추가 -->
-        <div>초기화</div> <!-- 기능 추가 -->   
-        <div>이전</div> <!-- 기능 추가 -->
-    </div>
+	<div>
+		<div>상품 추가</div>
+		<!-- 기능 추가 -->
+		<div>더미 데이터 추가</div>
+		<!-- 기능 추가 -->
+		<div>초기화</div>
+		<!-- 기능 추가 -->
+		<div>이전</div>
+		<!-- 기능 추가 -->
+	</div>
 </body>
 </html>
