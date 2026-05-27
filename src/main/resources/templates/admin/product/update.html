@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www/thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form method="post">
+	<div>
+		<div><label>상품번호</label></div>
+		<div th:text="${item.id}"></div>
+	</div>
+	<div>
+		<div><label>상품명</label></div>
+		<div><input type="text" name="name" th:value="${item.name}"></div>
+	</div>
+	<div>
+		<div><label>브랜드</label></div>
+		<div><input type="text" name="brand" th:value="${item.brand}"></div>
+	</div>
+	<div>
+		<div><label>모델명</label></div>
+		<div><input type="text" name="modelName" th:value="${item.modelName}"></div>
+	</div>
+	<div>
+		<div><label>출고가(원 단위)</label></div>
+		<div><input type="number" name="basePrice" th:value="${item.basePrice}"></div>
+	</div>
+	<div>
+		<div><label>재고 수량</label></div>
+		<div><input type="number" name="stockQuantity" th:value="${item.stockQuantity}"></div>
+	</div>
+	<div>
+		<div><label>상품 상세 설명</label></div>
+		<div><textarea name="description" th:value="${item.description}"></textarea></div>
+	</div>
+	<div>
+		<div><button type="submit">변경</button></div>
+		<div><a href="../list">취소</a></div>
+	</div>
+</form>
+</body>
+</html>
