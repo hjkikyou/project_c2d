@@ -16,20 +16,20 @@
     </resultMap>
     
     
- 	<!-- 추가 -->
+ 	<!-- 조회 -->
     <select id="findAllProducts" resultMap="ProductResultMap">  
         SELECT * FROM product
     </select>
      
-   
-       <insert id="add">
+   <!--  추가 -->
+     <insert id="add">
         INSERT INTO product
         (category_id, name, brand, model_name, base_price, stock_quantity, description)
         VALUES(#{categoryId}, #{name}, #{brand}, #{modelName}, #{basePrice}, #{stockQuantity}, #{description})
     </insert>
     
     <!-- 변경 -->
-      <select id="findProductById" resultMap="ProductResultMap">
+    <select id="findProductById" resultMap="ProductResultMap">
         SELECT * FROM product
         WHERE product_id = #{id}
     </select>
@@ -54,7 +54,4 @@
     </delete>
 
  
-    
-  
-    
 </mapper>
