@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin/contract")
-public class AdminContractController {
+public class ContractController {
 	
 	@GetMapping("/list")
 	public String contract() {

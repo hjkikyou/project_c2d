@@ -14,28 +14,27 @@
         <result property="stockQuantity" column="stock_quantity" />
         <result property="description" column="description" />
     </resultMap>
-
-    <select id="list" resultMap="ProductResultMap">
+    
+    
+ 	<!-- 추가 -->
+    <select id="findAllProducts" resultMap="ProductResultMap">  
         SELECT * FROM product
     </select>
-
-    <select id="item" resultMap="ProductResultMap">
-        SELECT * FROM product
-        WHERE product_id = #{id}
-    </select>
-
-    <delete id="delete">
-        DELETE FROM product
-        WHERE product_id = #{id}
-    </delete>
-
-    <insert id="add">
+     
+   
+       <insert id="add">
         INSERT INTO product
         (category_id, name, brand, model_name, base_price, stock_quantity, description)
         VALUES(#{categoryId}, #{name}, #{brand}, #{modelName}, #{basePrice}, #{stockQuantity}, #{description})
     </insert>
     
-    <update id="update">
+    <!-- 변경 -->
+      <select id="findProductById" resultMap="ProductResultMap">
+        SELECT * FROM product
+        WHERE product_id = #{id}
+    </select>
+    
+      <update id="update">
         UPDATE product
         SET 
             category_id = #{categoryId},
@@ -47,5 +46,15 @@
             description = #{description}
         WHERE product_id = #{id}
     </update>
+
+	<!-- 삭제 -->
+    <delete id="delete">
+        DELETE FROM product
+        WHERE product_id = #{id}
+    </delete>
+
+ 
+    
+  
     
 </mapper>

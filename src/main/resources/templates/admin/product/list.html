@@ -25,22 +25,34 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:if="${list.isEmpty()}">
-					<td colspan="8">검색 된 도서가 없습니다</td>
+
+				<tr th:if="${viewProductList.isEmpty()}">
+    					<td colspan="7" style="text-align: center;">등록된 상품이 없습니다.</td>
+				</tr>
+
+				<tr th:unless="${viewProductList.isEmpty()}" th:each="item : ${viewProductList}">
+    				<td th:text="${item.name}">상품명</td>
+    				<td th:text="${item.brand}">브랜드</td>
+    				<td th:text="${item.modelName}">모델명</td>
+    				<td th:text="${#numbers.formatInteger(item.basePrice, 3, 'COMMA') + '원'}">출고가</td>
+    				<td th:text="${#numbers.formatInteger(item.stockQuantity, 3, 'COMMA') + '개'}">재고 수량</td>
+    				<td th:text="${item.id}">상품 ID</td>
+    				<td>
+       				<a th:href="@{|/admin/product/update/${item.id}|}">변경</a>
+        			<a th:href="@{|/admin/product/delete/${item.id}|}">삭제</a>
+    				</td>
 				</tr>
 				
-				<tr th:each="item : ${list}">
-					<td th:text="${item.name}">상품명</td>
-					<td th:text="${item.brand}">브랜드</td>
-					<td th:text="${item.modelName}">모델명</td>
-					<td th:text="${#numbers.formatInteger(item.basePrice, 3, 'COMMA') + '원'}">출고가</td>
-					<td th:text="${#numbers.formatInteger(item.stockQuantity, 3, 'COMMA') + '개'}">재고
-					수량</td>
-					<td th:text="${item.id}">상품 ID (혹은 설명)</td>
-					<td>
-				<a th:href="@{|update/${item.id}|}">변경</a>
-				<a th:href="@{|delete/${item.id}|}">삭제</a>
-				</td>
+				<tr>
+					<td>상품명</td>
+					<td>브랜드</td>
+					<td>모델명</td>
+					<td>출고가</td>
+					<td>재고 수량</td>
+					<td>상품 설명</td>
+					<td>수정</td><!-- 기능 추가 -->
+					<td>삭제</td> <!-- 기능 추가 -->
+
 				</tr>
 			</tbody>
 			<tfoot>
@@ -57,15 +69,14 @@
 		</table>
 	</div>
 
-	<div>
-		<div>상품 추가</div>
-		<!-- 기능 추가 -->
-		<div>더미 데이터 추가</div>
-		<!-- 기능 추가 -->
-		<div>초기화</div>
-		<!-- 기능 추가 -->
-		<div>이전</div>
-		<!-- 기능 추가 -->
-	</div>
+<div>
+    <div><a th:href="@{/admin/product/add}">상품 추가</a></div>
+    
+    <div><a th:href="@{/admin/product/dummy}">대량등록</a></div>
+    
+    <div><a th:href="@{/admin/product/list}">초기화</a></div>
+    
+    <div><a th:href="@{/admin}">이전</a></div>
+</div>
 </body>
 </html>
