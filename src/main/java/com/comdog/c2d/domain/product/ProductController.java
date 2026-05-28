@@ -1,4 +1,4 @@
-package com.comdog.c2d.controller;
+package com.comdog.c2d.domain.product;
 
 import java.util.List;
 
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.comdog.c2d.dto.Product;
-import com.comdog.c2d.service.ProductService;
 
 @Controller
 @RequestMapping("/admin/product")
@@ -20,8 +19,8 @@ public class ProductController {
 	@Autowired
 	ProductService service;
 	
-	// "데이터베이스(DB)에서 전체 상품 목록을 싹 긁어와서, 화면(HTML)에 테이블 형태로 예쁘게 뿌려주는 역할"
-	// '상품 목록 조회 화면'을 만들어주는 핵심 관문
+	/*---조회---*/
+	
 	@GetMapping("/list")
 	public String getProductListPage(Model model) {
 		List<Product> productList = service.findAllProducts();
@@ -30,17 +29,18 @@ public class ProductController {
 		return "admin/product/list";
 	}
 	
+	// "데이터베이스(DB)에서 전체 상품 목록을 싹 긁어와서, 화면(HTML)에 테이블 형태로 예쁘게 뿌려주는 역할"
+	// '상품 목록 조회 화면'을 만들어주는 핵심 관문
+
+	/*---추가---*/
 	
-	//showAddForm() : "나 상품 등록 화면 좀 보여줘" (Get)
-	//글을 쓸 수 있는 **빈 종이(화면)**를 주는 것
 	@GetMapping("/add")
 	public String showAddForm() {
 		return "admin/product/add";
 	}
+	//showAddForm() : "나 상품 등록 화면 좀 보여줘" (Get)
+	//글을 쓸 수 있는 **빈 종이(화면)**를 주는 것
 	
-	
-	//addProduct(Product item) : "입력 다 했어! 진짜로 DB에 추가해줘" (Post)
-	//종이에 적힌 내용을 받아서 **진짜 DB에 저장(추가)**하는 녀석
 	@PostMapping("/add")
 	String addProduct(Product item) {
 		service.add(item);
@@ -48,8 +48,12 @@ public class ProductController {
 		return "redirect:/admin/product/list";
 				
 	}
+	//addProduct(Product item) : "입력 다 했어! 진짜로 DB에 추가해줘" (Post)
+	//종이에 적힌 내용을 받아서 **진짜 DB에 저장(추가)**하는 녀석
 	
 	//DB에서 가져올때 -> item X, 이름 지어서 (노란색)
+	
+	/*---변경---*/
 	
 	// 1. 수정된화면 띄우기
 	@GetMapping("/update/{id}")
@@ -73,7 +77,7 @@ public class ProductController {
 		return "redirect:/admin/product/list";
 	}
 
-	
+	/*---삭제---*/
 	
 	@GetMapping("/delete/{id}")
 		String delete(@PathVariable Long id) {

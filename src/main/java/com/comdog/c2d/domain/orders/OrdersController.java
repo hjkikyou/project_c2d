@@ -1,4 +1,4 @@
-package com.comdog.c2d.controller;
+package com.comdog.c2d.domain.orders;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
