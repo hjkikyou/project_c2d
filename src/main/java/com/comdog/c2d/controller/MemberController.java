@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin/product")
-public class AdminProductController {
-	
-	@GetMapping("/list")
-	public String list() {
-		return "admin/product/list";
+@RequestMapping("/admin/member")
+public class MemberController {
+
+	 @GetMapping("/list")
+	    public String list() {
+	        return "admin/member/list";
+	    }
 	}
-}
+
