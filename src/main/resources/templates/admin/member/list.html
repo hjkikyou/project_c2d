@@ -11,19 +11,23 @@
 		</div>
 	</div>
 	
-	<div>
-		<form>
-			<div>
-				<select name="search">
-					<option value="1">아이디</option>
-					<option value="2">성명</option>
-					<option value="3">전화번호</option>				
-				</select>
-			</div>
-			<div><input name="keyword" type="text"></div>
-			<div><button>검색</button></div>
-		</form>
-	</div>
+<div>
+    <form th:action="@{/admin/member/list}" method="get">
+        <div>
+            <select name="search">
+                <option value="email" th:selected="${param.search == 'email'}">아이디</option>
+                <option value="name" th:selected="${param.search == 'name'}">성명</option>
+                <option value="phone" th:selected="${param.search == 'phone'}">전화번호</option>				
+            </select>
+        </div>
+        <div>
+            <input name="keyword" type="text" th:value="${param.keyword}">
+        </div>
+        <div>
+            <button type="submit">검색</button>
+        </div>
+    </form>
+</div>
 
 	<div>
 		<table border="1">
@@ -37,7 +41,6 @@
 			        <th>구독여부</th>
 			        <th>가입일</th>
 			        <th>수정</th>
-			        <th>삭제</th>
 			    </tr>
 			</thead>
 						
@@ -59,23 +62,11 @@
 				    </td>
 				</tr>
 			</tbody>
-			<tfoot>
-				<tr>
-                    <td colspan="5">
-                        <div>처음</div> <!-- 기능 추가 -->
-                        <div>이전</div> <!-- 기능 추가 -->
-                        <div>페이지 숫자들</div>	<!-- 기능 추가 -->		
-                        <div>다음</div> <!-- 기능 추가 -->
-                        <div>마지막</div> <!-- 기능 추가 -->
-                    </td>
-				</tr>
-			</tfoot>
 		</table>
 	</div>
 	
 				<div>
-				    <div><a th:href="@{/admin/member/add}">상품 추가</a></div>				    
-				    <div><a th:href="@{/admin/member/dummy}">대량등록</a></div>				    
+				    <div><a th:href="@{/admin/member/add}">상품 추가</a></div>				    				    
 				    <div><a th:href="@{/admin/member/list}">초기화</a></div>				    
 				    <div><a th:href="@{/admin}">이전</a></div>
 				</div>

@@ -20,4 +20,10 @@ public interface MemberDao {
 	//삭제
 	void delete(Long id);
 
+	List<Member> selectMembersByEmail(String keyword);
+
+	List<Member> selectMembersByName(String keyword);
+
+	List<Member> selectMembersByPhone(String keyword);
+
 }

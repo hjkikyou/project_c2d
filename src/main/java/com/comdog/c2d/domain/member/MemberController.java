@@ -20,14 +20,34 @@ public class MemberController {
 	MemberService service;
 
 	/* -- 조회 -- */
-	 @GetMapping("/list")
-	    public String getMemberListPage (Model model) {
-		 List<Member> memberList = service.findAllMembers();
-		 model.addAttribute("viewMemberList", memberList);
-	     
-		 return "admin/member/list";
-	    }
-	 
+	@GetMapping("/list")
+	public String getMemberListPage(
+			@org.springframework.web.bind.annotation.RequestParam(value = "search", required = false) String search,
+			@org.springframework.web.bind.annotation.RequestParam(value = "keyword", required = false) String keyword,
+			Model model) {
+		
+		List<Member> memberList;
+
+		// 검색어(keyword)가 입력되었는지 확인 (공백 제외)
+		if (keyword != null && !keyword.trim().isEmpty()) {
+			// select 박스의 value 값(email, name, phone)에 따라 서비스 메서드 분기 처리
+			if ("email".equals(search)) {
+				memberList = service.findMembersByEmail(keyword); // 💡 이메일 검색
+			} else if ("name".equals(search)) {
+				memberList = service.findMembersByName(keyword);  // 💡 이름 검색
+			} else if ("phone".equals(search)) {
+				memberList = service.findMembersByPhone(keyword); // 💡 전화번호 검색
+			} else {
+				memberList = service.findAllMembers();
+			}
+		} else {
+			// 검색어가 없으면 기존처럼 전체 목록 조회
+			memberList = service.findAllMembers();
+		}
+		
+		model.addAttribute("viewMemberList", memberList);
+		return "admin/member/list";
+	}
 	 /* -- 추가 --*/
 	 @GetMapping("/add")
 	 public String showAddForm() {
