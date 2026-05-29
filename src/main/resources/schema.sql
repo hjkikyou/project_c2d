@@ -41,6 +41,40 @@ CREATE UNIQUE INDEX uk_member_email
 
 ALTER TABLE member
 	MODIFY COLUMN member_id BIGINT NOT NULL AUTO_INCREMENT COMMENT '사용자 고유번호';
+	
+	
+	
+-- ==========================================
+-- (1-1) 법인 프로필 (business_profile)
+-- ==========================================
+CREATE TABLE business_profile (
+    member_id INT PRIMARY KEY,
+    company_name VARCHAR(100) NOT NULL,
+    business_reg_no VARCHAR(20) NOT NULL,
+    representative_name VARCHAR(50) NOT NULL,
+    FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
+);
+
+
+-- ==========================================
+-- (1-2) 주소록 (address)
+-- ==========================================
+CREATE TABLE address (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    member_id INT NOT NULL,
+    address_name VARCHAR(50) NOT NULL,       -- 예: 집, 회사
+    recipient_name VARCHAR(50) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    zip_code VARCHAR(10) NOT NULL,
+    base_address VARCHAR(255) NOT NULL,
+    detail_address VARCHAR(255) NOT NULL,
+    is_default TINYINT(1) DEFAULT 0,         -- 1: 기본배송지, 0: 일반
+    FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
+);
+
+-- ==========================================
+-- (2) 상품 (product) ========================
+-- ==========================================
 
 -- 상품
 CREATE TABLE product (
@@ -64,6 +98,45 @@ ALTER TABLE product
 
 ALTER TABLE product
 	MODIFY COLUMN product_id BIGINT NOT NULL AUTO_INCREMENT COMMENT '상품 고유번호';
+	
+-- ==========================================
+-- (2-1) 카테고리 (category)
+-- ==========================================
+CREATE TABLE category (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    parent_id INT NULL,                      -- 계층형 카테고리 고려 (선택 사항)
+    FOREIGN KEY (parent_id) REFERENCES category(id) ON DELETE SET NULL
+);
+
+-- ==========================================
+-- (2-2) 상품 상세 사양 (product_spec)
+-- ==========================================
+CREATE TABLE product_spec (
+    product_id INT NOT NULL,
+    spec_key VARCHAR(50) NOT NULL,           -- 예: 'CPU', 'GPU', 'RAM'
+    spec_value VARCHAR(255) NOT NULL,        -- 예: 'M3 Max', 'RTX 4090', '32GB'
+    PRIMARY KEY (product_id, spec_key),      -- 복합키 구성
+    FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
+);
+	
+
+-- ==========================================
+-- (2-3) 렌탈가 관리 (rental_prices)
+-- ==========================================
+CREATE TABLE rental_prices (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    duration INT NOT NULL,                   -- 예: 36, 60 (개월 수)
+    monthly_fee INT NOT NULL,                -- 월 렌탈료
+    is_b2b_only TINYINT(1) DEFAULT 0,        -- 1: B2B 전용 요금제, 0: 공용
+    FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
+);
+
+
+-- ==========================================
+-- (3) 주문 (orders) =========================
+-- ==========================================
 
 -- 주문
 CREATE TABLE orders (
@@ -86,6 +159,14 @@ ALTER TABLE orders
 
 ALTER TABLE orders
 	MODIFY COLUMN order_id BIGINT NOT NULL AUTO_INCREMENT COMMENT '주문 고유번호';
+	
+	
+-- ==========================================
+-- (3-1) 결제 내역 ()
+-- ==========================================
+	
+	
+	
 
 -- 계약
 CREATE TABLE contract (
