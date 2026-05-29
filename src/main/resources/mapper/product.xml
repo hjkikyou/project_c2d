@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+
+    <resultMap id="ProductResultMap" type="Product">
+        <id property="id" column="product_id" /> 
+        <result property="categoryId" column="category_id" />
+        <result property="name" column="name" />
+        <result property="brand" column="brand" />
+        <result property="modelName" column="model_name" />
+        <result property="basePrice" column="base_price" />
+        <result property="stockQuantity" column="stock_quantity" />
+        <result property="description" column="description" />
+    </resultMap>
+    
+    
+ 	<!-- 조회 -->
+    <select id="findAllProducts" resultMap="ProductResultMap">  
+        SELECT * FROM product
+    </select>
+     
+   <!--  추가 -->
+     <insert id="add">
+        INSERT INTO product
+        (category_id, name, brand, model_name, base_price, stock_quantity, description)
+        VALUES(#{categoryId}, #{name}, #{brand}, #{modelName}, #{basePrice}, #{stockQuantity}, #{description})
+    </insert>
+    
+    <!-- 변경 -->
+    <select id="findProductById" resultMap="ProductResultMap">
+        SELECT * FROM product
+        WHERE product_id = #{id}
+    </select>
+    
+      <update id="update">
+        UPDATE product
+        SET 
+            category_id = #{categoryId},
+            name = #{name}, 
+            brand = #{brand}, 
+            model_name = #{modelName}, 
+            base_price = #{basePrice}, 
+            stock_quantity = #{stockQuantity}, 
+            description = #{description}
+        WHERE product_id = #{id}
+    </update>
+
+	<!-- 삭제 -->
+    <delete id="delete">
+        DELETE FROM product
+        WHERE product_id = #{id}
+    </delete>
+
+ 
+</mapper>

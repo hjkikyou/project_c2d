@@ -28,29 +28,35 @@
 	<div>
 		<table border="1">
 			<thead>
-				<tr>
-					<th>이메일</th>
-					<th>비밀번호</th>
-					<th>성명</th>
-					<th>전화번호</th>
-					<th>회원구분</th>
-					<th>구독여부</th>
-					<th>가입일</th>
-					<th>수정</th>
-					<th>삭제</th>
-				</tr>
+			    <tr>
+			        <th>이메일</th>
+			        <th>비밀번호</th>
+			        <th>성명</th>
+			        <th>전화번호</th>
+			        <th>회원구분</th>
+			        <th>구독여부</th>
+			        <th>가입일</th>
+			        <th>수정</th>
+			        <th>삭제</th>
+			    </tr>
 			</thead>
-			<tbody>
-				<tr>
-					<td>user1@example.com</td>
-					<td>********</td>
-					<td>김철수</td>
-					<td>010-1234-5678</td>
-					<td>PERSONAL</td>
-					<td>1</td>
-					<td>2026-05-25 10:00:00</td>
-					<td>수정</td> <!-- 기능 추가 -->
-					<td>삭제</td><!-- 기능 추가 -->
+						
+			<tbody>		
+			<tr th:if="${viewMemberList.isEmpty()}">
+   				 <td colspan="9" style="text-align: center;">등록된 회원이 없습니다.</td>
+			</tr>
+				<tr th:unless="${viewMemberList.isEmpty()}" th:each="item : ${viewMemberList}">
+				    <td th:text="${item.email}">이메일</td>    				    
+				    <td th:text="${item.password}">비밀번호</td>   				    
+				    <td th:text="${item.name}">성명</td>   				    
+				    <td th:text="${item.phone}">전화번호</td>				    				    
+				    <td th:text="${item.userType}">회원구분</td>				    				    
+				    <td th:text="${item.isSubscribed ? '구독중' : '미구독'}">구독여부</td>				    				    
+				    <td th:text="${#temporals.format(item.createdAt, 'yyyy-MM-dd HH:mm')}">가입일</td>				    
+				    <td>
+				        <a th:href="@{|/admin/member/update/${item.id}|}">변경</a>
+				        <a th:href="@{|/admin/member/delete/${item.id}|}">삭제</a>
+				    </td>
 				</tr>
 			</tbody>
 			<tfoot>
@@ -67,12 +73,12 @@
 		</table>
 	</div>
 	
-	<div>
-        <div>사용자 등록</div> <!-- 기능 추가 -->
-        <div>더미 데이터 추가</div> <!-- 기능 추가 -->
-        <div>초기화</div> <!-- 기능 추가 -->   
-        <div>이전</div> <!-- 기능 추가 -->
-    </div>
+				<div>
+				    <div><a th:href="@{/admin/member/add}">상품 추가</a></div>				    
+				    <div><a th:href="@{/admin/member/dummy}">대량등록</a></div>				    
+				    <div><a th:href="@{/admin/member/list}">초기화</a></div>				    
+				    <div><a th:href="@{/admin}">이전</a></div>
+				</div>
 	
 	
 </body>
