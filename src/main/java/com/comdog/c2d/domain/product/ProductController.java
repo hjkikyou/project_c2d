@@ -39,7 +39,7 @@ public class ProductController {
 		return "admin/product/add";
 	}
 	//showAddForm() : "나 상품 등록 화면 좀 보여줘" (Get)
-	//글을 쓸 수 있는 **빈 종이(화면)**를 주는 것
+	//글을 쓸 수 있는 빈 종이(화면)를 주는 것
 	
 	@PostMapping("/add")
 	String addProduct(Product item) {
@@ -49,7 +49,7 @@ public class ProductController {
 				
 	}
 	//addProduct(Product item) : "입력 다 했어! 진짜로 DB에 추가해줘" (Post)
-	//종이에 적힌 내용을 받아서 **진짜 DB에 저장(추가)**하는 녀석
+	//종이에 적힌 내용을 받아서 진짜 DB에 저장(추가)하는 녀석
 	
 	//DB에서 가져올때 -> item X, 이름 지어서 (노란색)
 	
