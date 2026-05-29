@@ -46,4 +46,19 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.delete(id);
 		
 	}
+
+	@Override
+	public List<Member> findMembersByEmail(String keyword) {
+		return memberDao.selectMembersByEmail(keyword);
+	}
+
+	@Override
+	public List<Member> findMembersByName(String keyword) {
+		return memberDao.selectMembersByName(keyword);
+	}
+
+	@Override
+	public List<Member> findMembersByPhone(String keyword) {
+		return memberDao.selectMembersByPhone(keyword);
+	}
 }

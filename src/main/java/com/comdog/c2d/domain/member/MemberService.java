@@ -19,6 +19,12 @@ public interface MemberService {
 
 	//삭제
 	void delete(Long id);
+
+	List<Member> findMembersByEmail(String keyword);
+
+	List<Member> findMembersByName(String keyword);
+
+	List<Member> findMembersByPhone(String keyword);
 	
 	
 	

@@ -81,16 +81,25 @@
 					<td><button type="button">취소</button></td>
 				</tr>
 			</tbody>
-			<tfoot>
+<tfoot>
 				<tr>
-					<td colspan="9">
-						<div style="display: inline-block;">처음</div> 
-						<div style="display: inline-block;">이전</div> 
-						<div style="display: inline-block;">[1]</div> 
-						<div style="display: inline-block;">[2]</div> 
-						<div style="display: inline-block;">[3]</div>	
-						<div style="display: inline-block;">다음</div> 
-						<div style="display: inline-block;">마지막</div> 
+					<td colspan="9" style="text-align: center;">
+						<a th:href="@{/admin/orders/list(page=1)}" style="margin: 0 5px; text-decoration: none; color: #333;">처음</a> 
+						
+						<a th:href="@{/admin/orders/list(page=${param.page != null ? T(java.lang.Integer).parseInt(param.page) - 1 : 1})}" style="margin: 0 5px; text-decoration: none; color: #333;">이전</a> 
+						
+						<a th:href="@{/admin/orders/list(page=1)}" 
+						   th:style="${param.page == null || param.page[0] == '1' ? 'font-weight:bold; color:red; margin:0 5px; text-decoration:none;' : 'margin:0 5px; text-decoration:none; color:#333;'}">[1]</a> 
+						
+						<a th:href="@{/admin/orders/list(page=2)}" 
+						   th:style="${param.page != null && param.page[0] == '2' ? 'font-weight:bold; color:red; margin:0 5px; text-decoration:none;' : 'margin:0 5px; text-decoration:none; color:#333;'}">[2]</a> 
+						
+						<a th:href="@{/admin/orders/list(page=3)}" 
+						   th:style="${param.page != null && param.page[0] == '3' ? 'font-weight:bold; color:red; margin:0 5px; text-decoration:none;' : 'margin:0 5px; text-decoration:none; color:#333;'}">[3]</a>	
+						
+						<a th:href="@{/admin/orders/list(page=${param.page != null ? T(java.lang.Integer).parseInt(param.page) + 1 : 2})}" style="margin: 0 5px; text-decoration: none; color: #333;">다음</a> 
+						
+						<a th:href="@{/admin/orders/list(page=3)}" style="margin: 0 5px; text-decoration: none; color: #333;">마지막</a> 
 					</td>
 				</tr>
 			</tfoot>
