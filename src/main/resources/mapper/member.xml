@@ -4,8 +4,7 @@
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 
-	<resultMap id="MemberResultMap"
-		type="com.comdog.c2d.dto.Member">
+	<resultMap id="MemberResultMap" type="com.comdog.c2d.dto.Member">
 		<id property="id" column="member_id" />
 		<result property="email" column="email" />
 		<result property="password" column="password" />

@@ -13,7 +13,7 @@
 	</div>
 	
 	<div>
-		<form th:action="@{/admin/orders}" method="get">
+		<form th:action="@{/admin/order}" method="get">
 			<div>
 				<select name="searchType">
 					<option value="memberId">회원 ID</option>
@@ -34,54 +34,50 @@
 	<div>
 		<table border="1">
 			<thead>
-				<tr>
-					<th>주문번호</th>
-					<th>회원 ID</th>
-					<th>총 주문 금액</th>
-					<th>주문 상태</th>
-					<th>결제 수단</th>
-					<th>빌링키</th>
-					<th>주문 일시</th>
-					<th>상세보기</th>
-					<th>취소/삭제</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>1</td>
-					<td>150000</td>
-					<td>PAID</td>
-					<td>CREDIT_CARD</td>
-					<td>bk_card_12345a</td>
-					<td>2026-05-26 21:56:13</td>
-					<td><button type="button">상세보기</button></td> 
-					<td><button type="button">취소</button></td> 
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>2</td>
-					<td>50000</td>
-					<td>PENDING</td>
-					<td>BANK_TRANSFER</td>
-					<td>-</td>
-					<td>2026-05-26 21:56:13</td>
-					<td><button type="button">상세보기</button></td>
-					<td><button type="button">취소</button></td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>3</td>
-					<td>300000</td>
-					<td>PAID</td>
-					<td>CREDIT_CARD</td>
-					<td>bk_card_98765b</td>
-					<td>2026-05-26 21:56:13</td>
-					<td><button type="button">상세보기</button></td>
-					<td><button type="button">취소</button></td>
-				</tr>
-			</tbody>
-<tfoot>
+				    <tr>
+				        <th>주문번호</th>
+				        <th>회원 ID</th>
+				        <th>총 주문 금액</th>
+				        <th>주문 상태</th>
+				        <th>결제 수단</th>
+				        <th>빌링키</th>
+				        <th>주문 일시</th>
+				        <th>상세보기</th>
+				        <th>취소/삭제</th>
+				    </tr>
+				</thead>
+				<tbody>
+				    <tr th:if="${viewOrderList.isEmpty()}">
+				        <td colspan="9" style="text-align: center;">등록된 주문 내역이 없습니다.</td>
+				    </tr>
+				
+				    <tr th:unless="${viewOrderList.isEmpty()}" th:each="order : ${viewOrderList}">
+				        
+				        <td th:text="${order.orderId}">1</td>
+				        
+				        <td th:text="${order.memberId}">1</td>
+				        
+				        <td th:text="${#numbers.formatInteger(order.totalAmount, 3, 'COMMA') + '원'}">150,000원</td>
+				        
+				        <td th:text="${order.orderStatus}">PAID</td>
+				        
+				        <td th:text="${order.paymentMethod}">CREDIT_CARD</td>
+				        
+				        <td th:text="${order.billingKey}">bk_card_12345a</td>
+				        
+				        <td th:text="${#temporals.format(order.createdAt, 'yyyy-MM-dd HH:mm:ss')}">2026-05-26 21:56:13</td>
+				        
+				        <td>
+				            <a th:href="@{|/admin/order/detail/${order.orderId}|}">상세보기</a>
+				        </td>
+				        <td>
+				            <a th:href="@{|/admin/order/cancel/${order.orderId}|}">취소</a>
+				        </td>
+				        
+				    </tr>
+				</tbody>
+				
+			<tfoot>
 				<tr>
 					<td colspan="9" style="text-align: center;">
 						<a th:href="@{/admin/orders/list(page=1)}" style="margin: 0 5px; text-decoration: none; color: #333;">처음</a> 
