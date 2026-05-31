@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>계약 목록</title>
 </head>
 <body>
- <h3>안녕</h3>  
+	<div>
+		<div>
+			<h3>계약 목록</h3>
+		</div>
+	</div>
+	<table border="1">
+			<thead>
+				<tr>
+                    <th>계약 번호</th>
+                    <th>회원 번호</th>
+                    <th>주문 번호</th>
+                    <th>상품 번호</th>
+                    <th>월 렌탈료</th>
+                    <th>기간</th>
+                    <th>유형</th>
+                    <th>상태</th>
+                    <th>시작일</th>
+                    <th>종료일</th>
+                    <th>관리</th>
+                </tr>
+			</thead>
+			<tbody>
+				<tr th:if="${viewContractList.isEmpty()}">
+					<td colspan="11" style="text-align: center;">등록된 상품이 없습니다</td>
+				</tr>
+			
+				<tr th:unless="${viewContractList.isEmpty()}" th:each="item : ${viewContractList}">
+					<td th:text="${item.contractId}">계약 번호</td>
+					<td th:text="${item.memberId}">회원 번호</td>
+					<td th:text="${item.orderId}">주문 번호</td>
+					<td th:text="${item.productId}">상품 번호</td>
+					<td th:text="${#numbers.formatInteger(item.monthlyFee, 3, 'COMMA')} + '원'">월 렌탈료</td>
+                    <td th:text="${item.duration} + '개월'">기간</td>
+                    <td th:text="${item.contractType}">유형</td>
+                    
+                    <td>
+                        <span th:if="${item.contractStatus == 'USING'}">사용중</span>
+                        <span th:if="${item.contractStatus == 'RETURNING'}">반납중</span>
+                        <span th:if="${item.contractStatus == 'TERMINATED'}">해지됨</span>
+					</td>
+					
+					<td th:text="${item.startDate}">1999-01-01(시작일)</td>
+                    <td th:text="${item.endDate}">2199-01-01</td>
+                    <td>
+                       <a th:href="@{/admin}"><button type="button">아직 구현 X, 메인으로 돌아가기!</button></a>
+                    </td>
+			
+			</tbody>
+			</table>
+	
+	<div>
+		<div><a th:href="@{/admin}">이전</a></div>
+	</div>
+	
 </body>
 </html>

@@ -84,39 +84,6 @@ CREATE UNIQUE INDEX uk_member_email
 ALTER TABLE member
 	MODIFY COLUMN member_id BIGINT NOT NULL AUTO_INCREMENT COMMENT '사용자 고유번호';
 	
-	
-	
--- ==========================================
--- (1-1) 법인 프로필 (business_profile)
--- ==========================================
-CREATE TABLE business_profile (
-    member_id INT PRIMARY KEY,
-    company_name VARCHAR(100) NOT NULL,
-    business_reg_no VARCHAR(20) NOT NULL,
-    representative_name VARCHAR(50) NOT NULL,
-    FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
-);
-
-
--- ==========================================
--- (1-2) 주소록 (address)
--- ==========================================
-CREATE TABLE address (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    member_id INT NOT NULL,
-    address_name VARCHAR(50) NOT NULL,       -- 예: 집, 회사
-    recipient_name VARCHAR(50) NOT NULL,
-    phone VARCHAR(20) NOT NULL,
-    zip_code VARCHAR(10) NOT NULL,
-    base_address VARCHAR(255) NOT NULL,
-    detail_address VARCHAR(255) NOT NULL,
-    is_default TINYINT(1) DEFAULT 0,         -- 1: 기본배송지, 0: 일반
-    FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
-);
-
--- ==========================================
--- (2) 상품 (product) ========================
--- ==========================================
 
 -- ======com.comdog.c2d.domain.member========	
 -- ==========================================
