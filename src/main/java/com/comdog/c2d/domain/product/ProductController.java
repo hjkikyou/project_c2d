@@ -51,7 +51,6 @@ public class ProductController {
 	//addProduct(Product item) : "입력 다 했어! 진짜로 DB에 추가해줘" (Post)
 	//종이에 적힌 내용을 받아서 진짜 DB에 저장(추가)하는 녀석
 	
-	//DB에서 가져올때 -> item X, 이름 지어서 (노란색)
 	
 	/*---변경---*/
 	
@@ -80,7 +79,7 @@ public class ProductController {
 	/*---삭제---*/
 	
 	@GetMapping("/delete/{id}")
-		String delete(@PathVariable Long id) {
+		String deleteProduct(@PathVariable Long id) {
 			service.delete(id);
 			
 			return "redirect:/admin/product/list";
