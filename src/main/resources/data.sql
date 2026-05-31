@@ -76,18 +76,38 @@ INSERT INTO rental_prices (rental_price_id, product_id, duration, monthly_fee, i
 (9, 2, 36, 60000, 0),
 (10, 4, 36, 75000, 0);
 
--- 8. 주문 (초기 보증금 결제 등)
+-- 1. 주문 테이블 (영수증 머리말)
+-- 상태를 타임리프 화면과 맞춰서 '결제완료', '주문취소'로 변경했습니다.
 INSERT INTO orders (order_id, member_id, total_amount, order_status, payment_method, billing_key) VALUES
-(1, 1, 130000, 'PAID', 'CREDIT_CARD', 'bk_card_001'),
-(2, 2, 60000, 'PAID', 'CREDIT_CARD', 'bk_card_002'),
-(3, 3, 75000, 'PAID', 'NAVER_PAY', 'bk_npay_003'),
-(4, 4, 180000, 'PAID', 'KAKAO_PAY', 'bk_kpay_004'),
-(5, 5, 25000, 'PAID', 'CREDIT_CARD', 'bk_card_005'),
-(6, 8, 250000, 'PAID', 'BANK_TRANSFER', NULL), -- B2B 무통장
-(7, 9, 200000, 'PAID', 'BANK_TRANSFER', NULL),
-(8, 10, 30000, 'PAID', 'CREDIT_CARD', 'bk_card_008'),
-(9, 6, 65000, 'PAID', 'TOSS_PAY', 'bk_toss_009'),
-(10, 7, 25000, 'CANCELED', 'CREDIT_CARD', NULL);
+(1, 1, 130000, '결제완료', 'CREDIT_CARD', 'bk_card_001'),
+(2, 2, 60000, '결제완료', 'CREDIT_CARD', 'bk_card_002'),
+(3, 3, 75000, '결제완료', 'NAVER_PAY', 'bk_npay_003'),
+(4, 4, 180000, '결제완료', 'KAKAO_PAY', 'bk_kpay_004'),
+(5, 5, 25000, '결제완료', 'CREDIT_CARD', 'bk_card_005'),
+(6, 8, 250000, '결제완료', 'BANK_TRANSFER', NULL), 
+(7, 9, 200000, '결제완료', 'BANK_TRANSFER', NULL),
+(8, 10, 30000, '결제완료', 'CREDIT_CARD', 'bk_card_008'),
+(9, 6, 65000, '결제완료', 'TOSS_PAY', 'bk_toss_009'),
+(10, 7, 25000, '주문취소', 'CREDIT_CARD', NULL);
+
+
+-- 2. 주문 상세 테이블 (영수증 알맹이 - 우리가 추가해야 할 진짜 알맹이!)
+-- product_id는 기존 상품 테이블에 1, 2, 3번 상품이 있다고 가정한 더미 데이터입니다.
+INSERT INTO order_item (order_id, product_id, order_price, count) VALUES
+(1, 1, 130000, 1), -- 1번 주문: 1번 상품 1개 구매
+(2, 2, 30000, 2),  -- 2번 주문: 2번 상품 2개 구매 (총액 6만)
+(3, 3, 75000, 1),  -- 3번 주문: 3번 상품 1개 구매
+(4, 1, 90000, 2),  -- 4번 주문: 1번 상품 2개 구매 (총액 18만)
+(5, 2, 25000, 1),  -- 5번 주문: 2번 상품 1개 구매
+(6, 4, 250000, 1), -- 6번 주문: 4번 상품 1개 구매
+(7, 5, 100000, 2), -- 7번 주문: 5번 상품 2개 구매
+(8, 1, 30000, 1),  -- 8번 주문: 1번 상품 1개 구매
+(9, 3, 65000, 1),  -- 9번 주문: 3번 상품 1개 구매
+(10, 2, 25000, 1); -- 10번 주문: 2번 상품 1개 구매 (취소됨)
+
+-- 보너스: 다중 장바구니 결제 테스트용 (1번 주문에 상품 하나 더 추가!)
+INSERT INTO order_item (order_id, product_id, order_price, count) VALUES
+(1, 2, 0, 1); -- 1번 회원은 상품 2개를 같이 샀다는 것을 보여주기 위한 테스트용
 
 -- 9. 계약 (렌탈 및 구독)
 INSERT INTO contract (contract_id, member_id, order_id, product_id, monthly_fee, duration, contract_type, contract_status, start_date, end_date) VALUES

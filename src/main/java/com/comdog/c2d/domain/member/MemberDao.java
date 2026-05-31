@@ -19,7 +19,8 @@ public interface MemberDao {
 
 	//삭제
 	void delete(Long id);
-
+	
+	//검색 기능
 	List<Member> selectMembersByEmail(String keyword);
 
 	List<Member> selectMembersByName(String keyword);

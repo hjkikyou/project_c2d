@@ -1,106 +1,87 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>관리자 페이지 - 주문 목록</title>
+    <meta charset="UTF-8">
+    <title>관리자 페이지 - 주문 목록</title>
 </head>
 <body>
 
-	<div>
-		<div>
-			<h3>주문 목록</h3>
-		</div>
-	</div>
-	
-	<div>
-		<form th:action="@{/admin/order}" method="get">
-			<div>
-				<select name="searchType">
-					<option value="memberId">회원 ID</option>
-					<option value="orderStatus">주문 상태 (PAID/PENDING)</option>
-					<option value="paymentMethod">결제 수단</option>
-					<option value="billingKey">빌링키</option>				
-				</select>
-			</div>
-			<div>
-				<input name="keyword" type="text" placeholder="검색어 입력">
-			</div>
-			<div>
-				<button type="submit">검색</button>
-			</div>
-		</form>
-	</div>
+    <div>
+        <div>
+            <h3>주문 목록 관리</h3>
+        </div>
+    </div>
+    
+    <div>
+        <form th:action="@{/admin/order/list}" method="get">
+            <div>
+                <select name="search">
+                    <option value="memberName" th:selected="${param.search == 'memberName'}">주문자명</option>
+                    <option value="orderId" th:selected="${param.search == 'orderId'}">주문번호</option>
+                </select>
+            </div>
+            <div>
+                <input name="keyword" type="text" th:value="${param.keyword}" placeholder="검색어 입력">
+            </div>
+            <div>
+                <button type="submit">검색</button>
+                <a th:href="@{/admin/order/list}"><button type="button">초기화</button></a>
+            </div>
+        </form>
+    </div>
 
-	<div>
-		<table border="1">
-			<thead>
-				    <tr>
-				        <th>주문번호</th>
-				        <th>회원 ID</th>
-				        <th>총 주문 금액</th>
-				        <th>주문 상태</th>
-				        <th>결제 수단</th>
-				        <th>빌링키</th>
-				        <th>주문 일시</th>
-				        <th>상세보기</th>
-				        <th>취소/삭제</th>
-				    </tr>
-				</thead>
-				<tbody>
-				    <tr th:if="${viewOrderList.isEmpty()}">
-				        <td colspan="9" style="text-align: center;">등록된 주문 내역이 없습니다.</td>
-				    </tr>
-				
-				    <tr th:unless="${viewOrderList.isEmpty()}" th:each="order : ${viewOrderList}">
-				        
-				        <td th:text="${order.orderId}">1</td>
-				        
-				        <td th:text="${order.memberId}">1</td>
-				        
-				        <td th:text="${#numbers.formatInteger(order.totalAmount, 3, 'COMMA') + '원'}">150,000원</td>
-				        
-				        <td th:text="${order.orderStatus}">PAID</td>
-				        
-				        <td th:text="${order.paymentMethod}">CREDIT_CARD</td>
-				        
-				        <td th:text="${order.billingKey}">bk_card_12345a</td>
-				        
-				        <td th:text="${#temporals.format(order.createdAt, 'yyyy-MM-dd HH:mm:ss')}">2026-05-26 21:56:13</td>
-				        
-				        <td>
-				            <a th:href="@{|/admin/order/detail/${order.orderId}|}">상세보기</a>
-				        </td>
-				        <td>
-				            <a th:href="@{|/admin/order/cancel/${order.orderId}|}">취소</a>
-				        </td>
-				        
-				    </tr>
-				</tbody>
-				
-			<tfoot>
-				<tr>
-					<td colspan="9" style="text-align: center;">
-						<a th:href="@{/admin/orders/list(page=1)}" style="margin: 0 5px; text-decoration: none; color: #333;">처음</a> 
-						
-						<a th:href="@{/admin/orders/list(page=${param.page != null ? T(java.lang.Integer).parseInt(param.page) - 1 : 1})}" style="margin: 0 5px; text-decoration: none; color: #333;">이전</a> 
-						
-						<a th:href="@{/admin/orders/list(page=1)}" 
-						   th:style="${param.page == null || param.page[0] == '1' ? 'font-weight:bold; color:red; margin:0 5px; text-decoration:none;' : 'margin:0 5px; text-decoration:none; color:#333;'}">[1]</a> 
-						
-						<a th:href="@{/admin/orders/list(page=2)}" 
-						   th:style="${param.page != null && param.page[0] == '2' ? 'font-weight:bold; color:red; margin:0 5px; text-decoration:none;' : 'margin:0 5px; text-decoration:none; color:#333;'}">[2]</a> 
-						
-						<a th:href="@{/admin/orders/list(page=3)}" 
-						   th:style="${param.page != null && param.page[0] == '3' ? 'font-weight:bold; color:red; margin:0 5px; text-decoration:none;' : 'margin:0 5px; text-decoration:none; color:#333;'}">[3]</a>	
-						
-						<a th:href="@{/admin/orders/list(page=${param.page != null ? T(java.lang.Integer).parseInt(param.page) + 1 : 2})}" style="margin: 0 5px; text-decoration: none; color: #333;">다음</a> 
-						
-						<a th:href="@{/admin/orders/list(page=3)}" style="margin: 0 5px; text-decoration: none; color: #333;">마지막</a> 
-					</td>
-				</tr>
-			</tfoot>
-		</table>
-	</div>
+    <div style="margin-top: 20px;">
+        <table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
+            <thead>
+                <tr>
+                    <th>주문번호</th>
+                    <th>주문자명</th>
+                    <th>주문 상품</th>
+                    <th>총 결제 금액</th>
+                    <th>주문 상태</th>
+                    <th>결제 수단</th>
+                    <th>주문 일시</th>
+                    <th>상세보기</th>
+                    <th>주문 취소</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${viewOrderList == null or viewOrderList.isEmpty()}">
+                    <td colspan="9" style="text-align: center; padding: 20px;">등록된 주문 내역이 없습니다.</td>
+                </tr>
+            
+                <tr th:unless="${viewOrderList == null or viewOrderList.isEmpty()}" th:each="order : ${viewOrderList}">
+                    
+                    <td th:text="${order.orderId}">1</td>
+                    
+                    <td th:text="${order.memberName}">홍길동</td>
+                    
+                    <td th:text="${order.productName}">사료 외 2건</td>
+                    
+                    <td th:text="${#numbers.formatInteger(order.totalAmount, 3, 'COMMA') + '원'}">150,000원</td>
+                    
+                    <td th:text="${order.orderStatus}">결제완료</td>
+                    
+                    <td th:text="${order.paymentMethod}">신용카드</td>
+                    
+                    <td th:text="${#temporals.format(order.createdAt, 'yyyy-MM-dd HH:mm:ss')}">2026-05-26 21:56:13</td>
+                    
+                    <td>
+                        <a th:href="@{|/admin/order/detail/${order.orderId}|}">🔍 상세보기</a>
+                    </td>
+                    
+                    <td>
+                        <span th:if="${order.orderStatus == '주문취소'}" style="color: gray; text-decoration: line-through;">취소완료</span>
+                        <a th:unless="${order.orderStatus == '주문취소'}" 
+                           th:href="@{|/admin/order/cancel/${order.orderId}|}" 
+                           onclick="return confirm('정말로 이 주문을 취소하시겠습니까?');" 
+                           style="color: red; font-weight: bold;">❌ 주문취소</a>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </body>
 </html>

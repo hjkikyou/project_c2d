@@ -22,10 +22,11 @@ public class MemberController {
 	/* -- 조회 -- */
 	@GetMapping("/list")
 	public String getMemberListPage(
-			
+	
+	//검색 기능 추가	
 	@org.springframework.web.bind.annotation.RequestParam(value = "search", required = false) String search,
 	@org.springframework.web.bind.annotation.RequestParam(value = "keyword", required = false) String keyword,
-	//검색 기능 추가		
+	//-------------
 		Model model) {
 		
 		List<Member> memberList;

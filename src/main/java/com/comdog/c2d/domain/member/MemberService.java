@@ -19,7 +19,8 @@ public interface MemberService {
 
 	//삭제
 	void delete(Long id);
-
+	
+	//검색 기능
 	List<Member> findMembersByEmail(String keyword);
 
 	List<Member> findMembersByName(String keyword);
