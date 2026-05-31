@@ -19,9 +19,11 @@ DROP TABLE IF EXISTS rental_prices;
 DROP TABLE IF EXISTS review;
 
 -- (3) 주문/결제/배송 관련
+DROP TABLE IF EXISTS order_item;
 DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS payment_history;
 DROP TABLE IF EXISTS delivery;
+
 
 -- (4) 계약 관련
 DROP TABLE IF EXISTS contract;
@@ -226,76 +228,21 @@ ALTER TABLE category
 -- (2)           상품 (product) 
 -- ==========================================
 
--- 상품
+-- 1. 상품
 CREATE TABLE product (
-	product_id     BIGINT       NOT NULL COMMENT '상품 고유번호', -- 상품 고유번호
-	category_id    BIGINT       NULL     COMMENT '카테고리 고유번호', -- 카테고리 고유번호
-	name           VARCHAR(100) NOT NULL COMMENT '상품명', -- 상품명
-	brand          VARCHAR(50)  NOT NULL COMMENT '브랜드', -- 브랜드
-	model_name     VARCHAR(100) NOT NULL COMMENT '모델명', -- 모델명
-	base_price     INT          NOT NULL DEFAULT 0 COMMENT '출고가', -- 출고가
-	stock_quantity INT          NOT NULL DEFAULT 0 COMMENT '재고 수량', -- 재고 수량
-	description    TEXT         NULL     COMMENT '기기의 상세 스펙이나 란텔 유의사항' -- 상품 설명
-)
-COMMENT '상품';
-
--- 상품
-ALTER TABLE product
-	ADD CONSTRAINT PK_product -- 상품 기본키
-	PRIMARY KEY (
-	product_id -- 상품 고유번호
-	);
-
-ALTER TABLE product
-	MODIFY COLUMN product_id BIGINT NOT NULL AUTO_INCREMENT COMMENT '상품 고유번호';
-	
--- ==========================================
--- (2-1) 카테고리 (category)
--- ==========================================
-CREATE TABLE category (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    parent_id INT NULL,                      -- 계층형 카테고리 고려 (선택 사항)
-    FOREIGN KEY (parent_id) REFERENCES category(id) ON DELETE SET NULL
-);
-
--- ==========================================
--- (2-2) 상품 상세 사양 (product_spec)
--- ==========================================
-CREATE TABLE product_spec (
-    product_id INT NOT NULL,
-    spec_key VARCHAR(50) NOT NULL,           -- 예: 'CPU', 'GPU', 'RAM'
-    spec_value VARCHAR(255) NOT NULL,        -- 예: 'M3 Max', 'RTX 4090', '32GB'
-    PRIMARY KEY (product_id, spec_key),      -- 복합키 구성
-    FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
-);
-	
-
--- ==========================================
--- (2-3) 렌탈가 관리 (rental_prices)
--- ==========================================
-CREATE TABLE rental_prices (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    product_id INT NOT NULL,
-    duration INT NOT NULL,                   -- 예: 36, 60 (개월 수)
-    monthly_fee INT NOT NULL,                -- 월 렌탈료
-    is_b2b_only TINYINT(1) DEFAULT 0,        -- 1: B2B 전용 요금제, 0: 공용
-    FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE
-);
-
-
--- ==========================================
--- (3) 주문 (orders) =========================
--- ==========================================
-
-ALTER TABLE product
-    ADD CONSTRAINT FK_category_TO_product
-    FOREIGN KEY (
-        category_id
-    )
-    REFERENCES category (
-        category_id
-    ) ON DELETE SET NULL;
+    product_id     BIGINT         NOT NULL AUTO_INCREMENT COMMENT '상품 고유번호', 
+    category_id    BIGINT         NULL     COMMENT '카테고리 고유번호', 
+    name           VARCHAR(100)   NOT NULL COMMENT '상품명', 
+    brand          VARCHAR(50)    NOT NULL COMMENT '브랜드', 
+    model_name     VARCHAR(100)   NOT NULL COMMENT '모델명', 
+    base_price     INT            NOT NULL DEFAULT 0 COMMENT '출고가', 
+    stock_quantity INT            NOT NULL DEFAULT 0 COMMENT '재고 수량', 
+    description    TEXT           NULL     COMMENT '기기의 상세 스펙이나 렌탈 유의사항',
+    
+    -- 기본키(PK)와 외래키(FK)를 괄호 안에 한 번에 선언!
+    PRIMARY KEY (product_id),
+    CONSTRAINT FK_category_TO_product FOREIGN KEY (category_id) REFERENCES category (category_id) ON DELETE SET NULL
+) COMMENT '상품';
 	
 
 -- =====com.comdog.c2d.domain.product========
@@ -373,45 +320,37 @@ ALTER TABLE rental_prices
 -- (3)            주문 (orders) 
 -- ==========================================
 
--- 주문
+-- 1. 주문 (영수증 머리말)
 CREATE TABLE orders (
-	order_id       BIGINT                            NOT NULL COMMENT '주문 고유번호', -- 주문 고유번호
-	member_id      BIGINT                            NOT NULL COMMENT '회원 고유번호', -- 회원 고유번호
-	total_amount   INT                               NOT NULL DEFAULT 0 COMMENT '총 결제 금액', -- 총 결제 금액
-	order_status   ENUM('PENDING','PAID','CANCELED') NULL     DEFAULT 'PENDING' COMMENT '주문 상태', -- 주문 상태
-	payment_method VARCHAR(50)                       NOT NULL COMMENT '결제 수단', -- 결제 수단
-	billing_key    VARCHAR(255)                      NULL     COMMENT '빌링 키', -- 빌링 키
-	created_at     DATETIME                          NULL     DEFAULT CURRENT_TIMESTAMP COMMENT '주문 일시' -- 주문 일시
-)
-COMMENT '주문';
+    order_id        BIGINT         NOT NULL AUTO_INCREMENT COMMENT '주문 고유번호', 
+    member_id       BIGINT         NOT NULL COMMENT '회원 고유번호', 
+    total_amount    INT            NOT NULL DEFAULT 0 COMMENT '총 결제 금액', 
+    order_status    VARCHAR(20)    NOT NULL DEFAULT '결제대기' COMMENT '주문 상태', 
+    tracking_number VARCHAR(100)   NULL     COMMENT '송장 번호', 
+    payment_method  VARCHAR(50)    NOT NULL COMMENT '결제 수단', 
+    billing_key     VARCHAR(255)   NULL     COMMENT '빌링 키', 
+    created_at      DATETIME       NULL     DEFAULT CURRENT_TIMESTAMP COMMENT '주문 일시',
+    
+    -- 기본키(PK)와 외래키(FK)를 테이블 생성 시 한 번에 세팅합니다.
+    PRIMARY KEY (order_id),
+    CONSTRAINT FK_member_TO_orders FOREIGN KEY (member_id) REFERENCES member (member_id)
+) COMMENT '주문';
 
--- 주문
-ALTER TABLE orders
-	ADD CONSTRAINT PK_orders -- 주문 기본키
-	PRIMARY KEY (
-	order_id -- 주문 고유번호
-	);
 
-ALTER TABLE orders
-	MODIFY COLUMN order_id BIGINT NOT NULL AUTO_INCREMENT COMMENT '주문 고유번호';
-	
-	
--- ==========================================
--- (3-1) 결제 내역 ()
--- ==========================================
-	
-	
-	
+-- 2. 주문 상품 상세내역 (영수증 개별 항목)
+CREATE TABLE order_item (
+    order_item_id BIGINT         NOT NULL AUTO_INCREMENT COMMENT '주문 상세 번호',
+    order_id      BIGINT         NOT NULL COMMENT '주문 고유번호 (orders 테이블 FK)',
+    product_id    BIGINT         NOT NULL COMMENT '상품 고유번호 (product 테이블 FK)',
+    order_price   INT            NOT NULL COMMENT '주문 당시의 상품 가격',
+    count         INT            NOT NULL DEFAULT 1 COMMENT '주문 수량',
+    
+    -- 기본키(PK)와 외래키(FK) 세팅
+    PRIMARY KEY (order_item_id),
+    CONSTRAINT FK_order_TO_item FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    CONSTRAINT FK_product_TO_item FOREIGN KEY (product_id) REFERENCES product(product_id)
+) COMMENT '주문 상품 상세내역';
 
-	-- 주문
-ALTER TABLE orders
-	ADD CONSTRAINT FK_member_TO_orders -- 사용자 -> 주문
-	FOREIGN KEY (
-	member_id -- 회원 고유번호
-	)
-	REFERENCES member ( -- 사용자
-	member_id -- 사용자 고유번호
-	);
 	
 -- =====com.comdog.c2d.domain.orders=========	
 -- ==========================================

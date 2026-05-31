@@ -46,7 +46,8 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.delete(id);
 		
 	}
-
+	
+	// 검색 기능
 	@Override
 	public List<Member> findMembersByEmail(String keyword) {
 		return memberDao.selectMembersByEmail(keyword);
