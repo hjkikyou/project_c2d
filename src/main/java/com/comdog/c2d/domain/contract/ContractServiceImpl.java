@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.comdog.c2d.dto.ContractListDto;
+import com.comdog.c2d.dto.ContractDto;
 
 @Service
 	public class ContractServiceImpl implements ContractService {
@@ -15,7 +15,7 @@ import com.comdog.c2d.dto.ContractListDto;
 	
 	//조회
 	@Override
-	public List<ContractListDto> findAllContracts() {
+	public List<ContractDto> findAllContracts() {
 			
 	return contractDao.selectAll();
 		}

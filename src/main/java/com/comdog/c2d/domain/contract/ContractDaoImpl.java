@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.comdog.c2d.dto.ContractListDto;
+import com.comdog.c2d.dto.ContractDto;
 
 @Repository //DB와 연결되는 DAO 컴포넌트임을 명시
 public class ContractDaoImpl implements ContractDao {
@@ -17,7 +17,7 @@ public class ContractDaoImpl implements ContractDao {
     private SqlSession sql;
 
 	@Override
-	public List<ContractListDto> selectAll() {
+	public List<ContractDto> selectAll() {
 		
 		return sql.selectList("contract.selectAll");
 	}

@@ -2,7 +2,7 @@ package com.comdog.c2d.dto;
 
 import java.time.LocalDate;
 
-public class ContractListDto {
+public class ContractDto {
 	private Long contractId;
 	private Long memberId;
 	private Long orderId;
@@ -15,11 +15,11 @@ public class ContractListDto {
 	private LocalDate endDate;
 	
 	// 1. 기본 생성자 (MyBatis가 결과를 매핑할 때 반드시 필요합니다)
-    public ContractListDto() {
+    public ContractDto() {
     }
 
     // 2. 전체 필드 생성자 (필요시 사용)
-    public ContractListDto(Long contractId, Long memberId, Long orderId, Long productId, 
+    public ContractDto(Long contractId, Long memberId, Long orderId, Long productId, 
                        Integer monthlyFee, Integer duration, String contractType, 
                        String contractStatus, LocalDate startDate, LocalDate endDate) {
         this.contractId = contractId;

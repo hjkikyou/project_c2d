@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.comdog.c2d.dto.Member;
+import com.comdog.c2d.dto.MemberDto;
 
 @Repository
 public class MemeberDaoImpl implements MemberDao {
@@ -16,24 +16,24 @@ public class MemeberDaoImpl implements MemberDao {
 
 	// 조회
 	@Override
-	public List<Member> findAllMembers() {
+	public List<MemberDto> findAllMembers() {
 		return sql.selectList("member.findAllMembers");
 	}
 
 	// 추가
 	@Override
-	public void add(Member item) {
+	public void add(MemberDto item) {
 		sql.insert("member.add", item);
 	}
 
 	// 변경
 	@Override
-	public Member findMemberById(Long id) {
+	public MemberDto findMemberById(Long id) {
 		return sql.selectOne("member.findMemberById", id);
 	}
 
 	@Override
-	public void update(Member member) {
+	public void update(MemberDto member) {
 		sql.update("member.update", member);
 	}
 
@@ -60,17 +60,17 @@ public class MemeberDaoImpl implements MemberDao {
 
 	// 검색 기능 추가
 	@Override
-	public List<Member> selectMembersByEmail(String keyword) {
+	public List<MemberDto> selectMembersByEmail(String keyword) {
 		return sql.selectList("member.selectMembersByEmail", keyword);
 	}
 
 	@Override
-	public List<Member> selectMembersByName(String keyword) {
+	public List<MemberDto> selectMembersByName(String keyword) {
 		return sql.selectList("member.selectMembersByName", keyword);
 	}
 
 	@Override
-	public List<Member> selectMembersByPhone(String keyword) {
+	public List<MemberDto> selectMembersByPhone(String keyword) {
 		return sql.selectList("member.selectMembersByPhone", keyword);
 	}
 

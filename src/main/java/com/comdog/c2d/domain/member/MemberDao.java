@@ -2,20 +2,20 @@ package com.comdog.c2d.domain.member;
 
 import java.util.List;
 
-import com.comdog.c2d.dto.Member;
+import com.comdog.c2d.dto.MemberDto;
 
 public interface MemberDao {
 
 	//조회
-	List<Member> findAllMembers();
+	List<MemberDto> findAllMembers();
 
 	//추가
-	void add(Member item);
+	void add(MemberDto item);
 	
 	//변경
-	Member findMemberById(Long id);
+	MemberDto findMemberById(Long id);
 
-	void update(Member member);
+	void update(MemberDto member);
 
 	//삭제
 	void deleteDeliveryByMemberId(Long id);
@@ -24,10 +24,10 @@ public interface MemberDao {
 	void delete(Long id);
 	
 	//검색 기능
-	List<Member> selectMembersByEmail(String keyword);
+	List<MemberDto> selectMembersByEmail(String keyword);
 
-	List<Member> selectMembersByName(String keyword);
+	List<MemberDto> selectMembersByName(String keyword);
 
-	List<Member> selectMembersByPhone(String keyword);
+	List<MemberDto> selectMembersByPhone(String keyword);
 
 }
