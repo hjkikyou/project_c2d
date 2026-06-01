@@ -4,7 +4,8 @@
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 
-	<resultMap id="MemberResultMap" type="com.comdog.c2d.dto.Member">
+	<resultMap id="MemberResultMap"
+		type="com.comdog.c2d.dto.Member">
 		<id property="id" column="member_id" />
 		<result property="email" column="email" />
 		<result property="password" column="password" />
@@ -90,9 +91,23 @@
 		created_at 컬럼은 제외 -->
 
 	<!-- 삭제 -->
+	<delete id="deleteDeliveryByMemberId" parameterType="long">
+		DELETE FROM delivery
+		WHERE order_id IN (SELECT order_id FROM orders WHERE member_id = #{id})
+	</delete>
+
+	<delete id="deleteOrderItemByMemberId" parameterType="long">
+		DELETE FROM order_item
+		WHERE order_id IN (SELECT order_id FROM orders WHERE member_id = #{id})
+	</delete>
+
+	<delete id="deleteOrdersByMemberId" parameterType="long">
+		DELETE FROM orders
+		WHERE member_id = #{id}
+	</delete>
+
 	<delete id="delete">
 		DELETE FROM member
 		WHERE member_id = #{id}
 	</delete>
-
 </mapper>

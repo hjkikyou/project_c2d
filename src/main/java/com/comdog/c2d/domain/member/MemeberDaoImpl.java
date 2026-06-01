@@ -10,22 +10,22 @@ import com.comdog.c2d.dto.Member;
 
 @Repository
 public class MemeberDaoImpl implements MemberDao {
-	
+
 	@Autowired
 	SqlSession sql;
-	
+
 	// 조회
 	@Override
 	public List<Member> findAllMembers() {
 		return sql.selectList("member.findAllMembers");
 	}
-	
+
 	// 추가
 	@Override
 	public void add(Member item) {
 		sql.insert("member.add", item);
 	}
-	
+
 	// 변경
 	@Override
 	public Member findMemberById(Long id) {
@@ -43,7 +43,22 @@ public class MemeberDaoImpl implements MemberDao {
 		sql.delete("member.delete", id);
 	}
 
-	// 검색 기능 추가 (보이지 않는 유령 문자 제거 완료)
+	@Override
+	public void deleteOrdersByMemberId(Long id) {
+		sql.delete("member.deleteOrdersByMemberId", id);
+	}
+
+	@Override
+	public void deleteDeliveryByMemberId(Long id) {
+		sql.delete("member.deleteDeliveryByMemberId", id);
+	}
+
+	@Override
+	public void deleteOrderItemByMemberId(Long id) {
+		sql.delete("member.deleteOrderItemByMemberId", id);
+	} // 💡 닫는 중괄호가 빠져있던 부분을 정상적으로 추가했습니다!
+
+	// 검색 기능 추가
 	@Override
 	public List<Member> selectMembersByEmail(String keyword) {
 		return sql.selectList("member.selectMembersByEmail", keyword);
@@ -58,5 +73,5 @@ public class MemeberDaoImpl implements MemberDao {
 	public List<Member> selectMembersByPhone(String keyword) {
 		return sql.selectList("member.selectMembersByPhone", keyword);
 	}
-	
+
 }

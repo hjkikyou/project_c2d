@@ -15,7 +15,6 @@ INSERT INTO member (member_id, email, password, name, phone, user_type, is_subsc
 (8, 'b2b1@company.com', 'hashed_pwd_8', '윤태양', '010-8888-8888', 'BUSINESS', 1),
 (9, 'b2b2@startup.com', 'hashed_pwd_9', '임지아', '010-9999-9999', 'BUSINESS', 0),
 (10, 'b2b3@enterprise.com', 'hashed_pwd_10', '한승민', '010-0000-0000', 'BUSINESS', 1);
-
 -- 2. 사업자 프로필 (기업 회원 3명)
 INSERT INTO business_profile (member_id, company_name, business_reg_no, representative_name) VALUES
 (8, '(주)테크솔루션', '123-45-67890', '윤태양'),

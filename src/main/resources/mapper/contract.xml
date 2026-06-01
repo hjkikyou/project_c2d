@@ -8,5 +8,19 @@
         SELECT * FROM contract
     </select>
 
+    <delete id="deletePaymentByMemberId" parameterType="long">
+        DELETE FROM payment_history 
+        WHERE contract_id IN (SELECT contract_id FROM contract WHERE member_id = #{id})
+    </delete>
 
-    </mapper>
+    <delete id="deleteReviewByMemberId" parameterType="long">
+        DELETE FROM review 
+        WHERE contract_id IN (SELECT contract_id FROM contract WHERE member_id = #{id})
+    </delete>
+
+    <delete id="deleteByMemberId" parameterType="long">
+        DELETE FROM contract 
+        WHERE member_id = #{id}
+    </delete>
+
+</mapper>
