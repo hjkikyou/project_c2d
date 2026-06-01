@@ -44,11 +44,14 @@ DROP TABLE IF EXISTS tax_invoice;
 DROP TABLE IF EXISTS inquiry;
 DROP TABLE IF EXISTS as_request;
 
--- ==========================================
--- 3. 이 아래부터 CREATE TABLE 문 시작
--- ==========================================
+
 -- =====x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x====
 -- =x=x==x=x=x==x===x==x==x==x==x==x==x==x==x
+-- =====x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x====
+
+-- ==========================================
+-- 아래부터 CREATE TABLE 문 시작
+-- ==========================================
 
 -- ======com.comdog.c2d.domain.member=======
 -- =========================================
