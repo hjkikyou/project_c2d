@@ -21,5 +21,19 @@ public class ContractDaoImpl implements ContractDao {
 		
 		return sql.selectList("contract.selectAll");
 	}
+	
+	@Override
+	public void deletePaymentByMemberId(Long id) {
+	    sql.delete("contract.deletePaymentByMemberId", id);
+	}
 
+	@Override
+	public void deleteReviewByMemberId(Long id) {
+	    sql.delete("contract.deleteReviewByMemberId", id);
+	}
+
+	@Override
+	public void deleteByMemberId(Long id) {
+	    sql.delete("contract.deleteByMemberId", id);
+	}
 }

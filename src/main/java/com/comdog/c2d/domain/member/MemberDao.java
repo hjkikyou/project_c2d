@@ -18,6 +18,9 @@ public interface MemberDao {
 	void update(Member member);
 
 	//삭제
+	void deleteDeliveryByMemberId(Long id);
+	void deleteOrderItemByMemberId(Long id); 
+	void deleteOrdersByMemberId(Long id);
 	void delete(Long id);
 	
 	//검색 기능
