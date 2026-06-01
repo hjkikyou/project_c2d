@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.comdog.c2d.dto.ContractListDto;
+import com.comdog.c2d.dto.ContractDto;
 
 
 @Controller
@@ -21,7 +21,7 @@ public class ContractController {
 	//조회
 	@GetMapping("/list")
 	public String getContractListPage(Model model) {
-		List<ContractListDto> contractList = service.findAllContracts();
+		List<ContractDto> contractList = service.findAllContracts();
 		model.addAttribute("viewContractList", contractList);
 		return "admin/contract/list";
 	}

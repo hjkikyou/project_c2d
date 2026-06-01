@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.comdog.c2d.domain.contract.ContractDao;
-import com.comdog.c2d.dto.Member;
+import com.comdog.c2d.dto.MemberDto;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -20,27 +20,27 @@ public class MemberServiceImpl implements MemberService {
 
 	// 조회
 	@Override
-	public List<Member> findAllMembers() {
+	public List<MemberDto> findAllMembers() {
 
 		return memberDao.findAllMembers();
 	}
 
 	// 추가
 	@Override
-	public void add(Member item) {
+	public void add(MemberDto item) {
 		memberDao.add(item);
 
 	}
 
 	// 변경
 	@Override
-	public Member findMemeberById(Long id) {
+	public MemberDto findMemeberById(Long id) {
 
 		return memberDao.findMemberById(id);
 	}
 
 	@Override
-	public void update(Member member) {
+	public void update(MemberDto member) {
 		memberDao.update(member);
 
 	}
@@ -70,17 +70,17 @@ public class MemberServiceImpl implements MemberService {
 
 	// 검색 기능
 	@Override
-	public List<Member> findMembersByEmail(String keyword) {
+	public List<MemberDto> findMembersByEmail(String keyword) {
 		return memberDao.selectMembersByEmail(keyword);
 	}
 
 	@Override
-	public List<Member> findMembersByName(String keyword) {
+	public List<MemberDto> findMembersByName(String keyword) {
 		return memberDao.selectMembersByName(keyword);
 	}
 
 	@Override
-	public List<Member> findMembersByPhone(String keyword) {
+	public List<MemberDto> findMembersByPhone(String keyword) {
 		return memberDao.selectMembersByPhone(keyword);
 	}
 }

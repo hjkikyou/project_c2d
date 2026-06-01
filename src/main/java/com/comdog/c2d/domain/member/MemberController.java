@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.comdog.c2d.dto.Member;
+import com.comdog.c2d.dto.MemberDto;
 
 @Controller
 @RequestMapping("/admin/member")
@@ -29,7 +29,7 @@ public class MemberController {
 	//-------------
 		Model model) {
 		
-		List<Member> memberList;
+		List<MemberDto> memberList;
 
 		// 검색어(keyword)가 입력되었는지 확인 (공백 제외)
 		if (keyword != null && !keyword.trim().isEmpty()) {
@@ -58,7 +58,7 @@ public class MemberController {
 	 }
 	 
 	 @PostMapping("/add")
-	 String addMember(Member item) {
+	 String addMember(MemberDto item) {
 		 service.add(item);
 		 
 		 return "redirect:/admin/member/list";
@@ -67,14 +67,14 @@ public class MemberController {
 	 /* -- 변경 -- */
 	 @GetMapping("/update/{id}")
 	 public String showUpdateForm(@PathVariable Long id, Model model) {
-		 Member member = service.findMemeberById(id);
+		 MemberDto member = service.findMemeberById(id);
 		 model.addAttribute("viewMember", member);
 		 
 		 return "admin/member/update";
 	 }
 	 
 	 @PostMapping("/update/{id}")
-	 String updateMember(@PathVariable Long id, Member member) {
+	 String updateMember(@PathVariable Long id, MemberDto member) {
 		 member.setId(id);
 		 service.update(member);
 		 

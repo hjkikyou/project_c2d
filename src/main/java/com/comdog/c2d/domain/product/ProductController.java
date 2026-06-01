@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.comdog.c2d.dto.Product;
+import com.comdog.c2d.dto.ProductDto;
 
 @Controller
 @RequestMapping("/admin/product")
@@ -23,7 +23,7 @@ public class ProductController {
 	
 	@GetMapping("/list")
 	public String getProductListPage(Model model) {
-		List<Product> productList = service.findAllProducts();
+		List<ProductDto> productList = service.findAllProducts();
 		model.addAttribute("viewProductList", productList);
 		
 		return "admin/product/list";
@@ -42,7 +42,7 @@ public class ProductController {
 	//글을 쓸 수 있는 빈 종이(화면)를 주는 것
 	
 	@PostMapping("/add")
-	String addProduct(Product item) {
+	String addProduct(ProductDto item) {
 		service.add(item);
 		
 		return "redirect:/admin/product/list";
@@ -58,7 +58,7 @@ public class ProductController {
 	@GetMapping("/update/{id}")
 	String showUpdateForm(@PathVariable Long id, Model model) {
 	// item 대신 'product' / 메서드명은 'findProductById'
-	Product product = service.findProductById(id);
+	ProductDto product = service.findProductById(id);
 	// 화면에 넘길 때도 "product"라는 이름표로
 	model.addAttribute("viewProduct", product);
 		return "admin/product/update";
@@ -67,7 +67,7 @@ public class ProductController {
 	
 	// 2. 실제 수정 내용 DB에 반영하기
 	@PostMapping("/update/{id}")
-	public String updateProduct(@PathVariable Long id, Product product) {
+	public String updateProduct(@PathVariable Long id, ProductDto product) {
 		// 자바 객체의 id 세팅
 		product.setId(id);
 		

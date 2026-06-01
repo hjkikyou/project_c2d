@@ -2,20 +2,20 @@ package com.comdog.c2d.domain.product;
 
 import java.util.List;
 
-import com.comdog.c2d.dto.Product;
+import com.comdog.c2d.dto.ProductDto;
 
 public interface ProductDao {
 	
 	//조회
-	List<Product> findAllProducts();
+	List<ProductDto> findAllProducts();
 	
 	//추가
-	void add(Product item);
+	void add(ProductDto item);
 	
 	//변경
-	Product findProductById(Long id);
+	ProductDto findProductById(Long id);
 
-	void update(Product product);
+	void update(ProductDto product);
 
 	//삭제
 	void delete(Long id);

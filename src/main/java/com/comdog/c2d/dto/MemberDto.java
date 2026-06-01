@@ -2,7 +2,7 @@ package com.comdog.c2d.dto; // 💡 본인의 실제 프로젝트 패키지 경�
 
 import java.time.LocalDateTime;
 
-public class Member {
+public class MemberDto {
     
     // 💡 DB의 member_id는 클래스 내부 경계를 활용해 깔끔하게 'id'로 명명합니다.
     private Long id;            // 사용자 고유번호
@@ -23,7 +23,7 @@ public class Member {
     // ==========================================
     // 기본 생성자 (MyBatis나 스프링이 객체를 만들 때 필수)
     // ==========================================
-    public Member() {
+    public MemberDto() {
     }
 
     // ==========================================
