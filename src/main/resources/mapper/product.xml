@@ -19,6 +19,7 @@
  	<!-- 조회 -->
     <select id="findAllProducts" resultMap="ProductResultMap">  
         SELECT * FROM product
+        WHERE is_deleted ='N' ORDER BY product_id DESC
     </select>
      
    <!--  추가 -->
@@ -47,11 +48,12 @@
         WHERE product_id = #{id}
     </update>
 
-	<!-- 삭제 -->
-    <delete id="delete">
-        DELETE FROM product
-        WHERE product_id = #{id}
-    </delete>
+	<!-- 삭제 (Soft Delete 방식, delete 사용 X) -->
+  <update id="delete">
+    UPDATE product
+    SET is_deleted = 'Y'
+    WHERE product_id = #{id}
+	</update>
 
  
 </mapper>
