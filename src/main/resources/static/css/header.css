@@ -1,0 +1,113 @@
+/* 기본 초기화 및 컨테이너 */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+.site-header {
+    width: 100%;
+    min-width: 1200px;
+    font-family: 'Noto Sans KR', sans-serif; /* 폰트는 프로젝트에 맞게 변경 */
+    border-bottom: 1px solid #e5e7eb;
+}
+.container {
+    width: 1200px; /* 화면 너비에 맞게 조절 */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.divider { color: #ccc; margin: 0 15px; }
+
+/* 1. 최상단 바 */
+.header-top {
+    background-color: #fafafa;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+    color: #555;
+    padding: 8px 0;
+}
+.top-left i, .top-right i { margin-right: 5px; }
+
+/* 2. 중간 바 (로고 및 검색) */
+.header-middle {
+    padding: 25px 0;
+    background-color: #fff;
+}
+.logo-area a { display: flex; flex-direction: column; }
+.logo-area h1 { font-size: 28px; font-weight: 800; color: #333; letter-spacing: -1px; }
+.logo-area .sub-logo { font-size: 12px; color: #888; margin-top: 2px; }
+
+.search-area { flex-grow: 1; display: flex; justify-content: center; }
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 600px;
+}
+.search-icon { padding: 0 15px; color: #888; }
+.search-box input {
+    flex-grow: 1;
+    border: none;
+    padding: 12px 10px;
+    outline: none;
+    font-size: 15px;
+}
+.search-box select {
+    border: none;
+    border-left: 1px solid #ccc;
+    padding: 12px 15px;
+    background-color: #f9f9f9;
+    color: #555;
+    outline: none;
+    cursor: pointer;
+}
+.btn-search {
+    background-color: #1a56db;
+    color: white;
+    border: none;
+    padding: 0 30px;
+    font-weight: bold;
+    cursor: pointer;
+    height: 100%;
+}
+
+/* 3. 하단 바 (네비게이션) */
+.header-bottom {
+    background-color: #f3f4f6; /* 연한 회색 배경 */
+    border-top: 1px solid #e5e7eb;
+}
+.header-bottom .container { padding: 0 20px; }
+.nav-left { display: flex; align-items: center; }
+
+.btn-all-category {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 12px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.main-menu { display: flex; align-items: center; font-size: 12px; font-weight: 500; }
+.main-menu li a { padding: 15px 12px; display: block; color: #333; }
+.main-menu li a:hover { color: #1a56db; }
+
+.nav-right { display: flex; align-items: center; gap: 25px; font-weight: 500; color: #0d2c8e; }
+.cart-link { position: relative; display: flex; align-items: center; gap: 8px; }
+.user-link { display: flex; align-items: center; gap: 8px; }
+.badge {
+    background-color: #e02424;
+    color: white;
+    font-size: 8px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 10px;
+    position: absolute;
+    top: -8px;
+    left: 8px;
+}
