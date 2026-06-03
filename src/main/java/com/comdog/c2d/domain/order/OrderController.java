@@ -25,7 +25,7 @@ public class OrderController {
 	OrderService service;
 	
 	
-	// 1. 주문 목록 조회 [검색] 
+	// 1. 주문 목록 조회 (검색 추가)
 	
 	@GetMapping("/list")
     public String orderList(Model model, 

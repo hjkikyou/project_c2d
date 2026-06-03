@@ -3,6 +3,7 @@ package com.comdog.c2d.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/* 상세 화면용 (연락처, 배송지 등) */
 public class OrderDetailDto {
     // 1. 주문 정보
     private Long orderId;

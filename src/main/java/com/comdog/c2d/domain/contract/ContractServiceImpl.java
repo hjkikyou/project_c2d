@@ -1,11 +1,13 @@
 package com.comdog.c2d.domain.contract;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.comdog.c2d.dto.ContractDto;
+import com.comdog.c2d.dto.ContractInsertDto;
+import com.comdog.c2d.dto.ContractListDto;
 
 @Service
 	public class ContractServiceImpl implements ContractService {
@@ -13,11 +15,22 @@ import com.comdog.c2d.dto.ContractDto;
 	@Autowired
 	ContractDao contractDao;
 	
-	//조회
+	//계약 목록 조회
 	@Override
-	public List<ContractDto> findAllContracts() {
-			
-	return contractDao.selectAll();
-		}
+	public List<ContractListDto> searchContracts(Map<String, String> searchParams) {
+		return contractDao.searchContracts(searchParams);
+	}
+
+	//계약 상태 변경
+	@Override
+	public void updateContractStatus(Long contractId, String status) {
+		contractDao.updateContractStatus(contractId, status);
+		
+	}
+	
+	@Override
+	public void insertContract(ContractInsertDto dto) {
+		contractDao.insertContract(dto);
+	}
 	
 }
