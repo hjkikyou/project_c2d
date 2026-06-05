@@ -1,0 +1,219 @@
+/* 기본 폰트 및 초기화 설정 (기존 base 레이아웃과 겹치면 생략 가능) */
+* {
+    margin: 0;
+    padding: 0;
+    box-index: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 메인 컨테이너 박스 */
+.login-container {
+    width: 100%;
+    max-width: 520px;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* 하단 데코 요소를 가두기 위함 */
+}
+
+/* 로고 스타일 */
+.logo-area {
+    margin-bottom: 35px;
+}
+
+.logo-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: #555c66;
+    letter-spacing: 2px;
+}
+
+.logo-subtitle {
+    font-size: 13px;
+    color: #8a92a0;
+    margin-top: 5px;
+}
+
+/* 입력 필드 공통 */
+.login-form {
+    margin-bottom: 25px;
+}
+
+.input-group {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    background-color: #f0f2f5;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #333;
+    outline: none;
+}
+
+.input-group input::placeholder {
+    color: #a0a7b5;
+}
+
+/* 비밀번호 눈 모양 버튼 배치 */
+.password-group {
+    position: relative;
+}
+
+.password-group input {
+    padding-right: 50px; /* 아이콘 공간 확보 */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #757c85;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* 아이디 저장 & 찾기 링크 */
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0 25px 0;
+    font-size: 13px;
+    color: #222222;
+    font-weight: bold;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.remember-me input {
+    margin-right: 6px;
+    width: 15px;
+    height: 15px;
+    accent-color: #7b61ff; /* 체크박스 포인트 컬러 */
+}
+
+.find-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+/* 로그인 버튼 (보라색 그라데이션 적용) */
+.btn-login {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #8162f4 0%, #7084e3 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 25px; /* 둥근 캡슐 모양 */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(112, 132, 227, 0.3);
+    transition: opacity 0.2s ease;
+}
+
+.btn-login:hover {
+    opacity: 0.9;
+}
+
+/* 회원가입 유도 구분선 */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 35px 0;
+    font-size: 14px;
+    color: #000000;
+    font-weight: 500;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    background-color: #222222;
+    height: 1px;
+}
+
+.divider::before {
+    margin-right: 15px;
+}
+
+.divider::after {
+    margin-left: 15px;
+}
+
+/* 회원가입 버튼 */
+.signup-area {
+    margin-bottom: 60px; /* 하단 그래픽과의 간격 확보 */
+}
+
+.btn-signup {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #bcbcbc;
+    background-color: #ffffff;
+    color: #222222;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-signup:hover {
+    background-color: #f9f9f9;
+}
+
+/* 하단 백그라운드 디자인 데코 레이어 */
+.bottom-deco {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(160deg, #e9ecf2 0%, #dbdee6 100%);
+    z-index: -1;
+    border-radius: 100% 100% 0 0 / 20% 20% 0 0; /* 완만한 곡선 구현 */
+}
+
+/* 은은한 원형 레이어 효과 */
+.circle-1, .circle-2 {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+}
+
+.circle-1 {
+    width: 120px;
+    height: 120px;
+    top: -20px;
+    right: 40px;
+}
+
+.circle-2 {
+    width: 70px;
+    height: 70px;
+    top: 10px;
+    right: 10px;
+}
