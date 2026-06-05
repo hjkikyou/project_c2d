@@ -1,221 +1,305 @@
-/* 기본 폰트 및 초기화 설정 */
-* {
+/* =============================================
+   LOGIN.CSS — 로그인 페이지 전용 스타일
+   ============================================= */
+
+/* ─── 기본 리셋 ─── */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* 💡 box-index 오타 수정 */
-    font-family: 'Noto Sans KR', sans-serif;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', 'Pretendard', -apple-system, sans-serif;
 }
 
+/* ─── body: 화면 중앙 배치 ─── */
 body {
-    background-color: #ffffff;        /* 💡 중앙 정렬을 위해 추가 */
-    justify-content: center; /* 💡 가로 중앙 정렬 */
-    align-items: center;     /* 💡 세로 중앙 정렬 */
+    background-color: #f0f2f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;        /* ✅ 상하 정중앙 */
     min-height: 100vh;
+    padding: 25px 16px;
 }
 
-/* 메인 컨테이너 박스 */
+/* ─── 메인 컨테이너 ─── */
 .login-container {
-    width: 100%;
-    max-width: 520px;
-    padding: 40px 20px;
+    width: 580px;
+    max-width: 700px;
+    background-color: #ffffff;
+    border: 1px solid #e0e3ea;
+    border-radius: 16px;
+    padding: 25px 64px 0;
     text-align: center;
     position: relative;
-    overflow: hidden; /* 하단 데코 요소를 가두기 위함 */
-    background-color: #ffffff; /* 레이아웃 위에서 깔끔하게 보이도록 배경 추가 */
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
 }
 
-/* 로고 스타일 */
+/* ─── 로고 영역 ─── */
 .logo-area {
-    margin-bottom: 35px;
+    margin-bottom: 36px;
 }
 
 .logo-title {
-    font-size: 38px;
+    font-size: 36px;
     font-weight: 800;
-    color: #555c66;
+    color: #4a525f;
     letter-spacing: 2px;
+    line-height: 1.1;
 }
 
 .logo-subtitle {
     font-size: 13px;
     color: #8a92a0;
-    margin-top: 5px;
+    margin-top: 8px;
+    letter-spacing: 0.02em;
 }
 
-/* 입력 필드 공통 */
+/* ─── 폼 영역 ─── */
 .login-form {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .input-group {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     position: relative;
 }
 
 .input-group input {
     width: 100%;
-    padding: 16px 20px;
-    border: none;
-    background-color: #f0f2f5;
-    border-radius: 4px;
+    padding: 15px 20px;
+    border: 1.5px solid transparent;
+    background-color: #f4f6fa;
+    border-radius: 8px;
     font-size: 15px;
-    color: #333;
+    color: #222;
     outline: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .input-group input::placeholder {
-    color: #a0a7b5;
+    color: #aab0bc;
 }
 
-/* 비밀번호 눈 모양 버튼 배치 */
+/* ✅ 포커스 시 테두리 + 배경 변화 (접근성 + UX) */
+.input-group input:focus {
+    border-color: #8162f4;
+    background-color: #faf8ff;
+    box-shadow: 0 0 0 3px rgba(129, 98, 244, 0.12);
+}
+
+/* 유효성 상태 (선택적 활용) */
+.input-group input.is-error {
+    border-color: #e05555;
+    background-color: #fff8f8;
+}
+
+.input-group input.is-error:focus {
+    box-shadow: 0 0 0 3px rgba(224, 85, 85, 0.12);
+}
+
+/* ─── 비밀번호 토글 버튼 ─── */
 .password-group {
     position: relative;
 }
 
 .password-group input {
-    padding-right: 50px; /* 아이콘 공간 확보 */
+    padding-right: 50px;
 }
 
 .toggle-password {
     position: absolute;
-    right: 15px;
+    right: 14px;
     top: 50%;
     transform: translateY(-50%);
     background: none;
     border: none;
-    outline: none; /* 💡 클릭 시 테두리 제거 */
-    padding: 0;    /* 💡 기본 여백 초기화 */
-    color: #757c85;
+    outline: none;
+    padding: 4px;
+    color: #9ca3af;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 17px;
+    line-height: 1;
+    transition: color 0.15s;
+    border-radius: 4px;
 }
 
-/* 아이디 저장 & 찾기 링크 */
+.toggle-password:hover  { color: #555c66; }
+.toggle-password:focus  { box-shadow: 0 0 0 2px rgba(129, 98, 244, 0.3); }
+
+/* ─── 옵션 영역 (아이디 저장 / 찾기 링크) ─── */
 .login-options {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 15px 0 25px 0;
+    margin: 14px 0 24px;
     font-size: 13px;
-    color: #222222;
-    font-weight: bold;
+    color: #333;
+    font-weight: 500;
 }
 
 .remember-me {
     display: flex;
     align-items: center;
+    gap: 6px;
     cursor: pointer;
+    user-select: none;
 }
 
-.remember-me input {
-    margin-right: 6px;
+.remember-me input[type="checkbox"] {
     width: 15px;
     height: 15px;
-    accent-color: #7b61ff; /* 체크박스 포인트 컬러 */
+    accent-color: #7b61ff;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.find-links {
+    display: flex;
+    gap: 12px;
 }
 
 .find-links a {
     text-decoration: none;
-    color: #222222;
+    color: #555c66;
+    transition: color 0.15s;
 }
 
-/* 로그인 버튼 (보라색 그라데이션 적용) */
+.find-links a:hover { color: #7b61ff; }
+
+/* ─── 로그인 버튼 ─── */
 .btn-login {
     width: 100%;
-    padding: 16px;
-    background: linear-gradient(135deg, #8162f4 0%, #7084e3 100%);
-    color: #ffffff;
+    padding: 15px;
+    background: linear-gradient(135deg, #8162f4 0%, #6b7fe8 100%);
+    color: #fff;
     border: none;
-    border-radius: 25px; /* 둥근 캡슐 모양 */
+    border-radius: 50px;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 8px 16px rgba(112, 132, 227, 0.3);
-    transition: opacity 0.2s ease;
+    box-shadow: 0 6px 20px rgba(112, 132, 227, 0.35);
+    transition: opacity 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    letter-spacing: 0.03em;
 }
 
 .btn-login:hover {
-    opacity: 0.9;
+    opacity: 0.92;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(112, 132, 227, 0.4);
 }
 
-/* 회원가입 유도 구분선 */
+.btn-login:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 4px 12px rgba(112, 132, 227, 0.3);
+}
+
+/* ─── 구분선 ─── */
 .divider {
     display: flex;
     align-items: center;
-    margin: 35px 0;
-    font-size: 14px;
-    color: #000000;
-    font-weight: 500;
+    margin: 28px 0;
+    font-size: 13px;
+    color: #9ca3af;
+    font-weight: 400;
+    gap: 12px;
 }
 
 .divider::before,
 .divider::after {
     content: "";
     flex: 1;
-    background-color: #bcbcbc; /* 💡 가독성을 위해 너무 검은색보다는 부드러운 회색으로 조정 */
     height: 1px;
+    background-color: #e5e7eb;
 }
 
-.divider::before {
-    margin-right: 15px;
-}
-
-.divider::after {
-    margin-left: 15px;
-}
-
-/* 회원가입 버튼 */
+/* ─── 회원가입 버튼 ─── */
 .signup-area {
-    margin-bottom: 60px; /* 하단 그래픽과의 간격 확보 */
+    margin-bottom: 0;           /* ✅ 데코 영역 위에 자연스럽게 붙도록 */
+    padding-bottom: 120px;      /* 하단 데코 높이만큼 여백 확보 */
 }
 
 .btn-signup {
     display: block;
     width: 100%;
-    padding: 15px;
-    border: 1px solid #bcbcbc;
-    background-color: #ffffff;
-    color: #222222;
+    padding: 14px;
+    border: 1.5px solid #d1d5db;
+    background-color: #fff;
+    color: #374151;
     text-decoration: none;
     font-size: 15px;
-    font-weight: bold;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
 }
 
 .btn-signup:hover {
-    background-color: #f9f9f9;
+    background-color: #f6f5ff;
+    border-color: #b8a4f7;
+    color: #6d48f5;
 }
 
-/* 하단 백그라운드 디자인 데코 레이어 */
+/* ─── 하단 데코 배경 ─── */
 .bottom-deco {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px;
-    background: linear-gradient(160deg, #e9ecf2 0%, #dbdee6 100%);
-    z-index: -1;
-    border-radius: 100% 100% 0 0 / 20% 20% 0 0; /* 완만한 곡선 구현 */
+    height: 110px;
+    background: linear-gradient(160deg, #eceef5 0%, #dfe2ec 100%);
+    /* ✅ z-index 제거 — overflow:hidden 컨테이너 안에서 z-index:-1은 부모 뒤로 빠져나감 */
+    border-radius: 80% 80% 0 0 / 40% 40% 0 0;
 }
 
-/* 은은한 원형 레이어 효과 */
-.circle-1, .circle-2 {
+/* ─── 원형 데코 레이어 ─── */
+/* ✅ z-index 체계 정리: deco=0, circle=1 (deco 위에 표시) */
+.circle-1,
+.circle-2 {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.45);
     border-radius: 50%;
+    z-index: 1;                 /* bottom-deco(기본 0) 위에 표시 */
 }
 
 .circle-1 {
-    width: 120px;
-    height: 120px;
-    top: -20px;
-    right: 40px;
+    width: 110px;
+    height: 110px;
+    bottom: -10px;
+    right: 50px;
 }
 
 .circle-2 {
-    width: 70px;
-    height: 70px;
-    top: 10px;
+    width: 65px;
+    height: 65px;
+    bottom: 20px;
     right: 10px;
+}
+
+/* ─── 반응형 ─── */
+@media (max-width: 520px) {
+    body {
+        padding: 32px 12px;
+        align-items: flex-start;
+    }
+
+    .login-container {
+        padding: 40px 28px 0;
+        border-radius: 12px;
+    }
+
+    .logo-title { font-size: 30px; }
+
+    .login-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .find-links { gap: 16px; }
+}
+
+@media (max-width: 360px) {
+    .login-container { padding: 32px 20px 0; }
+    .logo-title { font-size: 26px; }
+    .input-group input { padding: 13px 16px; font-size: 14px; }
+    .btn-login { font-size: 15px; }
 }
