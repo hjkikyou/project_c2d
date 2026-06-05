@@ -1,16 +1,15 @@
-/* 기본 폰트 및 초기화 설정 (기존 base 레이아웃과 겹치면 생략 가능) */
+/* 기본 폰트 및 초기화 설정 */
 * {
     margin: 0;
     padding: 0;
-    box-index: border-box;
+    box-sizing: border-box; /* 💡 box-index 오타 수정 */
     font-family: 'Noto Sans KR', sans-serif;
 }
 
 body {
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #ffffff;        /* 💡 중앙 정렬을 위해 추가 */
+    justify-content: center; /* 💡 가로 중앙 정렬 */
+    align-items: center;     /* 💡 세로 중앙 정렬 */
     min-height: 100vh;
 }
 
@@ -22,6 +21,7 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden; /* 하단 데코 요소를 가두기 위함 */
+    background-color: #ffffff; /* 레이아웃 위에서 깔끔하게 보이도록 배경 추가 */
 }
 
 /* 로고 스타일 */
@@ -83,6 +83,8 @@ body {
     transform: translateY(-50%);
     background: none;
     border: none;
+    outline: none; /* 💡 클릭 시 테두리 제거 */
+    padding: 0;    /* 💡 기본 여백 초기화 */
     color: #757c85;
     cursor: pointer;
     font-size: 16px;
@@ -150,7 +152,7 @@ body {
 .divider::after {
     content: "";
     flex: 1;
-    background-color: #222222;
+    background-color: #bcbcbc; /* 💡 가독성을 위해 너무 검은색보다는 부드러운 회색으로 조정 */
     height: 1px;
 }
 
