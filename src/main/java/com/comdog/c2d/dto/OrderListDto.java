@@ -2,6 +2,8 @@ package com.comdog.c2d.dto;
 
 import java.time.LocalDateTime;
 
+/* 목록 화면용 (주문자명, 결제일시 등) */
+
 public class OrderListDto {
  private Long orderId;
  private LocalDateTime createdAt;

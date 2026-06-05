@@ -1,5 +1,7 @@
 package com.comdog.c2d.dto;
 
+
+/* 상세 화면이나 장바구니에 들어갈 개별 상품 정보 */
 public class OrderItemDto {
     
     private String productName; // 상품명

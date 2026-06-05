@@ -2,6 +2,8 @@ package com.comdog.c2d.dto;
 
 import java.time.LocalDate;
 
+//ContractListDto.java (화면 출력용) 
+
 public class ContractListDto {
 	private Long contractId;
 	private Long memberId;

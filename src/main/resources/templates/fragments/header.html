@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- header 조각 정의 -->
+<header th:fragment="headerFragment" class="site-header">
+    
+    <!-- 1. 최상단 (고객센터, 혜택) -->
+    <div class="header-top">
+        <div class="container">
+            <div class="top-left">
+                <i class="fa-solid fa-certificate"></i> 구독자 전용 혜택
+            </div>
+            <div class="top-right">
+                <span><i class="fa-solid fa-headset"></i> 고객 센터</span>
+                <span class="divider">|</span>
+                <span>결제 혜택 <i class="fa-solid fa-chevron-down"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 중간 (로고, 검색창) -->
+    <div class="header-middle">
+        <div class="container">
+            <!-- 로고 영역 -->
+            <div class="logo-area">
+                <a href="/">
+                    <h1><i class="fa-solid fa-envelope-open-text"></i> comdog</h1>
+                    <span class="sub-logo">컴퓨터 구매 & 인수형 렌탈</span>
+                </a>
+            </div>
+
+            <!-- 검색 영역 -->
+            <div class="search-area">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" placeholder="Search for...">
+                    <select>
+                        <option>All Categories</option>
+                        <option>데스크탑</option>
+                        <option>노트북</option>
+                    </select>
+                    <button type="submit" class="btn-search">Search</button>
+                </div>
+            </div>
+            
+            <!-- 우측 여백 (필요시 배너 등 추가) -->
+            <div class="middle-right"></div>
+        </div>
+    </div>
+
+    <!-- 3. 하단 (카테고리 네비게이션) -->
+    <div class="header-bottom">
+        <div class="container">
+            <div class="nav-left">
+                <!-- 전체 카테고리 버튼 -->
+                <button class="btn-all-category">
+                    <i class="fa-solid fa-bars"></i> 전체 카테고리
+                </button>
+                
+                <!-- 메인 메뉴 -->
+                <ul class="main-menu">
+                    <li><a href="#">데스크탑</a></li>
+                    <li><a href="#">모니터</a></li>
+                    <li><a href="#">노트북</a></li>
+                    <li><a href="#">기타 기기</a></li>
+                    <li><a href="#">조립 PC</a></li>
+                    <li class="divider">|</li>
+                    <li><a href="#">맞춤 추천</a></li>
+                    <li><a href="#">이벤트</a></li>
+                    <li><a href="#">공지사항</a></li>
+                    <li><a href="#">커뮤니티</a></li>
+                    <li class="divider">|</li>
+                    <li><a href="#">기업&단체 전용 (B2B)</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <a href="/cart" class="cart-link">
+                    <i class="fa-solid fa-cart-shopping"></i> 
+                    <span class="badge">9</span>
+                    장바구니
+                </a>
+                <a href="/mypage" class="user-link">
+                    <i class="fa-regular fa-user"></i> My 계정
+                </a>
+            </div>
+        </div>
+    </div>
+
+</header>
+</html>

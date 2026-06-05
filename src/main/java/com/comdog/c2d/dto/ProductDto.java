@@ -2,7 +2,7 @@ package com.comdog.c2d.dto;
 
 import java.math.BigDecimal;
 
-public class Product {
+public class ProductDto {
 	
 	private Long Id;
 	private Integer categoryId;

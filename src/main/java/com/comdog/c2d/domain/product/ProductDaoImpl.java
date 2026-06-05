@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.comdog.c2d.dto.Product;
+import com.comdog.c2d.dto.ProductDto;
 
 @Repository
 public class ProductDaoImpl implements ProductDao {
@@ -16,27 +16,27 @@ public class ProductDaoImpl implements ProductDao {
 
 	// 조회
 	@Override
-	public List<Product> findAllProducts() {
-		return sql.selectList("product.findAllProducts");
+	public List<ProductDto> findAllProducts() {
+		return sql.selectList("product.findAllProducts"); 
 		// 💡 뒤의 "list"를 "findAllProducts"로 맞춰줍니다!
 	}
 
 	// 추가
 	@Override
-	public void add(Product item) {
+	public void add(ProductDto item) {
 		sql.insert("product.add", item);
 
 	}
 
 	// 변경
 	@Override
-	public Product findProductById(Long id) {
-
+	public ProductDto findProductById(Long id) {
+	
 		return sql.selectOne("product.findProductById", id);
 	}
 
 	@Override
-	public void update(Product product) {
+	public void update(ProductDto product) {
 		sql.update("product.update", product);
 	}
 

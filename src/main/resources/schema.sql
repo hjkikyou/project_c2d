@@ -209,14 +209,13 @@ CREATE TABLE product (
     stock_quantity INT            NOT NULL DEFAULT 0 COMMENT '재고 수량', 
     description    TEXT           NULL     COMMENT '기기의 상세 스펙이나 렌탈 유의사항',
     
+    -- 👇 소프트 삭제를 위한 컬럼 추가!
+    is_deleted     CHAR(1)        NOT NULL DEFAULT 'N' COMMENT '삭제 여부 (Y/N)', 
+    
     -- 기본키(PK)와 외래키(FK)를 괄호 안에 한 번에 선언!
     PRIMARY KEY (product_id),
     CONSTRAINT FK_category_TO_product FOREIGN KEY (category_id) REFERENCES category (category_id) ON DELETE SET NULL
 ) COMMENT '상품';
-
-
-
-	
 
 -- =====com.comdog.c2d.domain.product========
 -- ==========================================

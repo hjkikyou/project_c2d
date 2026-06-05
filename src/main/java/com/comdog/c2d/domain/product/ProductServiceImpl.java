@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.comdog.c2d.domain.contract.ContractDao; // 💡 계약 DAO 임포트
-import com.comdog.c2d.dto.Product;
+import com.comdog.c2d.dto.ProductDto;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -20,24 +19,24 @@ public class ProductServiceImpl implements ProductService {
 
 	// 조회
 	@Override
-	public List<Product> findAllProducts() {
-		return productDao.findAllProducts();
+	public List<ProductDto> findAllProducts() { // 💡 컨트롤러에서 호출한 이름과 똑같이 변경!
+		return productDao.findAllProducts(); // 💡 DAO의 메서드 이름도 똑같이 맞춰주는 것이 관례상 가장 좋습니다.
 	}
 
 	// 추가
 	@Override
-	public void add(Product item) {
+	public void add(ProductDto item) {
 		productDao.add(item);
 	}
 
 	// 변경
 	@Override
-	public Product findProductById(Long id) {
-		return productDao.findProductById(id);
+	public ProductDto findProductById(Long id) {
+	return productDao.findProductById(id);  // 💡 DAO 메서드도 동일한 이름으로 호출하는 것이 정석입니다
 	}
 
 	@Override
-	public void update(Product product) {
+	public void update(ProductDto product) {
 		productDao.update(product);
 	}
 
