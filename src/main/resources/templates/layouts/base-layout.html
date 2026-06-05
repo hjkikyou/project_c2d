@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-
-
-    
-    <head> 
+<head> 
     <th:block th:replace="~{fragments/head :: headFragment}"></th:block>
-    </head>
+</head>
+<body>
+    <div th:if="${showHeader != false}" th:replace="~{fragments/header :: headerFragment}"></div>
     
-    <body>
-        <div th:replace="~{fragments/header :: headerFragment}"></div>
-        
-        <main>
-        	<th:block layout:fragment="container"></th:block>
-        </main>
-        
-        <div th:replace="~{fragments/footer :: footerFragment}"></div>
-    </body>
+    <main>
+        <th:block layout:fragment="container"></th:block>
+    </main>
     
+    <div th:replace="~{fragments/footer :: footerFragment}"></div>
+</body>
 </html>
