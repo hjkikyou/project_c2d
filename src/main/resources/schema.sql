@@ -448,9 +448,7 @@ ALTER TABLE contract
 
 ALTER TABLE contract
     ADD CONSTRAINT FK_product_TO_contract 
-    FOREIGN KEY (product_id) REFERENCES product (product_id);
-
-
+    FOREIGN KEY (product_id) REFERENCES product (product_id) ;
 -- =====com.comdog.c2d.domain.product========
 -- ==========================================
 -- (2-4)          리뷰 (review)  

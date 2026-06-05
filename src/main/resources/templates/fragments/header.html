@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <!-- header 조각 정의 -->
 <header th:fragment="headerFragment" class="site-header">
     
@@ -67,7 +68,7 @@
                     <li><a href="#">맞춤 추천</a></li>
                     <li><a href="#">이벤트</a></li>
                     <li><a href="#">공지사항</a></li>
-                    <li><a href="#">커뮤니티</a></li>
+                    <li><a th:href="@{/log_in}">로그인</a></li>
                     <li class="divider">|</li>
                     <li><a href="#">기업&단체 전용 (B2B)</a></li>
                 </ul>
@@ -79,7 +80,7 @@
                     <span class="badge">9</span>
                     장바구니
                 </a>
-                <a href="/mypage" class="user-link">
+                <a href="/log_in" class="user-link">
                     <i class="fa-regular fa-user"></i> My 계정
                 </a>
             </div>

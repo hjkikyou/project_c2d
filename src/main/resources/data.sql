@@ -119,7 +119,7 @@ INSERT INTO contract (contract_id, member_id, order_id, product_id, monthly_fee,
 (7, 9, 7, 8, 200000, 36, 'RENTAL', 'USING', '2024-05-10', '2027-05-10'), -- 수량 10대 계약 가정(주문금액 20만)
 (8, 10, 8, 8, 30000, 12, 'RENTAL', 'USING', '2024-06-01', '2025-06-01'),
 (9, 6, 9, 6, 65000, 36, 'SUBSCRIPTION', 'TERMINATED', '2023-01-01', '2024-01-01'), -- 중도해지
-(10, 1, 1, 5, 25000, 36, 'RENTAL', 'USING', '2024-01-01', '2027-01-01'); -- 회원1번이 모니터도 같이 빌림
+(10, 1, 1, 6, 25000, 36, 'RENTAL', 'USING', '2024-01-01', '2027-01-01'); -- 회원1번이 모니터도 같이 빌림
 
 -- 10. 결제 이력 (스케줄러에 의해 매달 결제되는 내역)
 INSERT INTO payment_history (payment_history_id, contract_id, amount, status, fail_reason, billing_key) VALUES

@@ -10,4 +10,9 @@ public class UserMainController {
     public String home(){
         return "user/index";
     }
+    
+    @GetMapping("/log_in") 
+    public String loginForm() {
+        return "user/auth/log_in"; // templates/log_in.html을 찾아감
+    }
 }

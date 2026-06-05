@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/base-layout :: layout(~{::main})}">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{/layouts/base-layout}">
+  <head>
+  	<link rel="stylesheet" href="/css/main.css">
+  </head>
 
-    <main class="main-container">
+    <main layout:fragment="container" class="main-container">
         <section class="hero-section">
             <div class="hero-placeholder"><div class="placeholder-box"></div></div>
             <div class="hero-placeholder"><div class="placeholder-box"></div></div>

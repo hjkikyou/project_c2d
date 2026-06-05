@@ -10,26 +10,25 @@ import com.comdog.c2d.dto.ProductDto;
 
 @Repository
 public class ProductDaoImpl implements ProductDao {
-	
+
 	@Autowired
 	SqlSession sql;
-	
-	
-	//조회
+
+	// 조회
 	@Override
 	public List<ProductDto> findAllProducts() {
 		return sql.selectList("product.findAllProducts"); 
 		// 💡 뒤의 "list"를 "findAllProducts"로 맞춰줍니다!
 	}
-	
-	//추가
+
+	// 추가
 	@Override
 	public void add(ProductDto item) {
 		sql.insert("product.add", item);
-		
+
 	}
-	
-	//변경
+
+	// 변경
 	@Override
 	public ProductDto findProductById(Long id) {
 	
@@ -41,15 +40,16 @@ public class ProductDaoImpl implements ProductDao {
 		sql.update("product.update", product);
 	}
 
-
-	//삭제
+	// 삭제
 	@Override
 	public void delete(Long id) {
-		sql.delete("product.delete",id);
-		
+		sql.delete("product.delete", id);
+
 	}
+	@Override
+	public void deleteOrderItemByProductId(Long id) {
+		sql.delete("product.deleteOrderItemByProductId", id); 
 
-
-
-
+	}
 }
+

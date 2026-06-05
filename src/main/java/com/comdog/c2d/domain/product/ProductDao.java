@@ -18,7 +18,8 @@ public interface ProductDao {
 	void update(ProductDto product);
 
 	//삭제
-	void delete(Long id);
+	void deleteOrderItemByProductId(Long id); // 💡 이 줄 추가!
+	void delete(Long id); // 기존 메서드
 
 
 
