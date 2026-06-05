@@ -213,6 +213,9 @@ CREATE TABLE product (
     PRIMARY KEY (product_id),
     CONSTRAINT FK_category_TO_product FOREIGN KEY (category_id) REFERENCES category (category_id) ON DELETE SET NULL
 ) COMMENT '상품';
+
+
+
 	
 
 -- =====com.comdog.c2d.domain.product========
@@ -446,9 +449,7 @@ ALTER TABLE contract
 
 ALTER TABLE contract
     ADD CONSTRAINT FK_product_TO_contract 
-    FOREIGN KEY (product_id) REFERENCES product (product_id);
-
-
+    FOREIGN KEY (product_id) REFERENCES product (product_id) ;
 -- =====com.comdog.c2d.domain.product========
 -- ==========================================
 -- (2-4)          리뷰 (review)  
