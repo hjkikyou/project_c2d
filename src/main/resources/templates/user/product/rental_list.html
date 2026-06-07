@@ -15,15 +15,15 @@
 	  <div class="hero-card">
 	    <div class="hero-img-area"></div>
 	    <div class="hero-label">
-	      <p class="hero-label__title">최신PC 대여</p>
+	      <p class="hero-label__title" th:text="|최신${categoryName} 대여|"> 최신OO 대여</p>
 	      <p class="hero-label__sub">보러가기</p>
-	    </div>
+	    </div> 
 	  </div>
 	
 	  <div class="hero-card" style="--hero-bg: url('/images/hero2.jpg')">
 	    <div class="hero-img-area"></div>
 	    <div class="hero-label">
-	      <p class="hero-label__title">추천PC 대여</p>
+	      <p class="hero-label__title" th:text="|추천 ${categoryName} 대여|"> 추천OO 대여</p>
 	      <p class="hero-label__sub">바로가기</p>
 	    </div>
 	  </div>
@@ -42,8 +42,8 @@
     ════════════════════════════════════ -->
     <section class="product-section">
       <div class="section-header">
-        <h2 class="section-title">BEST PC 대여</h2>
-        <a href="#" class="btn-more">더보기 ›</a>
+        <h2 class="section-title" th:text="|BEST ${categoryName} 대여|">BEST OO 대여</h2>
+        <a href="/rental_list_more" class="btn-more">더보기 ›</a>
       </div>
 
       <div class="product-grid">
@@ -87,7 +87,8 @@
     ════════════════════════════════════ -->
     <section class="product-section">
       <div class="section-header">
-        <h2 class="section-title">BEST 게이밍 PC 대여</h2>
+        <h2 class="section-title" th:text="|BEST 게이밍 ${categoryName} 대여|"> BEST 게이밍 OO 대여</h2>
+        <a href="/rental_list_more" class="btn-more">더보기 ›</a>
       </div>
 
       <div class="product-grid">
@@ -131,7 +132,8 @@
     ════════════════════════════════════ -->
     <section class="product-section">
       <div class="section-header">
-        <h2 class="section-title">BEST 사무용 PC 대여</h2>
+        <h2 class="section-title" th:text="|BEST 사무용 ${categoryName} 대여|">BEST 사무용 OO 대여</h2>
+        <a href="/rental_list_more" class="btn-more">더보기 ›</a>
       </div>
 
       <div class="product-grid">
@@ -176,14 +178,15 @@
     <section class="product-section product-section--teal">
       <div class="section-inner">
         <div class="section-header">
-          <h2 class="section-title">최신 PC 대여</h2>
+          <h2 class="section-title" th:text="|최신 ${categoryName} 대여|">최신 OO 대여</h2>
+          <a href="//rental_list_more" class="btn-more">더보기 ›</a>
         </div>
 
         <div class="product-grid">
           <div class="prod-card">
             <div class="prod-img-box"><div class="img-placeholder"></div></div>
             <div class="prod-body">
-              <p class="prod-name">최신PC1</p>
+              <p class="prod-name" th:text="|최신${categoryName}1|">최신OO1</p>
               <p class="prod-desc">Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.</p>
               <a href="#" class="prod-link">More Info →</a>
             </div>
@@ -191,7 +194,7 @@
           <div class="prod-card">
             <div class="prod-img-box"><div class="img-placeholder"></div></div>
             <div class="prod-body">
-              <p class="prod-name">최신PC2</p>
+              <p class="prod-name" th:text="|최신${categoryName}2|">최신OO2</p>
               <p class="prod-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</p>
               <a href="#" class="prod-link">More Info →</a>
             </div>
@@ -199,7 +202,7 @@
           <div class="prod-card">
             <div class="prod-img-box"><div class="img-placeholder"></div></div>
             <div class="prod-body">
-              <p class="prod-name">최신PC3</p>
+              <p class="prod-name" th:text="|최신${categoryName}3|" >최신OO3</p>
               <p class="prod-desc">Nunc, pellentesque velit malesuada nisi massa arcu.</p>
               <a href="#" class="prod-link">More Info →</a>
             </div>
@@ -207,7 +210,7 @@
           <div class="prod-card">
             <div class="prod-img-box"><div class="img-placeholder"></div></div>
             <div class="prod-body">
-              <p class="prod-name">최신PC4</p>
+              <p class="prod-name" th:text="|최신${categoryName}4|">최신 OO 4</p>
               <p class="prod-desc">Imperdiet purus pellentesque sit mi nibh sit integer faucibus.</p>
               <a href="#" class="prod-link">More Info →</a>
             </div>
@@ -222,15 +225,15 @@
     <section class="product-section product-section--navy">
       <div class="section-inner">
         <div class="section-header">
-          <h2 class="section-title">추천PC 대여</h2>
-          <a href="#" class="btn-more btn-more--light">가기 ›</a>
+          <h2 class="section-title" th:text="|추천 ${categoryName} 대여|">추천 OO 대여</h2>
+          <a href="#" class="btn-more btn-more--light">더보기 ›</a>
         </div>
 
         <div class="product-grid">
           <div class="prod-card">
             <div class="prod-img-box"><div class="img-placeholder"></div></div>
             <div class="prod-body">
-              <p class="prod-name">추천PC1</p>
+              <p class="prod-name" th:text="|추천${categoryName}1|">추천 OO 1</p>
               <p class="prod-desc">Egestas elit dui scelerisque ut eu purus aliquam vitae habitasse.</p>
               <a href="#" class="prod-link">More Info →</a>
             </div>
@@ -238,7 +241,7 @@
           <div class="prod-card">
             <div class="prod-img-box"><div class="img-placeholder"></div></div>
             <div class="prod-body">
-              <p class="prod-name">추천PC2</p>
+              <p class="prod-name" th:text="|추천${categoryName}2|">추천 OO 2</p>
               <p class="prod-desc">Id eros pellentesque facilisi id mollis faucibus commodo enim.</p>
               <a href="#" class="prod-link">More Info →</a>
             </div>
@@ -246,7 +249,7 @@
           <div class="prod-card">
             <div class="prod-img-box"><div class="img-placeholder"></div></div>
             <div class="prod-body">
-              <p class="prod-name">추천PC3</p>
+              <p class="prod-name" th:text="|추천${categoryName}3|">추천 OO 3</p>
               <p class="prod-desc">Nunc, pellentesque velit malesuada nisi massa arcu.</p>
               <a href="#" class="prod-link">More Info →</a>
             </div>
@@ -254,7 +257,7 @@
           <div class="prod-card">
             <div class="prod-img-box"><div class="img-placeholder"></div></div>
             <div class="prod-body">
-              <p class="prod-name">추천PC4</p>
+              <p class="prod-name" th:text="|추천${categoryName}4|">추천 OO 4</p>
               <p class="prod-desc">Imperdiet purus pellentesque sit mi nibh sit integer faucibus.</p>
               <a href="#" class="prod-link">More Info →</a>
             </div>

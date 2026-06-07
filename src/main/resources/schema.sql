@@ -60,14 +60,16 @@ DROP TABLE IF EXISTS as_request;
 
 
 CREATE TABLE member (
-	member_id     BIGINT                      NOT NULL COMMENT '사용자 고유번호', -- 사용자 고유번호
-	email         VARCHAR(100)                NOT NULL COMMENT '이메일', -- 이메일
-	password      VARCHAR(255)                NOT NULL COMMENT '비밀번호', -- 비밀번호
-	name          VARCHAR(50)                 NOT NULL COMMENT '사용자 실명', -- 사용자 실명
-	phone         VARCHAR(20)                 NULL     COMMENT '연락처', -- 연락처
-	user_type     ENUM('PERSONAL','BUSINESS') NULL     DEFAULT 'PERSONAL' COMMENT '회원 구분', -- 회원 구분
-	is_subscribed TINYINT(1)                  NULL     DEFAULT 0 COMMENT '구독 여부', -- 구독 여부
-	created_at    DATETIME                    NULL     DEFAULT CURRENT_TIMESTAMP COMMENT '가입일' -- 가입일
+    member_id     BIGINT                      NOT NULL COMMENT '사용자 고유번호',
+    email         VARCHAR(100)                NOT NULL COMMENT '이메일',
+    password      VARCHAR(255)                NOT NULL COMMENT '비밀번호',
+    name          VARCHAR(50)                 NOT NULL COMMENT '사용자 실명',
+    phone         VARCHAR(20)                 NULL     COMMENT '연락처',
+    birth_date    VARCHAR(6)                  NULL     COMMENT '생년월일 6자리',   -- ← 추가
+    gender_digit  VARCHAR(1)                  NULL     COMMENT '성별 앞자리 (1~4)', -- ← 추가
+    user_type     ENUM('PERSONAL','BUSINESS') NULL     DEFAULT 'PERSONAL' COMMENT '회원 구분',
+    is_subscribed TINYINT(1)                  NULL     DEFAULT 0 COMMENT '구독 여부',
+    created_at    DATETIME                    NULL     DEFAULT CURRENT_TIMESTAMP COMMENT '가입일'
 )
 COMMENT '사용자';
 
@@ -205,85 +207,70 @@ CREATE TABLE product (
     name           VARCHAR(100)   NOT NULL COMMENT '상품명', 
     brand          VARCHAR(50)    NOT NULL COMMENT '브랜드', 
     model_name     VARCHAR(100)   NOT NULL COMMENT '모델명', 
-    base_price     INT            NOT NULL DEFAULT 0 COMMENT '출고가', 
-    stock_quantity INT            NOT NULL DEFAULT 0 COMMENT '재고 수량', 
-    description    TEXT           NULL     COMMENT '기기의 상세 스펙이나 렌탈 유의사항',
     
-    -- 👇 소프트 삭제를 위한 컬럼 추가!
+    -- 판매 및 대여 관련
+    is_purchasable CHAR(1)        NOT NULL DEFAULT 'Y' COMMENT '구매 가능 여부 (Y/N)',
+    base_price     INT            NOT NULL DEFAULT 0   COMMENT '판매가(출고가)', 
+    is_rentable    CHAR(1)        NOT NULL DEFAULT 'Y' COMMENT '대여 가능 여부 (Y/N)',
+    rental_price   INT            NULL                 COMMENT '월 대여료', -- 최저가 대표 금액
+    
+    stock_quantity INT            NOT NULL DEFAULT 0   COMMENT '재고 수량', 
+    description    TEXT           NULL                 COMMENT '기기의 상세 스펙이나 렌탈 유의사항',
+    
+    -- 웹 UI 정렬/필터링을 위해 새로 추가된 컬럼들!
+    is_recommended CHAR(1)        NOT NULL DEFAULT 'N' COMMENT '추천 상품 여부 (Y/N) - 추천순/메인노출용',
+    view_count     INT            NOT NULL DEFAULT 0   COMMENT '상세페이지 조회수 - 인기순 정렬용(1)',
+    rental_count   INT            NOT NULL DEFAULT 0   COMMENT '누적 렌탈(결제) 횟수 - 인기순 정렬용(2)',
+    created_at     DATETIME       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '상품 등록일 - 최신순 정렬용',
+    updated_at     DATETIME       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '상품 정보 수정일',
+
+    -- 상태 관리
     is_deleted     CHAR(1)        NOT NULL DEFAULT 'N' COMMENT '삭제 여부 (Y/N)', 
     
-    -- 기본키(PK)와 외래키(FK)를 괄호 안에 한 번에 선언!
     PRIMARY KEY (product_id),
     CONSTRAINT FK_category_TO_product FOREIGN KEY (category_id) REFERENCES category (category_id) ON DELETE SET NULL
 ) COMMENT '상품';
 
--- =====com.comdog.c2d.domain.product========
+
 -- ==========================================
 -- (2-2)   상품 상세 사양 (product_spec)
 -- ==========================================
 
 
 CREATE TABLE product_spec (
-    product_id BIGINT       NOT NULL COMMENT '상품 고유번호', -- 상품 고유번호 (BIGINT로 수정)
-    spec_key   VARCHAR(50)  NOT NULL COMMENT '사양 항목', -- 예: 'CPU', 'GPU', 'RAM'
-    spec_value VARCHAR(255) NOT NULL COMMENT '사양 값'  -- 예: 'M3 Max', 'RTX 4090', '32GB'
-)
-COMMENT '상품 상세 사양';
-
--- 상품 상세 사양 복합 기본키
-ALTER TABLE product_spec
-    ADD CONSTRAINT PK_product_spec 
-    PRIMARY KEY (
-        product_id, 
-        spec_key
-    );
-
--- 상품 상세 사양 외래키
-ALTER TABLE product_spec
-    ADD CONSTRAINT FK_product_TO_product_spec
-    FOREIGN KEY (
-        product_id
-    )
-    REFERENCES product (
-        product_id
-    ) ON DELETE CASCADE;
+    product_id BIGINT       NOT NULL COMMENT '상품 고유번호', 
+    spec_key   VARCHAR(50)  NOT NULL COMMENT '사양 항목', 
+    spec_value VARCHAR(255) NOT NULL COMMENT '사양 값',
+    
+    -- 기본키와 외래키를 안으로 이동!
+    CONSTRAINT PK_product_spec PRIMARY KEY (product_id, spec_key),
+    CONSTRAINT FK_product_TO_product_spec FOREIGN KEY (product_id) REFERENCES product (product_id) ON DELETE CASCADE
+) COMMENT '상품 상세 사양';
 
 
--- =====com.comdog.c2d.domain.product========
 -- ==========================================
 -- (2-3)    렌탈가 관리 (rental_prices)
 -- ==========================================
 
 
 CREATE TABLE rental_prices (
-    rental_price_id BIGINT     NOT NULL COMMENT '렌탈가 고유번호', -- 렌탈가 고유번호
-    product_id      BIGINT     NOT NULL COMMENT '상품 고유번호', -- 상품 고유번호 (BIGINT로 수정)
-    duration        INT        NOT NULL COMMENT '렌탈 기간(개월)', -- 예: 36, 60
-    monthly_fee     INT        NOT NULL COMMENT '월 렌탈료', -- 월 렌탈료
-    is_b2b_only     TINYINT(1) NULL     DEFAULT 0 COMMENT 'B2B 전용 여부' -- 1: B2B 전용, 0: 공용
-)
-COMMENT '렌탈가 관리';
+    rental_price_id BIGINT      NOT NULL AUTO_INCREMENT COMMENT '렌탈가 고유번호', 
+    product_id      BIGINT      NOT NULL COMMENT '상품 고유번호', 
+    duration        INT         NOT NULL COMMENT '렌탈 기간(개월)', 
+    monthly_fee     INT         NOT NULL COMMENT '월 렌탈료', 
+    deposit_fee     INT         NOT NULL DEFAULT 0 COMMENT '보증금/초기등록비', 
+    is_b2b_only     CHAR(1)     NOT NULL DEFAULT 'N' COMMENT 'B2B 전용 여부 (Y/N)', 
+    is_active       CHAR(1)     NOT NULL DEFAULT 'Y' COMMENT '활성화 여부 (Y/N)', 
 
--- 렌탈가 관리 기본키
-ALTER TABLE rental_prices
-    ADD CONSTRAINT PK_rental_prices 
-    PRIMARY KEY (
-        rental_price_id
-    );
+    -- 👇 기본키 제약조건을 여기에 한 번만 작성합니다.
+    CONSTRAINT PK_rental_prices PRIMARY KEY (rental_price_id),
 
--- 렌탈가 기본키 자동 증가
-ALTER TABLE rental_prices
-    MODIFY COLUMN rental_price_id BIGINT NOT NULL AUTO_INCREMENT COMMENT '렌탈가 고유번호';
+    -- 👇 외래키 제약조건도 여기에 한 번만 작성합니다.
+    CONSTRAINT FK_product_TO_rental_prices FOREIGN KEY (product_id) REFERENCES product (product_id) ON DELETE CASCADE
+) COMMENT '렌탈가 관리';
 
--- 렌탈가 관리 외래키
-ALTER TABLE rental_prices
-    ADD CONSTRAINT FK_product_TO_rental_prices
-    FOREIGN KEY (
-        product_id
-    )
-    REFERENCES product (
-        product_id
-    ) ON DELETE CASCADE;
+-- ❌ 아래에 있던 3개의 ALTER TABLE 구문들은 모두 삭제하세요. 
+-- (위의 CREATE TABLE에서 모두 처리되었습니다.)
 
 
 

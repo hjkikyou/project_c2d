@@ -4,17 +4,17 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- 1. 회원 (B2C 개인회원 7명, B2B 기업회원 3명)
-INSERT INTO member (member_id, email, password, name, phone, user_type, is_subscribed) VALUES
-(1, 'user1@gmail.com', 'hashed_pwd_1', '김지훈', '010-1111-1111', 'PERSONAL', 1),
-(2, 'user2@gmail.com', 'hashed_pwd_2', '이서연', '010-2222-2222', 'PERSONAL', 0),
-(3, 'user3@gmail.com', 'hashed_pwd_3', '박도현', '010-3333-3333', 'PERSONAL', 1),
-(4, 'user4@gmail.com', 'hashed_pwd_4', '최유진', '010-4444-4444', 'PERSONAL', 0),
-(5, 'user5@gmail.com', 'hashed_pwd_5', '정민우', '010-5555-5555', 'PERSONAL', 0),
-(6, 'user6@gmail.com', 'hashed_pwd_6', '강수아', '010-6666-6666', 'PERSONAL', 1),
-(7, 'user7@gmail.com', 'hashed_pwd_7', '조현우', '010-7777-7777', 'PERSONAL', 0),
-(8, 'b2b1@company.com', 'hashed_pwd_8', '윤태양', '010-8888-8888', 'BUSINESS', 1),
-(9, 'b2b2@startup.com', 'hashed_pwd_9', '임지아', '010-9999-9999', 'BUSINESS', 0),
-(10, 'b2b3@enterprise.com', 'hashed_pwd_10', '한승민', '010-0000-0000', 'BUSINESS', 1);
+INSERT INTO member (member_id, email, password, name, phone, birth_date, gender_digit, user_type, is_subscribed) VALUES
+(1,  'user1@gmail.com',        'hashed_pwd_1',  '김지훈', '010-1111-1111', '950315', '1', 'PERSONAL', 1),
+(2,  'user2@gmail.com',        'hashed_pwd_2',  '이서연', '010-2222-2222', '980722', '2', 'PERSONAL', 0),
+(3,  'user3@gmail.com',        'hashed_pwd_3',  '박도현', '010-3333-3333', '001210', '3', 'PERSONAL', 1),
+(4,  'user4@gmail.com',        'hashed_pwd_4',  '최유진', '010-4444-4444', '921005', '2', 'PERSONAL', 0),
+(5,  'user5@gmail.com',        'hashed_pwd_5',  '정민우', '010-5555-5555', '870428', '1', 'PERSONAL', 0),
+(6,  'user6@gmail.com',        'hashed_pwd_6',  '강수아', '010-6666-6666', '991130', '4', 'PERSONAL', 1),
+(7,  'user7@gmail.com',        'hashed_pwd_7',  '조현우', '010-7777-7777', '030817', '3', 'PERSONAL', 0),
+(8,  'b2b1@company.com',       'hashed_pwd_8',  '윤태양', '010-8888-8888', '780601', '1', 'BUSINESS', 1),
+(9,  'b2b2@startup.com',       'hashed_pwd_9',  '임지아', '010-9999-9999', '830214', '2', 'BUSINESS', 0),
+(10, 'b2b3@enterprise.com',    'hashed_pwd_10', '한승민', '010-0000-0000', '910923', '1', 'BUSINESS', 1);
 -- 2. 사업자 프로필 (기업 회원 3명)
 INSERT INTO business_profile (member_id, company_name, business_reg_no, representative_name) VALUES
 (8, '(주)테크솔루션', '123-45-67890', '윤태양'),
@@ -36,44 +36,129 @@ INSERT INTO address (address_id, member_id, address_name, recipient_name, phone,
 
 -- 4. 카테고리 (계층형)
 INSERT INTO category (category_id, name, parent_id) VALUES
-(1, '노트북', NULL),
-(2, '데스크탑', NULL),
+-- 📌 1단계: 대분류 (Root Categories, parent_id = NULL)
+(1, 'PC', NULL), -- 완제품 PC
+(2, '조립 PC', NULL),      
 (3, '모니터', NULL),
-(4, 'MacBook', 1),
-(5, '게이밍 PC', 2);
+(4, '노트북', NULL),
+(5, '스마트기기', NULL),
+(6, '사무/주변기기', NULL),     
+(7, '서버/워크스테이션', NULL), -- B2B 기업 렌탈용 핵심 카테고리
+(8, 'PC 부품/업그레이드', NULL),
 
--- 5. 상품 (PC 하드웨어 10종)
-INSERT INTO product (product_id, category_id, name, brand, model_name, base_price, stock_quantity, description) VALUES
-(1, 4, 'MacBook Pro 16 M3 Max', 'Apple', 'MBP16-M3M', 4500000, 15, '전문가용 최고사양 맥북'),
-(2, 4, 'MacBook Air 15 M3', 'Apple', 'MBA15-M3', 2000000, 30, '가벼운 사무용 맥북'),
-(3, 5, 'RTX 4090 딥러닝 워크스테이션', 'Custom', 'WS-4090', 5500000, 5, 'AI 개발 및 3D 렌더링용 PC'),
-(4, 5, 'RTX 4070 게이밍 데스크탑', 'ASUS', 'ROG-4070', 2500000, 20, '하이엔드 게이밍 PC'),
-(5, 3, '32인치 4K UHD 모니터', 'LG전자', '32UN880', 800000, 50, '디자인 작업용 4K 모니터'),
-(6, 1, '갤럭시북4 프로 16인치', '삼성전자', 'NT960XGK', 2200000, 25, '윈도우 사무용 끝판왕'),
-(7, 1, '씽크패드 X1 카본 11세대', 'Lenovo', 'X1-Carbon', 2100000, 15, '비즈니스 랩탑의 표준'),
-(8, 2, '사무용 미니 PC', 'Intel', 'NUC-13', 700000, 100, '공간 절약형 사무용 PC'),
-(9, 3, '27인치 QHD 게이밍 모니터', 'LG전자', '27GP850', 500000, 40, '165Hz 게이밍 모니터'),
-(10, 4, 'Mac Studio M2 Ultra', 'Apple', 'MAC-STU', 6000000, 3, '스튜디오용 영상편집 데스크탑');
+-- 📌 2단계: 중분류 (Sub Categories)
+-- 1. 데스크탑 PC 하위 (parent_id = 1, 자연스럽게 완제품/브랜드 PC들이 들어옴)
+(11, '사무용 PC', 1),        
+(12, '게이밍 PC', 1),
+(13, '미니 PC', 1),
 
--- 6. 상품 상세 사양
+-- 2. 조립 PC 하위 (parent_id = 2) 
+(21, '사무/인강용 조립 PC', 2),
+(22, '게이밍 조립 PC', 2),
+(23, '하이엔드 조립 PC', 2),
+(24, 'AI 조립 PC', 2),
+
+-- 3. 모니터 하위 (parent_id = 3)
+(31, '일반/사무용 모니터 (FHD/QHD)', 3),
+(32, '게이밍 모니터 (고주사율)', 3),
+(33, '전문가용 모니터 (4K/디자이너)', 3),
+(34, '휴대용 모니터', 3),
+
+-- 4. 노트북 하위 (parent_id = 4)
+(41, '사무용 노트북', 4),     -- 예: LG그램, 갤럭시북
+(42, '게이밍 노트북', 4),   -- 예: ROG, 에일리언웨어
+(43, '전문가용 노트북', 4),
+(44, '경량 특화 노트북', 4),     -- 예: LG그램
+
+-- 5. 스마트기기 하위 (parent_id = 5)
+(51, '태블릿 (iPad/GalaxyTab)', 5),
+(52, '스마트워치/웨어러블', 5),
+(53, 'VR/AR 기기', 5),
+
+-- 6. 사무/주변기기 하위 (parent_id = 6)
+(61, '프린터/복합기', 6),
+(62, '빔프로젝터/화상장비', 6),
+(63, '기타 (키보드/마우스/허브)', 6),
+(64, '기타 (악세서리/관련 케이블)', 6),
+
+-- 7. 서버/워크스테이션 하위 (parent_id = 7)
+(71, '서버 (랙/타워형)', 7),
+(72, '고성능 워크스테이션', 7),
+(73, 'NAS / 스토리지', 7),
+
+-- 8. PC 부품/ 업그레이드 하위, parent_id = 8)
+
+-- 렌탈 수익이 안 나고 감가상각이 심한 부품들은 is_rentable = 'N'으로 막아둡니다. 
+-- (오직 "구매(추가 옵션)"만 가능한 소모성 부품들)
+
+-- 단기 수요가 확실하고 고가인 장비들은 is_rentable = 'Y'로 설정하여 렌탈 메인 화면에 노출합니다. 
+-- ("구매와 렌탈" 모두 열어두는 고수익 하이엔드 부품들)
+
+-- 고수익/고가 부품은 렌탈 노출(is_rentable='Y'), 감가가 심한 소모품은 조립용 구매 전용(is_rentable='N')으로 세팅
+
+(81, 'CPU (프로세서)', 8),              -- [렌탈/구매 겸용] 일반 PC용은 구매 전용, 워크스테이션용(제온, 쓰레드리퍼)은 렌탈 병행 노출
+(82, '그래픽카드 (VGA)', 8),            -- [렌탈 핵심 품목] 단기 렌탈 수요가 가장 많은 고수익 부품 (예: RTX 4090, 딥러닝용 A100 등)
+(83, 'RAM (메모리)', 8),                -- [구매 전용] 단가가 낮고 감가상각이 심한 소모성 부품 (PC 조립 옵션용)
+(84, '메인보드 (Motherboard)', 8),      -- [구매 전용] 단독 렌탈 수요가 거의 없는 조립 뼈대 부품
+(85, '저장장치 (SSD/HDD)', 8),          -- [구매 전용] 수명(TBW) 소모와 개인정보 보안 이슈로 일반적인 단기 렌탈은 비추천
+(86, '파워서플라이', 8),                -- [구매 전용] 단독 렌탈 수익성이 떨어지는 소모성 부품
+(87, '케이스 / 쿨러 / 튜닝', 8);        -- [구매 전용] 고객 취향을 타는 외관용/소모성 부품
+
+
+-- 5. 상품 (PC 하드웨어 및 부품 12종)
+-- 💡 명시된 컬럼: 구매가능여부, 판매가, 대여가능여부, 대표렌탈가, 재고, 설명, 추천여부, 조회수, 렌탈수
+INSERT INTO product (
+    product_id, category_id, name, brand, model_name, 
+    is_purchasable, base_price, is_rentable, rental_price, 
+    stock_quantity, description, is_recommended, view_count, rental_count
+) VALUES
+-- 💻 노트북 (사무용: 41, 전문가용: 43, 경량: 44)
+(1, 43, 'MacBook Pro 16 M3 Max', 'Apple', 'MBP16-M3M', 'Y', 4500000, 'Y', 90000, 15, '전문가용 최고사양 맥북', 'Y', 350, 12),
+(2, 44, 'MacBook Air 15 M3', 'Apple', 'MBA15-M3', 'Y', 2000000, 'Y', 60000, 30, '가벼운 사무용 맥북', 'N', 520, 45),
+(6, 41, '갤럭시북4 프로 16인치', '삼성전자', 'NT960XGK', 'Y', 2200000, 'Y', 65000, 25, '윈도우 사무용 끝판왕', 'Y', 410, 30),
+(7, 41, '씽크패드 X1 카본 11세대', 'Lenovo', 'X1-Carbon', 'Y', 2100000, 'Y', 62000, 15, '비즈니스 랩탑의 표준', 'N', 180, 8),
+
+-- 🖥️ 데스크탑 & 워크스테이션 (게이밍: 12, 미니PC: 13, AI조립: 24, 워크스테이션: 72)
+(3, 24, 'RTX 4090 딥러닝 워크스테이션', 'Custom', 'WS-4090', 'Y', 5500000, 'Y', 250000, 5, 'AI 개발 및 3D 렌더링용 조립 PC', 'Y', 890, 5),
+(4, 12, 'RTX 4070 게이밍 데스크탑', 'ASUS', 'ROG-4070', 'Y', 2500000, 'Y', 75000, 20, '하이엔드 게이밍 브랜드 PC', 'N', 230, 18),
+(8, 13, '사무용 미니 PC', 'Intel', 'NUC-13', 'Y', 700000, 'Y', 20000, 100, '공간 절약형 사무용 PC', 'N', 110, 55),
+(10, 72, 'Mac Studio M2 Ultra', 'Apple', 'MAC-STU', 'Y', 6000000, 'Y', 180000, 3, '스튜디오용 영상편집 데스크탑', 'Y', 450, 4),
+
+-- 📺 모니터 (게이밍: 32, 전문가용: 33)
+(5, 33, '32인치 4K UHD 모니터', 'LG전자', '32UN880', 'Y', 800000, 'Y', 25000, 50, '디자인 작업용 4K 모니터', 'Y', 300, 25),
+(9, 32, '27인치 QHD 게이밍 모니터', 'LG전자', '27GP850', 'Y', 500000, 'Y', 15000, 40, '165Hz 게이밍 모니터', 'N', 280, 32),
+
+-- ⚙️ PC 부품 (그래픽카드: 82, RAM: 83)
+(11, 82, '지포스 RTX 4090 D6X 24GB', 'NVIDIA', 'RTX-4090', 'Y', 2800000, 'Y', 200000, 10, '고수익 단기 렌탈용 하이엔드 그래픽카드', 'Y', 600, 10),
+(12, 83, 'DDR5-5600 16GB RAM', '삼성전자', 'DDR5-16G', 'Y', 60000, 'N', NULL, 300, '단순 판매 및 조립 옵션용 (대여 불가)', 'N', 50, 0);
+
+
+-- 6. 상품 상세 사양 (product_spec)
 INSERT INTO product_spec (product_id, spec_key, spec_value) VALUES
 (1, 'CPU', 'M3 Max 16코어'), (1, 'RAM', '64GB'), (1, 'SSD', '2TB'),
 (3, 'GPU', 'RTX 4090 24GB'), (3, 'RAM', '128GB'), (3, 'POWER', '1200W'),
 (5, '해상도', '3840x2160 (4K)'), (5, '패널', 'IPS'),
-(6, 'CPU', 'Intel Core Ultra 7'), (6, 'RAM', '32GB');
+(6, 'CPU', 'Intel Core Ultra 7'), (6, 'RAM', '32GB'),
+(11, 'VRAM', '24GB'), (11, '권장파워', '1000W 이상'), 
+(12, '클럭', '5600MHz'), (12, '용량', '16GB');
 
--- 7. 렌탈가 관리 (B2C/B2B 가격 분리)
-INSERT INTO rental_prices (rental_price_id, product_id, duration, monthly_fee, is_b2b_only) VALUES
-(1, 1, 36, 130000, 0), -- 맥북 프로 36개월 B2C
-(2, 1, 60, 90000, 0),
-(3, 3, 24, 250000, 1), -- RTX 4090 24개월 B2B 전용
-(4, 5, 36, 25000, 0),
-(5, 6, 36, 65000, 0),
-(6, 8, 36, 20000, 1), -- 사무용 미니PC B2B 전용 대량렌탈가
-(7, 8, 12, 30000, 1),
-(8, 10, 36, 180000, 0),
-(9, 2, 36, 60000, 0),
-(10, 4, 36, 75000, 0);
+
+-- 7. 렌탈가 관리 (rental_prices)
+-- 💡 명시된 컬럼: 렌탈기간, 월렌탈료, 보증금(deposit_fee), B2B여부, 활성화여부
+INSERT INTO rental_prices (
+    rental_price_id, product_id, duration, monthly_fee, deposit_fee, is_b2b_only, is_active
+) VALUES
+(1, 1, 36, 130000, 0, 'N', 'Y'),      -- 맥북 프로 36개월 B2C
+(2, 1, 60, 90000, 0, 'N', 'Y'),       -- 맥북 프로 60개월 B2C (장기할인)
+(3, 3, 24, 250000, 500000, 'Y', 'Y'), -- RTX 4090 워크스테이션 24개월 (B2B 전용, 보증금 50만 원)
+(4, 5, 36, 25000, 0, 'N', 'Y'),       -- 4K 모니터 36개월
+(5, 6, 36, 65000, 0, 'N', 'Y'),       -- 갤북4 프로 36개월
+(6, 8, 36, 20000, 0, 'Y', 'Y'),       -- 사무용 미니PC (B2B 대량렌탈 전용)
+(7, 8, 12, 30000, 0, 'Y', 'Y'),       -- 사무용 미니PC 단기
+(8, 10, 36, 180000, 0, 'N', 'Y'),     -- 맥 스튜디오 36개월
+(9, 2, 36, 60000, 0, 'N', 'Y'),       -- 맥북 에어 36개월
+(10, 4, 36, 75000, 0, 'N', 'Y'),      -- 게이밍 데스크탑 36개월
+(11, 11, 1, 200000, 300000, 'N', 'Y');-- RTX 4090 부품 단기(1개월) 고수익 렌탈 (보증금 30만 원)
 
 -- 1. 주문 테이블 (영수증 머리말)
 -- 상태를 타임리프 화면과 맞춰서 '결제완료', '주문취소'로 변경했습니다.

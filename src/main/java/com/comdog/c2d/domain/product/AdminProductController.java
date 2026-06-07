@@ -14,7 +14,7 @@ import com.comdog.c2d.dto.ProductDto;
 
 @Controller
 @RequestMapping("/admin/product")
-public class ProductController {
+public class AdminProductController {
 	
 	@Autowired
 	ProductService service;
@@ -69,7 +69,7 @@ public class ProductController {
 	@PostMapping("/update/{id}")
 	public String updateProduct(@PathVariable Long id, ProductDto product) {
 		// 자바 객체의 id 세팅
-		product.setId(id);
+		product.setProductId(id);
 		
 		service.update(product);
 		
@@ -84,6 +84,5 @@ public class ProductController {
 			
 			return "redirect:/admin/product/list";
 	}
-	
 }
 	

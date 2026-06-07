@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UserMainController {
     
-    @GetMapping("/")
-    public String home(){
-        return "user/index";
-    }
+  
     
     @GetMapping("/log_in")
     public String loginForm(Model model) {
@@ -18,13 +15,17 @@ public class UserMainController {
         return "user/auth/log_in";
     }
     
-    @GetMapping("/rental_list")
-    public String rentalList(){
-        return "user/product/rental_list";
+    
+    @GetMapping("/sign_up")
+    public String signUp(){
+        return "user/auth/sign_up";
     }
     
-    @GetMapping("/product_pc_list")
-    public String productPcList(){
-        return "user/product/product_pc_list";
+    
+    
+    
+    @GetMapping("/board")
+    public String board(){
+        return "user/board/board";
     }
 }

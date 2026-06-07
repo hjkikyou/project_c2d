@@ -60,4 +60,16 @@ public class ProductServiceImpl implements ProductService {
 		productDao.delete(id);
 	}
 
+	/**********사용자 요청**************/
+	
+	@Override
+	public List<ProductDto> findProductsWithSubCategories(Long categoryId) {
+		return productDao.selectProductsWithSubCategories(categoryId);
+	}
+
+	@Override
+	public String findCategoryNameById(Long categoryId) {
+		return productDao.selectCategoryNameById(categoryId);
+	}
+
 }

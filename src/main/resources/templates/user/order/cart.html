@@ -1,10 +1,340 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+  <head>
+    <link rel="stylesheet" href="/css/cart.css">
+  </head>
 
-</body>
+  <main layout:fragment="container" class="cart-container">
+
+    <div class="breadcrumb">
+      <span class="breadcrumb-item active">01 장바구니</span>
+      <span class="breadcrumb-separator">></span>
+      <span class="breadcrumb-item">02 주문결제</span>
+      <span class="breadcrumb-separator">></span>
+      <span class="breadcrumb-item">03 주문완료</span>
+    </div>
+
+    <h2 class="page-title">장바구니</h2>
+
+    <div class="search-bar-wrap">
+      <input type="text" class="search-bar" placeholder="Search">
+    </div>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab(this, 'tab-subscription')">
+        구독/구매 상품 <span class="tab-count" id="subscriptionCount">0</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab(this, 'tab-rental')">
+        렌탈 상품 <span class="tab-count" id="rentalCount">0</span>
+      </button>
+    </div>
+
+    <div class="tab-content active" id="tab-subscription">
+      <form id="subscriptionForm">
+
+        <div class="cart-toolbar">
+          <label class="check-all-label">
+            <input type="checkbox" id="checkAllSubscription" onchange="toggleAll('subscription')">
+            <span>전체선택</span>
+          </label>
+          <button type="button" class="btn-delete-selected"
+                  onclick="deleteSelected('subscription')">선택 삭제</button>
+        </div>
+
+        <table class="cart-table subscription-table" id="subscriptionTable">
+          <thead>
+            <tr>
+              <th class="col-check"></th>
+              <th class="col-product">상품</th>
+              <th class="col-qty">수량</th>
+              <th class="col-price">금액</th>
+              <th class="col-badge"></th>
+              <th class="col-action">관리</th>
+            </tr>
+          </thead>
+          <tbody id="subscriptionList">
+
+            <tr class="cart-item" th:each="item : ${subscriptionList}" th:id="'subscription-' + ${item.cartId}">
+              <td class="cell-check">
+                <input type="checkbox" class="item-check subscription-check"
+                       th:value="${item.cartId}" onchange="updateCheckAll('subscription')">
+              </td>
+              <td class="cell-product">
+                <div class="product-info-wrap">
+                  <div class="item-img-wrap placeholder"></div>
+                  <div class="item-info">
+                    <p class="item-brand" th:text="${item.brand}">HP</p>
+                    <p class="item-name" th:text="${item.name}">프리미엄 조립PC</p>
+                    <p class="item-model" th:text="${item.modelName}">9850X3D/9070XT</p>
+                  </div>
+                </div>
+              </td>
+              <td class="cell-qty">
+                <div class="qty-control">
+                  <button type="button" class="qty-btn"
+                          th:onclick="|changeQty(this, -1, ${item.basePrice})|">−</button>
+                  <span class="qty-val" th:text="${item.quantity}">1</span>
+                  <button type="button" class="qty-btn"
+                          th:onclick="|changeQty(this, 1, ${item.basePrice})|">+</button>
+                </div>
+              </td>
+              <td class="cell-price">
+                <p class="item-price"
+                   th:text="${#numbers.formatDecimal(item.basePrice * item.quantity, 0, 'COMMA', 0, 'POINT')} + '원'">
+                  3,000,000원
+                </p>
+              </td>
+              <td class="cell-badge">
+                </td>
+              <td class="cell-action">
+                <div class="action-dropdown">
+                  <button type="button" class="btn-action">
+                    <span class="icon-dots"></span>
+                  </button>
+                  </div>
+              </td>
+            </tr>
+
+            <th:block th:if="${subscriptionList == null or #lists.isEmpty(subscriptionList)}">
+              <tr class="cart-item" id="subscription-1">
+                <td class="cell-check">
+                  <input type="checkbox" class="item-check subscription-check" value="1"
+                         onchange="updateCheckAll('subscription')">
+                </td>
+                <td class="cell-product">
+                  <div class="product-info-wrap">
+                    <div class="item-img-wrap placeholder"></div>
+                    <div class="item-info">
+                      <p class="item-brand">HP</p>
+                      <p class="item-name">프리미엄 조립PC_P2034W (9850X3D/9070XT)</p>
+                      <p class="item-model">9850X3D / 9070XT</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="cell-qty">
+                  <div class="qty-control">
+                    <button type="button" class="qty-btn" onclick="changeQty(this, -1, 3000000)">−</button>
+                    <span class="qty-val">1</span>
+                    <button type="button" class="qty-btn" onclick="changeQty(this, 1, 3000000)">+</button>
+                  </div>
+                </td>
+                <td class="cell-price">
+                  <p class="item-price">3,000,000원</p>
+                </td>
+                <td class="cell-badge"></td>
+                <td class="cell-action">
+                  <div class="action-dropdown">
+                    <button type="button" class="btn-action">
+                      <span class="icon-dots"></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr class="cart-item" id="subscription-2">
+                <td class="cell-check">
+                  <input type="checkbox" class="item-check subscription-check" value="2"
+                         onchange="updateCheckAll('subscription')">
+                </td>
+                <td class="cell-product">
+                  <div class="product-info-wrap">
+                    <div class="item-img-wrap placeholder"></div>
+                    <div class="item-info">
+                      <p class="item-brand">Samsung</p>
+                      <p class="item-name">삼성 갤럭시북4 Pro</p>
+                      <p class="item-model">Ultra 7 / 32GB / 1TB</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="cell-qty">
+                  <div class="qty-control">
+                    <button type="button" class="qty-btn" onclick="changeQty(this, -1, 2500000)">−</button>
+                    <span class="qty-val">1</span>
+                    <button type="button" class="qty-btn" onclick="changeQty(this, 1, 2500000)">+</button>
+                  </div>
+                </td>
+                <td class="cell-price">
+                  <p class="item-price">2,500,000원</p>
+                </td>
+                <td class="cell-badge"></td>
+                <td class="cell-action">
+                  <div class="action-dropdown">
+                    <button type="button" class="btn-action">
+                      <span class="icon-dots"></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </th:block>
+
+          </tbody>
+        </table>
+
+        <div class="cart-empty" id="subscriptionEmpty" style="display:none;">
+          <p>장바구니에 담긴 구독/구매 상품이 없습니다.</p>
+          <a href="/" class="btn-go-shop">쇼핑 계속하기</a>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="tab-content" id="tab-rental">
+      <form id="rentalForm">
+
+        <div class="cart-toolbar">
+          <label class="check-all-label">
+            <input type="checkbox" id="checkAllRental" onchange="toggleAll('rental')">
+            <span>전체선택</span>
+          </label>
+          <button type="button" class="btn-delete-selected"
+                  onclick="deleteSelected('rental')">선택 삭제</button>
+        </div>
+
+        <table class="cart-table rental-table" id="rentalTable">
+          <thead>
+            <tr>
+              <th class="col-check"></th>
+              <th class="col-product">상품</th>
+              <th class="col-qty">수량</th>
+              <th class="col-price">금액</th>
+              <th class="col-badge">대여기간</th>
+              <th class="col-action">관리</th>
+            </tr>
+          </thead>
+          <tbody id="rentalList">
+
+            <tr class="cart-item" th:each="item : ${rentalList}" th:id="'rental-' + ${item.id}">
+              <td class="cell-check">
+                <input type="checkbox" class="item-check rental-check"
+                       th:value="${item.id}" onchange="updateCheckAll('rental')">
+              </td>
+              <td class="cell-product">
+                <div class="product-info-wrap">
+                  <div class="item-img-wrap">
+                    <img th:src="${item.imageUrl}" th:alt="${item.name}" class="item-img">
+                  </div>
+                  <div class="item-info">
+                    <p class="item-brand" th:text="${item.brand}">HP</p>
+                    <p class="item-name" th:text="${item.name}">조립PC 대여</p>
+                    <p class="item-model" th:text="${item.modelName}">9850X3D/9070XT</p>
+                  </div>
+                </div>
+              </td>
+              <td class="cell-qty">
+                <div class="qty-control">
+                  <button type="button" class="qty-btn"
+                          th:onclick="|changeQty(this, -1, ${item.basePrice})|">−</button>
+                  <span class="qty-val">1</span>
+                  <button type="button" class="qty-btn"
+                          th:onclick="|changeQty(this, 1, ${item.basePrice})|">+</button>
+                </div>
+              </td>
+              <td class="cell-price">
+                <p class="item-price-label">월</p>
+                <p class="item-price"
+                   th:text="${#numbers.formatDecimal(item.basePrice, 0, 'COMMA', 0, 'POINT')} + '원'">
+                  30,000원
+                </p>
+              </td>
+              <td class="cell-badge">
+                <span class="rental-period-badge"
+                      th:text="${item.rentalMonths} + '개월'">60개월</span>
+              </td>
+              <td class="cell-action">
+                <div class="action-dropdown">
+                  <button type="button" class="btn-action">
+                    <span class="icon-dots"></span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <th:block th:if="${rentalList == null or #lists.isEmpty(rentalList)}">
+              <tr class="cart-item" id="rental-1">
+                <td class="cell-check">
+                  <input type="checkbox" class="item-check rental-check" value="1"
+                         onchange="updateCheckAll('rental')">
+                </td>
+                <td class="cell-product">
+                  <div class="product-info-wrap">
+                    <div class="item-img-wrap placeholder"></div>
+                    <div class="item-info">
+                      <p class="item-brand">COMDOG</p>
+                      <p class="item-name">프리미엄 조립PC 대여</p>
+                      <p class="item-model">9850X3D / 9070XT</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="cell-qty">
+                  <div class="qty-control">
+                    <button type="button" class="qty-btn" onclick="changeQty(this, -1, 30000)">−</button>
+                    <span class="qty-val">1</span>
+                    <button type="button" class="qty-btn" onclick="changeQty(this, 1, 30000)">+</button>
+                  </div>
+                </td>
+                <td class="cell-price">
+                  <p class="item-price-label">월</p>
+                  <p class="item-price">30,000원</p>
+                </td>
+                <td class="cell-badge">
+                  <span class="rental-period-badge">60개월</span>
+                </td>
+                <td class="cell-action">
+                  <div class="action-dropdown">
+                    <button type="button" class="btn-action">
+                      <span class="icon-dots"></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </th:block>
+
+          </tbody>
+        </table>
+
+        <div class="cart-empty" id="rentalEmpty" style="display:none;">
+          <p>장바구니에 담긴 대여 상품이 없습니다.</p>
+          <a href="/" class="btn-go-shop">쇼핑 계속하기</a>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="pagination-wrap">
+      <div class="pagination">
+        <button type="button" class="btn-page prev">&lt;</button>
+        <button type="button" class="btn-page active">1</button>
+        <button type="button" class="btn-page">2</button>
+        <button type="button" class="btn-page">3</button>
+        <span class="page-dots">...</span>
+        <button type="button" class="btn-page">11</button>
+        <button type="button" class="btn-page next">&gt;</button>
+      </div>
+    </div>
+
+    <div class="order-summary-box">
+      <h3 class="summary-title">주문 요약</h3>
+
+      <div class="summary-row">
+        <span>상품 금액</span>
+        <span id="summaryProductPrice">0원</span>
+      </div>
+      <div class="summary-row">
+        <span>배송비</span>
+        <span>무료</span>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-row total-row">
+        <span>총 결제 금액</span>
+        <span id="summaryTotal" class="total-price">0원</span>
+      </div>
+
+      <button class="btn-order" onclick="order()">주문하기</button>
+    </div>
+
+  </main>
+
+
 </html>
