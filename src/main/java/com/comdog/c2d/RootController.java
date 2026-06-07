@@ -15,4 +15,9 @@ public class RootController {
 	    public String admin(){
 	        return "admin/index";
 	    }
+	  
+	  @GetMapping("/sign_up_ok")
+	  public String showOkPage() {
+	      return "user/auth/sign_up_ok"; 
+	  }
 }

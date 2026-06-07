@@ -90,16 +90,8 @@
 				        <a href="#">PC</a>
 				        <div class="dropdown-panel">
 				            <div class="dropdown-sections">
-				                <a th:href="@{/user/product/rental_list(categoryId=1)}"
-				                 class="dropdown-section dropdown-section--top">
-				                    <div class="ds-label">대여</div>
-				                    <div class="ds-text">
-				                        <p class="ds-title">데스크탑 대여</p>
-				                        <p class="ds-desc">최신 사양 PC를 원하는 기간만큼</p>
-				                    </div>
-				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
-				                </a>
-				                <a href="/purchase_list" class="dropdown-section dropdown-section--bottom">
+				            	<a th:href="@{/user/product/purchase_list(categoryId=1)}" 
+				                	class="dropdown-section dropdown-section--bottom">
 				                    <div class="ds-label">구매</div>
 				                    <div class="ds-text">
 				                        <p class="ds-title">데스크탑 구매</p>
@@ -107,8 +99,16 @@
 				                    </div>
 				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
 				                </a>
-				            </div>
-				           
+				                <a th:href="@{/user/product/rental_list(categoryId=1)}"
+				                	 class="dropdown-section dropdown-section--top">
+				                    <div class="ds-label">대여</div>
+				                    <div class="ds-text">
+				                        <p class="ds-title">데스크탑 대여</p>
+				                        <p class="ds-desc">최신 사양 PC를 원하는 기간만큼</p>
+				                    </div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
+				            </div>				           
 				        </div>
 				    </li>
 				
@@ -116,6 +116,15 @@
 				        <a href="#">모니터</a>
 				        <div class="dropdown-panel">
 				            <div class="dropdown-sections">
+				            	<a th:href="@{/user/product/purchase_list(categoryId=3)}"
+				                 class="dropdown-section dropdown-section--bottom">
+				                    <div class="ds-label">구매</div>
+				                    <div class="ds-text">
+				                        <p class="ds-title">모니터 구매</p>
+				                        <p class="ds-desc">다양한 해상도와 크기로 선택</p>
+				                    </div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
 				                <a th:href="@{/user/product/rental_list(categoryId=3)}"
 				                 class="dropdown-section dropdown-section--top">
 				                    <div class="ds-label">대여</div>
@@ -125,16 +134,7 @@
 				                    </div>
 				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
 				                </a>
-				                <a href="#" class="dropdown-section dropdown-section--bottom">
-				                    <div class="ds-label">구매</div>
-				                    <div class="ds-text">
-				                        <p class="ds-title">모니터 구매</p>
-				                        <p class="ds-desc">다양한 해상도와 크기로 선택</p>
-				                    </div>
-				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
-				                </a>
 				            </div>
-				          
 				        </div>
 				    </li>
 				
@@ -142,6 +142,15 @@
 				        <a href="#">노트북</a>
 				        <div class="dropdown-panel">
 				            <div class="dropdown-sections">
+				            	<a th:href="@{/user/product/purchase_list(categoryId=4)}"
+				                 class="dropdown-section dropdown-section--bottom">
+				                    <div class="ds-label">구매</div>
+				                    <div class="ds-text">
+				                        <p class="ds-title">노트북 구매</p>
+				                        <p class="ds-desc">휴대성과 성능을 모두 갖춘 라인업</p>
+				                    </div>
+				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
+				                </a>
 				                <a th:href="@{/user/product/rental_list(categoryId=4)}"
 				                 class="dropdown-section dropdown-section--top">
 				                    <div class="ds-label">대여</div>
@@ -151,16 +160,7 @@
 				                    </div>
 				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
 				                </a>
-				                <a href="purchase_list" class="dropdown-section dropdown-section--bottom">
-				                    <div class="ds-label">구매</div>
-				                    <div class="ds-text">
-				                        <p class="ds-title">노트북 구매</p>
-				                        <p class="ds-desc">휴대성과 성능을 모두 갖춘 라인업</p>
-				                    </div>
-				                    <i class="fa-solid fa-chevron-right ds-arrow"></i>
-				                </a>
-				            </div>
-				           
+				            </div>   
 				        </div>
 				    </li>
 				
