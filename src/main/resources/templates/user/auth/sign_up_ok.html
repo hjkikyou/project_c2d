@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입 완료</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+ 
+ </head>
+ <main layout:fragment="container" class="b2b-wrap">
+ 
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --text-dark: #1e2333;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --border: #2563eb;
+      --check-color: #b0b8c8;
+    }
+
+    body {
+      background-color: var(--bg);
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      text-align: center;
+      padding: 60px 24px;
+      max-width: 720px;
+      width: 100%;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── 체크 아이콘 ── */
+    .check-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      animation: fadeUp 0.6s ease 0.1s both;
+    }
+
+    .check-icon {
+      width: 56px;
+      height: 56px;
+      stroke: var(--check-color);
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── 제목 ── */
+    .title-en {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 400;
+      color: var(--text-dark);
+      line-height: 1.1;
+      animation: fadeUp 0.6s ease 0.2s both;
+    }
+
+    .title-ko {
+      font-size: clamp(1.1rem, 3vw, 1.35rem);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-top: 6px;
+      animation: fadeUp 0.6s ease 0.28s both;
+    }
+
+    /* ── 설명 텍스트 ── */
+    .desc {
+      margin-top: 32px;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeUp 0.6s ease 0.36s both;
+    }
+
+    /* ── 버튼 ── */
+    .btn-wrap {
+      margin-top: 40px;
+      animation: fadeUp 0.6s ease 0.44s both;
+    }
+
+    .btn-login {
+      display: inline-block;
+      padding: 14px 52px;
+      border: 1.5px solid var(--border);
+      color: var(--accent);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-login:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+  </style>
+<body>
+  <div class="container">
+
+    <!-- 체크 아이콘 -->
+    <div class="check-wrap">
+      <svg class="check-icon" viewBox="0 0 48 48" aria-hidden="true">
+        <polyline points="8,26 20,38 40,14" />
+      </svg>
+    </div>
+
+    <!-- 제목 -->
+    <h1 class="title-en">Thank You</h1>
+    <p class="title-ko">회원 가입이 완료되었습니다!</p>
+
+    <!-- 설명 -->
+    <p class="desc">
+      회원가입이 성공적으로 완료되었습니다. 이제 서비스의 모든 기능을 자유롭게 이용하실 수 있습니다.
+      로그인 후 다양한 혜택을 경험해 보세요.
+    </p>
+
+    <!-- 버튼 -->
+    <div class="btn-wrap">
+      <a href="/login" class="btn-login">로그인</a>
+    </div>
+
+  </div>
+</body>
+</html>

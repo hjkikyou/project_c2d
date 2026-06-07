@@ -1,10 +1,229 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
-</body>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+  <head>
+    <link rel="stylesheet" href="/css/sign_up.css">
+  </head>
+
+  <main layout:fragment="container" class="signup-container">
+
+    <!-- 로고 -->
+    <div class="signup-logo">
+      <h1 class="logo-title">COMDOG</h1>
+      <p class="logo-sub">컴퓨터 구매 &amp; 인수형 렌탈</p>
+    </div>
+
+    <!-- 회원가입 폼 -->
+    <div class="signup-box">
+      <h2 class="signup-title">회원가입</h2>
+
+      <form th:action="@{/member/signup}" method="post" class="signup-form">
+
+        <!-- 이름 -->
+        <div class="form-group">
+          <label class="form-label">이름</label>
+          <input type="text" name="name" placeholder="이름 입력" class="form-input">
+        </div>
+
+        <!-- 생년월일 / 성별 -->
+        <div class="form-group">
+          <label class="form-label">생년월일/성별</label>
+          <div class="birth-gender-row">
+            <input type="text" name="birthDate" placeholder="생년월일 6자리"
+                   maxlength="6" class="form-input birth-input">
+            <span class="dash">—</span>
+            <input type="text" name="genderDigit" maxlength="1"
+                   class="form-input gender-digit-input">
+            <div class="gender-dots">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 휴대폰 번호 인증 -->
+        <div class="form-group phone-group">
+          <p class="phone-group-title">휴대폰번호 인증</p>
+
+          <!-- 통신사 선택 -->
+          <select name="carrier" class="form-input form-select">
+            <option value="SKT">SKT</option>
+            <option value="KT">KT</option>
+            <option value="LGU">LG U+</option>
+            <option value="SKT_MVNO">SKT 알뜰폰</option>
+            <option value="KT_MVNO">KT 알뜰폰</option>
+            <option value="LGU_MVNO">LG 알뜰폰</option>
+          </select>
+
+          <!-- 휴대폰 번호 입력 -->
+          <input type="tel" name="phone" placeholder="휴대폰 입력 ('-' 없이)"
+                 class="form-input">
+
+          <!-- 인증 코드 + 버튼 -->
+          <div class="verify-row">
+            <input type="text" name="verifyCode" placeholder="인증 코드 입력"
+                   class="form-input verify-input">
+            <button type="button" class="btn-send">인증 문자 발송</button>
+            <button type="button" class="btn-confirm">확인</button>
+          </div>
+        </div>
+
+        <!-- 이메일 -->
+        <div class="form-group">
+          <label class="form-label">이메일</label>
+          <div class="email-row">
+            <input type="text" name="emailId" placeholder="이메일 아이디"
+                   class="form-input email-id-input">
+            <span class="at-sign">@</span>
+            <select name="emailDomain" class="form-input email-domain-select">
+              <option value="gmail.com">gmail.com</option>
+              <option value="naver.com">naver.com</option>
+              <option value="daum.net">daum.net</option>
+              <option value="kakao.com">kakao.com</option>
+              <option value=".com">.com</option>
+              <option value="direct">직접입력</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 아이디 -->
+        <div class="form-group">
+          <label class="form-label">아이디</label>
+          <input type="text" name="userId" placeholder="6~16자/ 영문 소문자, 숫자 사용 가능"
+                 class="form-input">
+        </div>
+
+        <!-- 비밀번호 -->
+        <div class="form-group">
+          <label class="form-label">
+            비밀번호
+            <span class="info-icon" title="8~16자/ 문자, 숫자, 특수문자 모두 혼용">&#9432;</span>
+          </label>
+          <div class="password-wrap">
+            <input type="password" name="password"
+                   placeholder="8~16자/ 문자,숫자,특수문자 모두 혼용"
+                   class="form-input password-input" id="passwordInput">
+            <button type="button" class="toggle-pw" onclick="togglePassword('passwordInput', this)">
+              <!-- eye icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 비밀번호 확인 -->
+        <div class="form-group">
+          <label class="form-label">비밀번호 확인</label>
+          <div class="password-wrap">
+            <input type="password" name="passwordConfirm"
+                   placeholder="비밀번호를 다시 입력해 주세요"
+                   class="form-input password-input" id="passwordConfirmInput">
+            <button type="button" class="toggle-pw" onclick="togglePassword('passwordConfirmInput', this)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 회원 구분 -->
+        <div class="form-group">
+          <label class="form-label">회원 구분</label>
+          <div class="usertype-row">
+            <label class="usertype-item">
+              <input type="radio" name="userType" value="PERSONAL" checked>
+              <span>개인 회원</span>
+            </label>
+            <label class="usertype-item">
+              <input type="radio" name="userType" value="BUSINESS">
+              <span>기업 회원</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 확인 버튼 -->
+        <button type="submit" class="btn-submit">확인</button>
+
+        <!-- 이미 계정이 있으신가요? -->
+        <p class="login-link-text">
+          <a th:href="@{/login}" href="#" class="login-link">이미 계정이 있으신가요?</a>
+        </p>
+
+        <!-- 약관 동의 -->
+        <div class="terms-box">
+
+          <!-- 전체 동의 -->
+          <label class="terms-item terms-all">
+            <input type="checkbox" id="agreeAll" onchange="toggleAll(this)">
+            <span>전체동의 합니다</span>
+          </label>
+
+          <div class="terms-divider"></div>
+
+          <!-- 필수 1 -->
+          <label class="terms-item">
+            <input type="checkbox" name="agreeTerms" class="agree-item" required>
+            <span><em class="required">[필수]</em> comdog 이용약관에 동의합니다.</span>
+          </label>
+
+          <!-- 필수 2 -->
+          <label class="terms-item">
+            <input type="checkbox" name="agreePrivacy" class="agree-item" required>
+            <span><em class="required">[필수]</em> comdog 개인정보 수집 및 이용 동의</span>
+          </label>
+
+          <!-- 선택 -->
+          <label class="terms-item">
+            <input type="checkbox" name="agreePromo" class="agree-item">
+            <span><em class="optional">[선택]</em> 프로모션 정보 수신 동의</span>
+          </label>
+
+        </div>
+
+      </form>
+    </div>
+
+  </main>
+
+  <script>
+    /* 비밀번호 표시/숨김 토글 */
+    function togglePassword(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.classList.add('active');
+      } else {
+        input.type = 'password';
+        btn.classList.remove('active');
+      }
+    }
+
+    /* 전체 동의 체크박스 */
+    function toggleAll(source) {
+      const items = document.querySelectorAll('.agree-item');
+      items.forEach(item => item.checked = source.checked);
+    }
+
+    /* 개별 체크 시 전체동의 상태 업데이트 */
+    document.querySelectorAll('.agree-item').forEach(item => {
+      item.addEventListener('change', () => {
+        const all = document.querySelectorAll('.agree-item');
+        const allChecked = [...all].every(i => i.checked);
+        document.getElementById('agreeAll').checked = allChecked;
+      });
+    });
+  </script>
 </html>

@@ -21,6 +21,13 @@ public interface ProductDao {
 	void deleteOrderItemByProductId(Long id); // 💡 이 줄 추가!
 	void delete(Long id); // 기존 메서드
 
+	
+	/**********사용자 요청**************/
+	
+	List<ProductDto> selectProductsWithSubCategories(Long categoryId);
+
+	String selectCategoryNameById(Long categoryId);
+
 
 
 }

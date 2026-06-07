@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+  <head>
+    <link rel="stylesheet" href="/css/board.css">
+  </head>
+
+  <main layout:fragment="container" class="board-container">
+
+
+    <!-- ── 페이지 제목 ── -->
+    <div class="page-header">
+      <h2 class="page-title">커뮤니티</h2>
+      <!-- 브레드크럼 -->
+      <nav class="breadcrumb">
+        <a href="/" class="bc-link">홈</a>
+        <span class="bc-sep">&gt;</span>
+        <a href="/community" class="bc-link">커뮤니티</a>
+        <span class="bc-sep">&gt;</span>
+        <span class="bc-current" id="bcCurrent">공지사항</span>
+      </nav>
+    </div>
+
+    <!-- ── 탭 바 ── -->
+    <div class="tab-bar">
+      <button class="tab-btn active"
+              onclick="switchTab(this, 'notice', '공지사항')">공지사항</button>
+      <button class="tab-btn"
+              onclick="switchTab(this, 'event', '이벤트')">이벤트</button>
+      <button class="tab-btn"
+              onclick="switchTab(this, 'info', '정보공유')">정보 공유</button>
+      <button class="tab-btn"
+              onclick="switchTab(this, 'qna', '질문(Q&amp;A)')">질문(Q&amp;A)</button>
+    </div>
+
+    <!-- ── 검색 + 글쓰기 툴바 ── -->
+    <div class="board-toolbar">
+      <div class="search-box">
+        <select class="search-select">
+          <option value="title">제목</option>
+          <option value="content">내용</option>
+          <option value="author">작성자</option>
+          <option value="title_content">제목+내용</option>
+        </select>
+        <input type="text" class="search-input" placeholder="검색어를 입력하세요"
+               onkeydown="if(event.key==='Enter') doSearch()">
+        <button class="search-btn" onclick="doSearch()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2.2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+      </div>
+      <a href="/community/write" class="btn-write">글쓰기</a>
+    </div>
+
+    <!-- ── 게시판 테이블 ── -->
+    <div class="board-wrap">
+      <table class="board-table">
+        <thead>
+          <tr>
+            <th class="col-no">번호</th>
+            <th class="col-title">제목</th>
+            <th class="col-author">작성자</th>
+            <th class="col-date">작성일</th>
+            <th class="col-views">조회수</th>
+            <th class="col-likes">추천</th>
+          </tr>
+        </thead>
+        <tbody id="boardBody">
+
+          <!-- ── 공지 고정 행 ── -->
+          <tr class="row-notice">
+            <td><span class="badge-notice">공지</span></td>
+            <td class="td-title">
+              <a href="/community/1" class="post-link">커뮤니티 이용 규칙 안내</a>
+            </td>
+            <td>comdog</td>
+            <td>2024-06-01</td>
+            <td>1,245</td>
+            <td>12</td>
+          </tr>
+          <tr class="row-notice">
+            <td><span class="badge-notice">공지</span></td>
+            <td class="td-title">
+              <a href="/community/2" class="post-link">비방/홍보/도배 게시글 제재 안내</a>
+            </td>
+            <td>comdog</td>
+            <td>2024-05-20</td>
+            <td>2,341</td>
+            <td>18</td>
+          </tr>
+
+          <!-- ── 일반 게시글 (Thymeleaf) ── -->
+          <tr th:each="post : ${postList}"
+              th:classappend="${post.hot} ? 'row-hot' : ''">
+            <td th:text="${post.postNo}">1024</td>
+            <td class="td-title">
+              <a th:href="@{/community/{id}(id=${post.id})}" class="post-link">
+                <span th:text="${post.title}">제목입니다</span>
+                <!-- 인기글 뱃지 -->
+                <span class="badge-hot" th:if="${post.hot}">🔥 인기</span>
+                <!-- 새글 뱃지 (24시간 이내) -->
+                <span class="badge-new" th:if="${post.isNew}">N</span>
+                <!-- 이미지 첨부 아이콘 -->
+                <span class="icon-img" th:if="${post.hasImage}">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21 15 16 10 5 21"/>
+                  </svg>
+                </span>
+                <!-- 댓글 수 -->
+                <span class="comment-count" th:if="${post.commentCount > 0}"
+                      th:text="'[' + ${post.commentCount} + ']'"></span>
+              </a>
+            </td>
+            <td th:text="${post.author}">작성자</td>
+            <td th:text="${post.createdAt}">2024-06-10</td>
+            <td th:text="${#numbers.formatInteger(post.viewCount, 0, 'COMMA')}">0</td>
+            <td th:text="${post.likeCount}">0</td>
+          </tr>
+
+          <!-- ── 더미 데이터 (postList 없을 때) ── -->
+          <th:block th:if="${postList == null or #lists.isEmpty(postList)}">
+            <tr class="row-hot">
+              <td>1024</td>
+              <td class="td-title">
+                <a href="#" class="post-link">
+                  오늘 새로 산 키보드 타건감 좋네요 ㅎㅎ
+                  <span class="badge-hot">🔥 인기</span>
+                  <span class="badge-new">N</span>
+                  <span class="icon-img">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                  </span>
+                  <span class="comment-count">[7]</span>
+                </a>
+              </td>
+              <td>하늘이좋아</td><td>2024-06-10</td><td>123</td><td>5</td>
+            </tr>
+            <tr>
+              <td>1023</td>
+              <td class="td-title">
+                <a href="#" class="post-link">RTX 4060 vs RTX 3060 어떤 게 좋을까요?
+                  <span class="comment-count">[3]</span></a>
+              </td>
+              <td>컴린이탈출</td><td>2024-06-10</td><td>234</td><td>2</td>
+            </tr>
+            <tr>
+              <td>1022</td>
+              <td class="td-title">
+                <a href="#" class="post-link">게임용 모니터 추천 부탁드립니다!
+                  <span class="comment-count">[12]</span></a>
+              </td>
+              <td>모니터장인</td><td>2024-06-09</td><td>345</td><td>6</td>
+            </tr>
+            <tr>
+              <td>1021</td>
+              <td class="td-title">
+                <a href="#" class="post-link">오늘 날씨 너무 좋네요 ☀️</a>
+              </td>
+              <td>행복한하루</td><td>2024-06-09</td><td>98</td><td>3</td>
+            </tr>
+            <tr>
+              <td>1020</td>
+              <td class="td-title">
+                <a href="#" class="post-link">SSD 추천 부탁드려요!
+                  <span class="comment-count">[2]</span></a>
+              </td>
+              <td>저장장치러버</td><td>2024-06-09</td><td>210</td><td>1</td>
+            </tr>
+            <tr>
+              <td>1019</td>
+              <td class="td-title">
+                <a href="#" class="post-link">컴퓨터 조립 견적 봐주실 분 계신가요?
+                  <span class="comment-count">[5]</span></a>
+              </td>
+              <td>조립의신</td><td>2024-06-08</td><td>512</td><td>4</td>
+            </tr>
+            <tr>
+              <td>1018</td>
+              <td class="td-title">
+                <a href="#" class="post-link">배그 프레임 잘 나오는 세팅 아시는 분?
+                  <span class="comment-count">[8]</span></a>
+              </td>
+              <td>배그장인</td><td>2024-06-08</td><td>298</td><td>2</td>
+            </tr>
+            <tr>
+              <td>1017</td>
+              <td class="td-title">
+                <a href="#" class="post-link">가성비 좋은 마우스 추천!</a>
+              </td>
+              <td>마우스찾는중</td><td>2024-06-08</td><td>154</td><td>1</td>
+            </tr>
+            <tr>
+              <td>1016</td>
+              <td class="td-title">
+                <a href="#" class="post-link">윈도우 11 설치 USB 만드는 방법 아시는 분?
+                  <span class="comment-count">[4]</span></a>
+              </td>
+              <td>윈도우도사</td><td>2024-06-07</td><td>175</td><td>1</td>
+            </tr>
+            <tr>
+              <td>1015</td>
+              <td class="td-title">
+                <a href="#" class="post-link">이번 추말에 세일하나요?</a>
+              </td>
+              <td>세일기다려</td><td>2024-06-07</td><td>321</td><td>2</td>
+            </tr>
+          </th:block>
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ── 페이지네이션 + 글쓰기 ── -->
+    <div class="board-footer">
+      <div class="pagination">
+        <a href="#" class="page-btn page-arrow" title="처� 페이지">&laquo;</a>
+        <a href="#" class="page-btn page-arrow" title="이전 페이지">&lsaquo;</a>
+        <a href="#" class="page-btn active">1</a>
+        <a href="#" class="page-btn">2</a>
+        <a href="#" class="page-btn">4</a>
+        <a href="#" class="page-btn">5</a>
+        <a href="#" class="page-btn page-arrow" title="다음 페이지">&rsaquo;</a>
+        <a href="#" class="page-btn page-arrow" title="마지막 페이지">&raquo;</a>
+      </div>
+      <a href="/community/write" class="btn-write btn-write-footer">글쓰기</a>
+    </div>
+
+  </main>
+
+  <script>
+    /* 탭 전환 + 브레드크럼 업데이트 */
+    function switchTab(btn, type, label) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('bcCurrent').textContent = label;
+      // TODO: AJAX로 해당 탭 게시글 불러오기
+      // fetch('/community/list?type=' + type) ...
+    }
+
+    function doSearch() {
+      const keyword = document.querySelector('.search-input').value.trim();
+      const type    = document.querySelector('.search-select').value;
+      if (!keyword) { alert('검색어를 입력해주세요.'); return; }
+      window.location.href = '/community/search?type=' + type + '&keyword=' + encodeURIComponent(keyword);
+    }
+  </script>
+</html>
