@@ -1,6 +1,9 @@
 /* =============================================
    HEADER.CSS — 사이트 공통 헤더
    ============================================= */
+   
+/* 구글 폰트 Syncopate 불러오기 (로고용) */
+@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
 
 /* ─── CSS 변수 ─── */
 :root {
@@ -79,7 +82,7 @@
    2. 중간 바 (로고 + 검색 + 아이콘)
 ════════════════════════════════════ */
 .header-middle {
-    padding: 18px 0;
+    padding: 24px 0;
     background-color: var(--header-bg-mid);
 }
 
@@ -92,28 +95,46 @@
 }
 
 .logo-text {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--header-text);
-    letter-spacing: -1px;
-    line-height: 1.1;
-    transition: color 0.15s;
+    /* 기존 속성들 */
+    font-family: 'Syncopate', sans-serif;
+    font-weight: 700;
+    
+    /* 🌟 체크 포인트 1: 폰트 크기 */
+    /* (이미지 오버레이에는 24.2px 높이로 보입니다. 1.5rem 정도가 적당해 보입니다.) */
+    font-size: 24.2px; /* 예: 이미지와 비슷한 크기인 약 24px */
+    
+    /* 🌟 체크 포인트 2: 안전한 line-height */
+    /* 글자가 위아래로 절대 짤리지 않도록 최소 1 이상으로 설정합니다. */
+    line-height: 1; 
+    
+    /* 🌟 체크 포인트 3 (핵심): 기본 마진 제거 */
+    /* 개발자 도구 이미지에 보이던 주황색 영역(기본 마진)을 모두 없앱니다. */
+    margin-bottom: 0.5px; 
+    
+    /* 배경 및 색상 효과 */
+    background: #3A00E5;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .logo-area a:hover .logo-text { color: var(--header-accent); }
 
 .logo-sub {
-    font-size: 11px;
+    /* 요청하신 대로 부제목 크기를 더 축소 */
+    font-size: 8px;
     color: var(--header-muted);
-    margin-top: 3px;
+    
+    /* 🌟 체크 포인트 4: 부제목의 위쪽 마진으로 미세 조정 */
+    /* .logo-text의 마진을 0으로 만들었기 때문에, 이제 이 값으로 둘 사이의 간격을 정합니다. */
+    /* 더 바짝 붙이고 싶으면 이 값을 더 줄이거나(-2px 등) 음수로 주시면 됩니다. */
+    margin-top: 0;
 }
-
 /* ─── 검색창 ─── */
 .search-area {
     flex: 1;
     display: flex;
     justify-content: center;
-    padding: 0 32px;
+    /* 순서: 위쪽, 오른쪽, 아래쪽, 왼쪽 */
 }
 
 .search-box {
@@ -410,9 +431,15 @@
     border-bottom: 1px solid #f0f0f0;
 }
 
-.dropdown-section:hover {
+.dropdown-section--top:hover {
+   background: linear-gradient(135deg, rgba(245, 217, 140, 0.08) 0%, rgba(109, 58, 255, 0.08) 100%);
+}
+
+
+.dropdown-section--bottom:hover {
    background: linear-gradient(135deg, rgba(55,200,195,0.08) 0%, rgba(109,58,255,0.08) 100%);
 }
+
 
 /* 대여 라벨 — 채운 색 */
 .ds-label {
@@ -427,6 +454,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* 대여 라벨 — 연한 색 */
+.dropdown-section--top .ds-label {
+    background: linear-gradient(135deg, rgba(245, 217, 140, 0.15) 0%, rgba(109, 58, 255, 0.15) 100%);
+    color: #6D3AFF;
 }
 
 /* 구매 라벨 — 연한 색 */

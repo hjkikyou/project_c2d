@@ -1,0 +1,430 @@
+/* ============================================================
+   cart.css
+   장바구니 페이지 스타일
+   ============================================================ */
+
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f7f7f7;
+  --color-border: #e4e4e4;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #555;
+  --color-text-muted: #999;
+  --color-accent: #1a1a1a;
+  --color-red: #e53e3e;
+  --color-blue: #2563eb;
+  --color-rental-badge: #ede9ff;
+  --color-rental-badge-text: #6c5ce7;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --font-main: 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.07);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --transition: 0.18s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-main);
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── 컨테이너 ── */
+.cart-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 28px 24px 60px;
+}
+
+/* ── 페이지 제목 ── */
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+}
+
+/* ── 탭 바 ── */
+.tab-bar {
+  display: flex;
+  border-bottom: 2px solid var(--color-border);
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  padding: 12px 28px;
+  border: none;
+  background: none;
+  font-size: 15px;
+  font-family: var(--font-main);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.tab-btn.active {
+  color: var(--color-text-primary);
+  font-weight: 700;
+  border-bottom-color: var(--color-text-primary);
+}
+
+.tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  background: var(--color-surface);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+
+.tab-btn.active .tab-count {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* ── 탭 콘텐츠 ── */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ── 툴바 (전체선택 + 선택삭제) ── */
+.cart-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  border-bottom: none;
+}
+
+.check-all-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.check-all-label input[type="checkbox"] {
+  width: 16px; height: 16px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.btn-delete-selected {
+  padding: 6px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  font-size: 13px;
+  font-family: var(--font-main);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition),
+              border-color var(--transition);
+}
+
+.btn-delete-selected:hover {
+  border-color: var(--color-red);
+  color: var(--color-red);
+  background: #fff5f5;
+}
+
+/* ── 장바구니 목록 ── */
+.cart-list {
+  border: 1px solid var(--color-border);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+/* ── 장바구니 아이템 ── */
+.cart-item {
+  display: grid;
+  grid-template-columns: 24px 100px 1fr 120px 140px;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 16px;
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition);
+}
+
+.cart-item:last-child { border-bottom: none; }
+.cart-item:hover { background: #fafafa; }
+
+/* 체크박스 */
+.item-check {
+  width: 16px; height: 16px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* 상품 이미지 */
+.item-img-wrap {
+  width: 100px; height: 80px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--color-surface);
+  flex-shrink: 0;
+}
+
+.item-img-wrap.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8e8e8;
+}
+
+.item-img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* 상품 정보 */
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.item-brand {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-model {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.rental-period-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 10px;
+  background: var(--color-rental-badge);
+  color: var(--color-rental-badge-text);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* 수량 */
+.item-qty-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.qty-btn {
+  width: 30px; height: 30px;
+  border: none;
+  background: var(--color-surface);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+
+.qty-btn:hover { background: var(--color-border); }
+
+.qty-val {
+  width: 36px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  line-height: 30px;
+  user-select: none;
+}
+
+/* 가격 */
+.item-price-wrap {
+  text-align: right;
+}
+
+.item-price-label {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.item-price {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+/* ── 빈 장바구니 ── */
+.cart-empty {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 60px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.btn-go-shop {
+  padding: 10px 28px;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-accent);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--transition);
+}
+
+.btn-go-shop:hover { background: var(--color-surface); }
+
+/* ── 주문 요약 박스 ── */
+.order-summary-box {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-top: 24px;
+  background: var(--color-surface);
+}
+
+.summary-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.summary-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 8px 0;
+}
+
+.total-row {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  padding-top: 12px;
+}
+
+.total-price {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--color-red);
+}
+
+/* ── 주문하기 버튼 ── */
+.btn-order {
+  width: 100%;
+  height: 52px;
+  margin-top: 20px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 16px;
+  font-family: var(--font-main);
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.btn-order:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.btn-order:active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 768px) {
+  .cart-item {
+    grid-template-columns: 20px 80px 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px;
+  }
+
+  .item-qty-wrap {
+    grid-column: 2;
+    justify-content: flex-start;
+  }
+
+  .item-price-wrap {
+    grid-column: 3;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-container { padding: 20px 14px 40px; }
+
+  .tab-btn { padding: 10px 16px; font-size: 14px; }
+
+  .cart-item {
+    grid-template-columns: 20px 70px 1fr;
+    gap: 8px;
+    padding: 14px 10px;
+  }
+
+  .item-img-wrap { width: 70px; height: 60px; }
+}

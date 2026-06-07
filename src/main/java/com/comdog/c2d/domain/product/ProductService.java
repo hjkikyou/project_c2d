@@ -19,6 +19,12 @@ public interface ProductService {
 		
 		//삭제
 		void delete(Long id);
+		
+		/**********사용자 요청**************/
+
+		List<ProductDto> findProductsWithSubCategories(Long categoryId);
+
+		String findCategoryNameById(Long categoryId);
 
 		
 

@@ -51,5 +51,20 @@ public class ProductDaoImpl implements ProductDao {
 		sql.delete("product.deleteOrderItemByProductId", id); 
 
 	}
+	
+	/**********사용자 요청**************/
+
+	
+    @Override
+    public List<ProductDto> selectProductsWithSubCategories(Long categoryId) {
+    	return sql.selectList("product.findProductsWithSubCategories", categoryId);
+    }
+
+
+    @Override
+    public String selectCategoryNameById(Long categoryId) {
+        return sql.selectOne("product.findCategoryNameById", categoryId);
+    }
 }
+
 
