@@ -24,8 +24,5 @@ public class UserMainController {
     
     
     
-    @GetMapping("/board")
-    public String board(){
-        return "user/board/board";
-    }
+
 }

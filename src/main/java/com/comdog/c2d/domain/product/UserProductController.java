@@ -51,10 +51,28 @@ public class UserProductController {
             return "redirect:/"; 
         }
         
+     // 1. 메인 카테고리 데이터 조회 
         List<ProductDto> products = service.findProductsWithSubCategories(categoryId);
-        
         model.addAttribute("productList", products);
         model.addAttribute("categoryName", service.findCategoryNameById(categoryId));
+        
+     // ==========================================
+     // 2. 대분류별 특별 섹션 매핑 로직
+     // ==========================================
+        Long specialCategoryId = null; //초기값 null
+        
+        //categoryId에 따라 특별 카테고리ID 지정
+        switch (categoryId.intValue()) {
+        case 1: specialCategoryId = 14L; break; // PC -> 미니 PC
+        case 3: specialCategoryId = 34L; break; // 모니터 -> 휴대용 모니터
+        case 4: specialCategoryId = 44L; break; // 노트북 -> 경량 특화 노트북
+    }
+     // 특별 카테고리 ID가 세팅되었다면 (즉, 1, 3, 4번 카테고리라면)
+        if (specialCategoryId != null) {
+            // 특별 카테고리의 이름과 상품 리스트를 조회해서 Model에 담기
+            model.addAttribute("specialName", service.findCategoryNameById(specialCategoryId));
+            model.addAttribute("specialList", service.findProductsWithSubCategories(specialCategoryId));
+        }
         
         return "user/product/rental_list";
     }
