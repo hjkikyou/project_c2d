@@ -35,4 +35,9 @@ public class RootController {
 	public String board() {
 		return "user/board/board";
 	}
+	
+	@GetMapping("/event")
+	public String event() {
+		return "user/board/event";
+	}
 }
