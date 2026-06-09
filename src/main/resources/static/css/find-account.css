@@ -1,0 +1,209 @@
+/* 컨테이너 및 배경 정렬 */
+.account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #ffffff;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.find-box {
+    width: 400px;
+    padding: 40px 30px;
+    border: 1px solid #333333;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+/* 로고 스타일 */
+.logo-area {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-area h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #4a4a4a;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.logo-area p {
+    font-size: 11px;
+    color: #a0a0a0;
+    margin: 5px 0 0 0;
+}
+
+/* 탭 메뉴 스타일 */
+.tab-menu {
+    display: flex;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px 0;
+    background: #fdfdfd;
+    border: none;
+    font-size: 14px;
+    color: #888888;
+    cursor: pointer;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: #ffffff;
+    color: #7f56da;
+    border-bottom: 2px solid #7f56da;
+    margin-bottom: -2px;
+    font-weight: bold;
+}
+
+/* 폼 및 입력창 스타일 */
+.find-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.input-field {
+    width: 100%;
+    height: 45px;
+    padding: 0 15px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    background-color: #f4f5f7;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.input-field::placeholder {
+    color: #a0a0a0;
+}
+
+/* 이메일 인증 박스 (테두리 안 영역) */
+.email-auth-box {
+    border: 1px solid #cccccc;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 셀렉트 박스 공통 커스텀 */
+.select-wrapper select, .search-select {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    color: #555555;
+    outline: none;
+    cursor: pointer;
+}
+
+.select-wrapper {
+    position: relative;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* 이메일 입력 가로 정렬 */
+.email-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.email-id {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #cccccc;
+    height: 40px;
+}
+
+.at {
+    color: #555555;
+    font-size: 16px;
+}
+
+.domain-select {
+    flex: 1;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+/* 인증코드 입력 가로 정렬 */
+.code-input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.code-input {
+    flex: 1.5;
+    background: #fff;
+    border: 1px solid #cccccc;
+    height: 40px;
+}
+
+.btn-send-email {
+    flex: 1;
+    background-color: #f3efff;
+    color: #7f56da;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* 확인 제출 버튼 (그라데이션 & 그림자) */
+.btn-submit {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(90deg, #7b61ff, #9185ff);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(123, 97, 255, 0.3);
+    margin-top: 10px;
+}
+
+/* 하단 링크 */
+.bottom-links {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #aaaaaa;
+}
+
+.bottom-links a {
+    color: #555555;
+    text-decoration: none;
+}
+
+.bottom-links a:hover {
+    text-decoration: underline;
+}
+
+/* 토글용 클래스 */
+.hidden {
+    display: none !important;
+}
