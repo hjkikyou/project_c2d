@@ -40,4 +40,15 @@ public class RootController {
 	public String event() {
 		return "user/board/event";
 	}
+	
+
+	@GetMapping("/community_board")
+	public String communityBoard() {
+		return "user/board/community_board";
+	}
+	
+	@GetMapping("/refurb_list")
+	public String refubList() {
+		return "user/product/refurb_list";
+	}
 }
