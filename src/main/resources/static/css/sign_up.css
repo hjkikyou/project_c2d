@@ -183,21 +183,6 @@ body {
   flex-shrink: 0;
 }
 
-/* ── 휴대폰 인증 그룹 ── */
-.phone-group {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 18px 16px;
-  background-color: var(--color-phone-bg);
-  gap: 12px;
-}
-
-.phone-group-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text-primary);
-  margin-bottom: 4px;
-}
 
 /* select 화살표 커스텀 */
 .form-select {
