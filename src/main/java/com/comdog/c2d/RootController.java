@@ -52,6 +52,10 @@ public class RootController {
 		return "user/product/refurb_list";
 	}
 	
+	@GetMapping("/center")
+	public String center() {
+		return "user/center/center";
+    
 	@GetMapping("/find-account")
 	public String findAccount() {
 		return "user/auth/find-account";
