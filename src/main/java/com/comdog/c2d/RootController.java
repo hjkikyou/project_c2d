@@ -51,4 +51,9 @@ public class RootController {
 	public String refubList() {
 		return "user/product/refurb_list";
 	}
+	
+	@GetMapping("/center")
+	public String center() {
+		return "user/center/center";
+	}
 }
