@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+    <title>COMDOG - 계정 찾기</title>
+    <link rel="stylesheet" th:href="@{/css/find-account.css}">
+</head>
+
+<body>
+    <main layout:fragment="container" class="account-container">
+        <div class="find-box">
+            <div class="logo-area">
+                <h1>COMDOG</h1>
+                <p>컴퓨터 구매 & 인수형 렌탈</p>
+            </div>
+
+            <div class="tab-menu">
+                <button type="button" id="tab-id" class="tab-btn active" onclick="switchTab('id')">아이디 찾기</button>
+                <button type="button" id="tab-pw" class="tab-btn" onclick="switchTab('pw')">비밀번호 찾기</button>
+            </div>
+
+            <form th:action="@{/find-account}" method="post" class="find-form">
+                
+                <div id="input-id-wrap" class="input-group hidden">
+                    <input type="text" id="userId" name="userId" placeholder="아이디" class="input-field">
+                </div>
+
+                <div class="email-auth-box">
+                    <div class="select-wrapper">
+                        <select name="searchType" class="search-select">
+                            <option value="email">이메일로 찾기</option>
+                        </select>
+                    </div>
+                    
+                    <div class="email-input-row">
+                        <input type="text" name="emailId" placeholder="이메일 아이디" class="input-field email-id">
+                        <span class="at">@</span>
+                        <div class="select-wrapper domain-select">
+                            <select name="emailDomain">
+                                <option value="naver.com">naver.com</option>
+                                <option value="gmail.com">gmail.com</option>
+                                <option value="daum.net">daum.net</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="code-input-row">
+                        <input type="text" name="authCode" placeholder="인증 코드 입력" class="input-field code-input">
+                        <button type="button" class="btn-send-email">인증 메일 발송</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">확인</button>
+            </form>
+
+            <div class="bottom-links">
+                <a th:href="@{/login}">로그인</a> / <a th:href="@{/signup}">회원가입</a>
+            </div>
+        </div>
+
+        <script>
+            function switchTab(type) {
+                const tabId = document.getElementById('tab-id');
+                const tabPw = document.getElementById('tab-pw');
+                const idWrap = document.getElementById('input-id-wrap');
+
+                if (type === 'id') {
+                    tabId.classList.add('active');
+                    tabPw.classList.remove('active');
+                    idWrap.classList.add('hidden'); 
+                } else {
+                    tabId.classList.remove('active');
+                    tabPw.classList.add('active');
+                    idWrap.classList.remove('hidden'); 
+                }
+            }
+        </script>
+    </main> </body>
+</html>
