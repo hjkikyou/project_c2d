@@ -49,28 +49,25 @@ public class RootController {
 	
 	@GetMapping("/refurb_list")
 	public String refubList() {
-		return "user/product/refurb_list";
-		
-		
-	}
-	
-	
-	@GetMapping("/sign-up-first")
-	public String signUpFist() {
-		return "user/auth/sign-up-first";
-	}
-	
-	@GetMapping("/find-account")
-	public String findAccount() {
-		return "user/auth/find-account";
+		return "user/exclusive/refurb_list";
 	}
 	
 	@GetMapping("/center")
 	public String center() {
 		return "user/center/center";
+	}
     
 	@GetMapping("/find-account")
 	public String findAccount() {
 		return "user/auth/find-account";
+	}
+	
+	@GetMapping("/sub-rental")
+	public String subRental() {
+		return "user/exclusive/sub-rental";
+	}
+	@GetMapping("/my-page")
+	public String myPage() {
+		return "user/mypage/my-page";
 	}
 }
