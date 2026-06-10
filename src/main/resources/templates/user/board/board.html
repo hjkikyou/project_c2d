@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <title>정보게시판</title>
-  <link rel="stylesheet" href="/css/board.css">
+  <link rel="stylesheet" th:href="@{/css/board.css}">
 </head>
 <body>
 
@@ -13,11 +13,8 @@
 
   <div class="window-container">
     <div class="window-title-bar">
-      <span class="window-title">TUNE_DESIGN_BOARD.exe</span>
+      <span class="window-title">정보 게시판</span>
       <div class="window-controls">
-        <span class="ctrl-btn">_</span>
-        <span class="ctrl-btn">□</span>
-        <span class="ctrl-btn">X</span>
       </div>
     </div>
 
@@ -49,19 +46,19 @@
 
       <div class="notice-bar">
         <div class="notice-badge">📌 알림판</div>
-        <div class="notice-title">PC26 커뮤니티 이용 규칙</div>
+        <div class="notice-title"><a href="#">PC26 커뮤니티 이용 규칙 및 권장 가이드라인</a></div>
       </div>
 
       <div class="board-list">
         <div class="list-head">
-          <div class="col-title">제목</div>
+          <div class="board-title">제목</div>
           <div class="col-author">작성자</div>
           <div class="col-date">작성일</div>
           <div class="col-views">조회</div>
         </div>
 
         <div class="list-row">
-          <div class="col-title">
+          <div class="col-title-item">
             <span class="badge-info">정보</span>
             <a href="#">리안리, 컴퓨텍스2026에서 커브드 디스플레이 및 디지털 기능 강조한 신제품 발표</a>
           </div>
@@ -71,7 +68,7 @@
         </div>
 
         <div class="list-row">
-          <div class="col-title">
+          <div class="col-title-item">
             <span class="badge-info">정보</span>
             <a href="#">다크플래쉬, COMPUTEX 2026 참가해 다양한 신제품 발표</a>
           </div>
@@ -81,9 +78,9 @@
         </div>
 
         <div class="list-row">
-          <div class="col-title">
+          <div class="col-title-item">
             <span class="badge-info">정보</span>
-            <a href="#">필립스, 최신 4세대 Tandem WOLED 패널 탑재 프리미엄 게이밍 모니터 'Evnia 27M2N6550PF' 출시</a>
+            <a href="#">필립스, 최신 4세대 Tandem WOLED 패널 탑재 프리미엄 게이밍 모니터 Evnia 출시</a>
           </div>
           <div class="col-author"><span class="author-icon">👤</span> 운영자</div>
           <div class="col-date">2026.06.02.</div>
@@ -91,7 +88,7 @@
         </div>
 
         <div class="list-row">
-          <div class="col-title">
+          <div class="col-title-item">
             <span class="badge-info">정보</span>
             <a href="#">마이크로닉스, 컴퓨텍스 2026 참가....글로벌 전략 제품 공개</a>
           </div>
@@ -101,9 +98,9 @@
         </div>
 
         <div class="list-row">
-          <div class="col-title">
+          <div class="col-title-item">
             <span class="badge-info">정보</span>
-            <a href="#">픽셀아트, 컬러 모니터 'AURORA' 시리즈 4종 출시</a>
+            <a href="#">픽셀아트, 컬러 모니터 'AURORA' 시리즈 4종 정식 출시</a>
           </div>
           <div class="col-author"><span class="author-icon">👤</span> 운영자</div>
           <div class="col-date">2026.05.29.</div>
@@ -112,8 +109,23 @@
       </div>
 
       <div class="board-footer">
-        <div class="progress-bar-retro">
-          <div class="progress-fill"></div>
+        <div class="pagination-retro">
+          <a href="#" class="page-btn prev-all">◀◀</a>
+          <a href="#" class="page-btn prev">◀</a>
+          <a href="#" class="page-num active">1</a>
+          <a href="#" class="page-num">2</a>
+          <a href="#" class="page-num">3</a>
+          <a href="#" class="page-num">4</a>
+          <a href="#" class="page-num">5</a>
+          <a href="#" class="page-btn next">▶</a>
+          <a href="#" class="page-btn next-all">▶▶</a>
+        </div>
+
+        <div class="status-bar-group">
+          <span class="status-text">SYSTEM READY</span>
+          <div class="progress-bar-retro">
+            <div class="progress-fill"></div>
+          </div>
         </div>
       </div>
 
