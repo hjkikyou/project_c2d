@@ -1,4 +1,4 @@
-package com.comdog.c2d.domain.member;
+package com.comdog.c2d.admin;
 
 import java.util.List;
 

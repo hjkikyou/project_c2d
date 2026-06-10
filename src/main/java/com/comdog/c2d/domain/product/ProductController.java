@@ -14,10 +14,14 @@ import com.comdog.c2d.dto.ProductDto;
 /***************사용자 페이지********************/
 @Controller
 @RequestMapping("/user/product")
-public class UserProductController {
+public class ProductController {
 	
 	@Autowired
 	ProductService service;
+	
+	/********카테고리 파라미터 요청**********/
+	//URL 요청을 받아서 → DB에서 상품 꺼내서 → HTML에 넘겨주는 중간 관리자
+	// 카테고리별 th:text - th:each 적용
 	
 	@GetMapping("/purchase_list")
     public String getPurchaseList(
@@ -93,32 +97,7 @@ public class UserProductController {
         return "user/product/rental_list_more";
     }
     
-    @GetMapping("/assembly_pc_purchase_list")
-    public String productCtPcList(){
-        return "user/product/assembly_pc_purchase_list";
-    }
     
-    @GetMapping("/assembly_pc_rental_list")
-    public String rentalCtPcList(){
-        return "user/product/assembly_pc_rental_list";
-    }
     
-    @GetMapping("/assembly_pc_detail")
-    public String ctPcDetail(Model model) {
-        ProductDto product = new ProductDto();
-        product.setName("테스트 PC");
-        product.setBrand("HP");
-        product.setModelName("프로 데스크 4 G1i");
-        product.setBasePrice(3000000);
-        product.setStockQuantity(10);
-        model.addAttribute("product", product);
-        return "user/product/assembly_pc_detail";
-    }
-    
-    @GetMapping("/product_list")
-    public String productList(){
-        return "user/product/product_list";
-    }
-	
 }
 	

@@ -1,7 +1,10 @@
 package com.comdog.c2d;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.comdog.c2d.dto.ProductDto;
 
 @Controller
 public class RootController {
@@ -16,10 +19,6 @@ public class RootController {
 	        return "admin/index";
 	    }
 	  
-	  @GetMapping("/sign_up_ok")
-	  public String showOkPage() {
-	      return "user/auth/sign_up_ok"; 
-	  }
 
 	@GetMapping("/wishlist")
 	public String wishlist() {
@@ -49,24 +48,49 @@ public class RootController {
 	
 	@GetMapping("/refurb_list")
 	public String refubList() {
-		return "user/product/refurb_list";
-		
-		
-	}
-	
-	
-	@GetMapping("/sign-up-first")
-	public String signUpFist() {
-		return "user/auth/sign-up-first";
-	}
-	
-	@GetMapping("/find-account")
-	public String findAccount() {
-		return "user/auth/find-account";
+		return "user/exclusive/refurb_list";
 	}
 	
 	@GetMapping("/center")
 	public String center() {
 		return "user/center/center";
 	}
-}
+	
+	@GetMapping("/sub-rental")
+	public String subRental() {
+		return "user/exclusive/sub-rental";
+	}
+	@GetMapping("/my-page")
+	public String myPage() {
+		return "user/mypage/my-page";
+	}
+	
+	 @GetMapping("/assembly_pc_purchase_list")
+	    public String productCtPcList(){
+	        return "user/product/assembly_pc_purchase_list";
+	    }
+	    
+	    @GetMapping("/assembly_pc_rental_list")
+	    public String rentalCtPcList(){
+	        return "user/product/assembly_pc_rental_list";
+	    }
+	    
+	    @GetMapping("/assembly_pc_detail")
+	    public String ctPcDetail(Model model) {
+	        ProductDto product = new ProductDto();
+	        product.setName("테스트 PC");
+	        product.setBrand("HP");
+	        product.setModelName("프로 데스크 4 G1i");
+	        product.setBasePrice(3000000);
+	        product.setStockQuantity(10);
+	        model.addAttribute("product", product);
+	        return "user/product/assembly_pc_detail";
+	    }
+	    
+	    @GetMapping("/product_list")
+	    public String productList(){
+	        return "user/product/product_list";
+	    }
+		
+	}
+

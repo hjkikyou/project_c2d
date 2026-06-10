@@ -5,7 +5,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 
 -- 1. 회원 (B2C 개인회원 7명, B2B 기업회원 3명)
 INSERT INTO member (member_id, email, password, name, phone, birth_date, gender_digit, user_type, is_subscribed) VALUES
-(1,  'user1@gmail.com',        'hashed_pwd_1',  '김지훈', '010-1111-1111', '950315', '1', 'PERSONAL', 1),
+(1,  'janedoe@gmail.com',      'bomb!',           '레제', '010-1111-1111', '950315', '1', 'PERSONAL', 1),
 (2,  'user2@gmail.com',        'hashed_pwd_2',  '이서연', '010-2222-2222', '980722', '2', 'PERSONAL', 0),
 (3,  'user3@gmail.com',        'hashed_pwd_3',  '박도현', '010-3333-3333', '001210', '3', 'PERSONAL', 1),
 (4,  'user4@gmail.com',        'hashed_pwd_4',  '최유진', '010-4444-4444', '921005', '2', 'PERSONAL', 0),
@@ -23,7 +23,7 @@ INSERT INTO business_profile (member_id, company_name, business_reg_no, represen
 
 -- 3. 배송지 (각 회원당 1개씩)
 INSERT INTO address (address_id, member_id, address_name, recipient_name, phone, zip_code, base_address, detail_address, is_default) VALUES
-(1, 1, '집', '김지훈', '010-1111-1111', '01234', '서울시 강남구 테헤란로', '101동 101호', 1),
+(1, 1, '집', '레제', '010-1111-1111', '01234', '서울시 강남구 테헤란로', '101동 101호', 1),
 (2, 2, '집', '이서연', '010-2222-2222', '02345', '서울시 서초구 서초대로', '202동 202호', 1),
 (3, 3, '회사', '박도현', '010-3333-3333', '03456', '경기도 성남시 분당구 판교역로', '3층', 1),
 (4, 4, '집', '최유진', '010-4444-4444', '04567', '서울시 송파구 올림픽로', '404호', 1),
