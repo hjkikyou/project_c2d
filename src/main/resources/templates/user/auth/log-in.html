@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+    <link rel="stylesheet" th:href="@{/css/log-in.css}">
+    <title>comdog 로그인</title>
+</head>
+
+<main layout:fragment="container" class="login-wrapper">
+    <div class="login-container">
+        
+        <div class="logo-area">
+            <h1>COMDOG</h1>
+            <p>컴퓨터 구매 & 인수형 렌탈</p>
+        </div>
+
+        <form class="login-form">
+            <div class="input-group">
+                <input type="text" id="username" placeholder="아이디" required>
+            </div>
+            
+            <div class="input-group">
+                <input type="password" id="password" placeholder="비밀번호" required>
+                <button type="button" class="btn-toggle-password" tabindex="-1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="login-options">
+                <label class="save-id">
+                    <input type="checkbox"> 아이디 저장
+                </label>
+                <div class="find-links">
+                    <a href="find-account">아이디 찾기</a> / <a href="find-account">비밀번호 찾기</a>
+                </div>
+            </div>
+			<a href="/">
+            <button type="submit" class="btn-login">로그인</button>
+            </a>
+        </form>
+
+        <div class="divider">
+            <span>회원가입하면 더 많은 혜택을 받으실 수 있어요!</span>
+        </div>
+
+        <a th:href="@{/sign-up-form}" class="btn-signup">회원가입</a>
+
+        <div class="banner-area">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+            <div class="wave"></div>
+        </div>
+
+        <div class="login-footer">
+            <div class="footer-links">
+                <a href="#">이용약관</a> | <a href="#">위치서비스 이용약관</a> | <a href="#">개인정보 처리방침</a>
+            </div>
+            <p class="corp">@entertainnment.corp</p>
+            <p class="contact">문의전화 : 1566-7787 (평일 09:00 - 18:00, 유료)</p>
+        </div>
+
+    </div>
+</main>
+</html>
