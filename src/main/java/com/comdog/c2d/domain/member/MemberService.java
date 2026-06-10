@@ -26,9 +26,12 @@ public interface MemberService {
 	List<MemberDto> findMembersByName(String keyword);
 
 	List<MemberDto> findMembersByPhone(String keyword);
+
+	MemberDto login(MemberDto memberDto);
+
+	}
 	
 	
 	
 	
 	
-}

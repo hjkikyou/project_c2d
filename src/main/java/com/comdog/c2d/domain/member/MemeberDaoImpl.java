@@ -74,4 +74,10 @@ public class MemeberDaoImpl implements MemberDao {
 		return sql.selectList("member.selectMembersByPhone", keyword);
 	}
 
+	// 💡 로그인 기능 추가 (기존 스타일과 통일)
+		@Override
+		public MemberDto login(MemberDto memberDto) {
+			return sql.selectOne("member.login", memberDto);
+		}
+
 }

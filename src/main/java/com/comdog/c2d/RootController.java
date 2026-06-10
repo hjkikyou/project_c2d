@@ -56,11 +56,6 @@ public class RootController {
 	public String center() {
 		return "user/center/center";
 	}
-    
-	@GetMapping("/find-account")
-	public String findAccount() {
-		return "user/auth/find-account";
-	}
 	
 	@GetMapping("/sub-rental")
 	public String subRental() {
