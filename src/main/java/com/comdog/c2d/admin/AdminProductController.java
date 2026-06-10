@@ -1,4 +1,4 @@
-package com.comdog.c2d.domain.product;
+package com.comdog.c2d.admin;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.comdog.c2d.domain.product.ProductService;
 import com.comdog.c2d.dto.ProductDto;
 
 @Controller

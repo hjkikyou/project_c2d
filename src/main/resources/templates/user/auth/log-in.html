@@ -15,7 +15,7 @@
             <p>컴퓨터 구매 & 인수형 렌탈</p>
         </div>
 
-			<form class="login-form" th:action="@{/admin/member/login}" method="post">   
+			<form class="login-form" th:action="@{/user/auth/log-in}" method="post">   
 		         
             <div th:if="${param.error}" style="color: #FF6B6B; font-size: 13px; margin-bottom: 15px; text-align: center;">
                 이메일 또는 비밀번호가 일치하지 않습니다.
@@ -40,7 +40,7 @@
                     <input type="checkbox" name="saveEmail"> 아이디 저장
                 </label>
                 <div class="find-links">
-                    <a href="find-account">아이디 찾기</a> / <a href="find-account">비밀번호 찾기</a>
+                    <a href="/find-account">아이디 찾기</a> / <a href="/find-account">비밀번호 찾기</a>
                 </div>
             </div>
 

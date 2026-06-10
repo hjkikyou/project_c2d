@@ -1,4 +1,4 @@
-package com.comdog.c2d.domain.member;
+package com.comdog.c2d.admin;
 
 import java.util.List;
 
@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.comdog.c2d.dto.MemberDto;
-
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/admin/member")
@@ -92,38 +90,5 @@ public class MemberController {
 			return "redirect:/admin/member/list";
 	 	}
 	 
-	 
-	 /*--로그인기능 (URL은 현재 /admin/member/login 으로 매핑됩니다) --*/
-
-	// 로그인 페이지 매핑 (실제 주소: /admin/member/login)
-	@GetMapping("/log-in")
-	public String loginForm() {
-	    return "user/auth/log-in"; // templates/log-in.html
-	}
-
-	// 로그인 처리 (실제 주소: /admin/member/login)
-	@PostMapping("/log-in")
-	public String login(MemberDto memberDto, HttpSession session) {
-	    // 💡 memberService -> service 로 변수명 수정!
-	    MemberDto loginUser = service.login(memberDto);
-	    
-	    if (loginUser != null) {
-	        // 보안을 위해 세션 저장 전 패스워드는 소거
-	        loginUser.setPassword(null);
-	        session.setAttribute("loginUser", loginUser);
-	        return "redirect:/"; // 메인 페이지로 이동
-	    } else {
-	        // 로그인 실패 시 쿼리 스트링 에러 파라미터 전달 (실제 주소로 리다이렉트)
-	        return "redirect:/user/auth/log-in?error=true";
-	    } 
-	}
-
-	// 로그아웃 처리 (실제 주소: /admin/member/logout)
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-	    session.invalidate();
-	    return "redirect:/";
-	}
-	 
-	}
-
+}
+	

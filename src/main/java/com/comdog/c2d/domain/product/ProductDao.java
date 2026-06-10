@@ -6,6 +6,8 @@ import com.comdog.c2d.dto.ProductDto;
 
 public interface ProductDao {
 	
+	//*관리자용*//
+	
 	//조회
 	List<ProductDto> findAllProducts();
 	
@@ -14,18 +16,18 @@ public interface ProductDao {
 	
 	//변경
 	ProductDto findProductById(Long id);
-
+	
 	void update(ProductDto product);
-
+	
 	//삭제
-	void deleteOrderItemByProductId(Long id); // 💡 이 줄 추가!
+	void deleteOrderItemByProductId(Long id); // 
+	
 	void delete(Long id); // 기존 메서드
 
 	
-	/**********사용자 요청**************/
-	
+	//*사용자용*//
 	List<ProductDto> selectProductsWithSubCategories(Long categoryId);
-
+	
 	String selectCategoryNameById(Long categoryId);
 
 

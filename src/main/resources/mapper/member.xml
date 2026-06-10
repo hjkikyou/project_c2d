@@ -113,21 +113,14 @@
 	
 	<!-- 로그인기능 -->
 	<select id="login" parameterType="com.comdog.c2d.dto.MemberDto" resultType="com.comdog.c2d.dto.MemberDto">
-        SELECT 
-            id,
-            email,
-            password,
-            name,
-            phone,
-            birth_date AS birthDate,
-            gender_digit AS genderDigit,
-            user_type AS userType,
-            is_subscribed AS isSubscribed,
-            created_at AS createdAt
-        FROM 
-            tbl_member
-        WHERE 
-            email = #{email} 
-            AND password = #{password}
-    </select>
+    SELECT 
+        member_id AS id,   email,
+        name,
+        user_type AS userType
+    FROM 
+        member
+    WHERE 
+        email = #{email} 
+        AND password = #{password}
+</select>
 </mapper>
