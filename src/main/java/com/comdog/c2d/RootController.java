@@ -50,6 +50,19 @@ public class RootController {
 	@GetMapping("/refurb_list")
 	public String refubList() {
 		return "user/product/refurb_list";
+		
+		
+	}
+	
+	
+	@GetMapping("/sign-up-first")
+	public String signUpFist() {
+		return "user/auth/sign-up-first";
+	}
+	
+	@GetMapping("/find-account")
+	public String findAccount() {
+		return "user/auth/find-account";
 	}
 	
 	@GetMapping("/center")

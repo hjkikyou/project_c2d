@@ -9,20 +9,16 @@ public class UserMainController {
     
   
     
-    @GetMapping("/log_in")
+    @GetMapping("/log-in")
     public String loginForm(Model model) {
         model.addAttribute("showHeader", false); // 로그인 페이지에서는 헤더를 숨김 처리!
-        return "user/auth/log_in";
+        return "user/auth/log-in";
     }
     
     
-    @GetMapping("/sign_up")
-    public String signUp(){
-        return "user/auth/sign_up";
+    @GetMapping("/sign-up-form")
+    public String signUpForm(){
+        return "user/auth/sign-up-form";
     }
-    
-    
-    
-    
 
 }

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/base-layout}">
+<head>
+    <link rel="stylesheet" th:href="@{/css/sign-up-form.css}">
+    <title>comdog 회원가입</title>
+</head>
+
+<main layout:fragment="container" class="signup-wrapper">
+    <div class="signup-container">
+        
+        <div class="logo-area">
+            <h1>COMDOG</h1>
+            <p>컴퓨터 구매 & 인수형 렌탈</p>
+        </div>
+
+        <h2 class="page-title">회원가입</h2>
+
+        <form class="signup-form">
+            
+            <div class="form-group">
+                <label>회원유형</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="memberType" value="PERSONAL" checked> 개인회원
+                    </label>
+                    <label>
+                        <input type="radio" name="memberType" value="BUSINESS"> 기업/사업자회원
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>이름</label>
+                <input type="text" placeholder="이름 입력" required>
+            </div>
+
+            <div class="form-group">
+                <label>생년월일/성별</label>
+                <div class="birth-group">
+                    <input type="text" class="birth-input" placeholder="생년월일 6자리" maxlength="6">
+                    <span class="dash">-</span>
+                    <input type="text" class="gender-input" maxlength="1">
+                    <div class="mask-dots">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>이메일 아이디 (인증)</label>
+                <div class="email-group" style="margin-bottom: 10px;">
+                    <input type="text" placeholder="이메일 아이디" required>
+                    <span class="at-symbol">@</span>
+                    <select class="email-domain">
+                        <option value="">직접 입력</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="daum.net">daum.net</option>
+                    </select>
+                </div>
+                
+                <div class="verify-group">
+                    
+                    <button type="button" id="btn-initial-send" class="btn-send-code" onclick="sendInitialCode()">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        인증 메일 발송
+                    </button>
+                    
+                    <button type="button" id="btn-resend" class="btn-resend-style" onclick="resendCode()" style="display: none;">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                        </svg>
+                        재전송
+                    </button>
+                    
+                    <input type="text" id="verifyCode" placeholder="인증 코드 입력" required disabled>
+                    
+                    <button type="button" id="btn-confirm" class="btn-confirm-style" onclick="confirmCode()" style="display: none;">확인</button>
+                    
+                </div>
+                <p id="verify-feedback-msg" class="feedback-msg"></p>
+            </div>
+
+            <div class="form-group">
+                <label>닉네임</label>
+                <input type="text" placeholder="6~16자/ 영문 소문자, 숫자 사용 가능" required>
+            </div>
+
+            <div class="form-group relative">
+                <label class="pw-label">
+                    비밀번호
+                    <button type="button" class="btn-info" onclick="toggleTooltip()">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    </button>
+                    <div class="pw-tooltip" id="pwTooltip">
+                        <p class="tooltip-title">※유의사항※</p>
+                        <ul>
+                            <li>8자~15자 길이로 만들어주세요.</li>
+                            <li>영문 대/소문자, 숫자, 특수 문자 2가지를 조합해주세요.</li>
+                            <li>3자 이상 연속/동일한 문자, 숫자는 사용할 수 없습니다.</li>
+                        </ul>
+                    </div>
+                </label>
+                <div class="input-with-icon">
+                    <input type="password" placeholder="8~16자/ 문자,숫자,특수문자 모두 혼용" required>
+                    <button type="button" class="btn-eye"><svg viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>비밀번호 확인</label>
+                <div class="input-with-icon">
+                    <input type="password" placeholder="비밀번호를 다시 입력해 주세요" required>
+                    <button type="button" class="btn-eye"><svg viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
+                </div>
+            </div>
+
+            <div class="terms-container">
+                <label class="terms-all">
+                    <input type="checkbox"> <b>전체동의 합니다</b>
+                </label>
+                <hr>
+                <label class="terms-item">
+                    <input type="checkbox"> <span class="required">[필수]</span> comdog 이용약관에 동의합니다.
+                </label>
+                <label class="terms-item">
+                    <input type="checkbox"> <span class="required">[필수]</span> comdog 개인정보 수집 및 이용 동의
+                </label>
+                <label class="terms-item">
+                    <input type="checkbox"> <span class="optional">[선택]</span> 프로모션 정보 수신 동의
+                </label>
+            </div>
+
+            <button type="submit" class="btn-submit">확인</button>
+
+            <div class="login-link-area">
+                <a th:href="@{/log-in}">이미 계정이 있으신가요?</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function toggleTooltip() {
+            const tooltip = document.getElementById('pwTooltip');
+            if (tooltip.style.display === 'block') {
+                tooltip.style.display = 'none';
+            } else {
+                tooltip.style.display = 'block';
+            }
+        }
+
+     // 이메일 인증 기능 스크립트 (display 상태 변경)
+        function sendInitialCode() {
+            // 초기 발송 버튼 숨기기
+            document.getElementById('btn-initial-send').style.display = 'none';
+            
+            // 요청하신 순서대로 버튼 배치 활성화 (inline-flex로 아이콘 정렬 유지)
+            document.getElementById('btn-resend').style.display = 'inline-flex';
+            document.getElementById('btn-confirm').style.display = 'inline-flex';
+            
+            // 입력창 잠금 해제
+            document.getElementById('verifyCode').removeAttribute('disabled');
+            
+            const msg = document.getElementById('verify-feedback-msg');
+            msg.textContent = '인증 메일이 발송되었습니다. 코드를 입력해 주세요.';
+            msg.className = 'feedback-msg text-success';
+        }
+
+        function resendCode() {
+            const msg = document.getElementById('verify-feedback-msg');
+            msg.textContent = '“인증문자가 재발송 되었습니다”';
+            msg.className = 'feedback-msg text-info';
+        }
+
+        let failCount = 0;
+        function confirmCode() {
+            const msg = document.getElementById('verify-feedback-msg');
+            failCount++;
+            if(failCount > 3) failCount = 3; 
+
+            msg.textContent = `인증 코드 입력이 잘못되었습니다. 다시 한 번 입력해주세요. (${failCount}/3)`;
+            msg.className = 'feedback-msg text-error';
+        }
+    </script>
+</main>
+</html>
