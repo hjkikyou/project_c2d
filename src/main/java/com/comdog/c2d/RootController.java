@@ -68,9 +68,5 @@ public class RootController {
 	@GetMapping("/center")
 	public String center() {
 		return "user/center/center";
-    
-	@GetMapping("/find-account")
-	public String findAccount() {
-		return "user/auth/find-account";
 	}
 }

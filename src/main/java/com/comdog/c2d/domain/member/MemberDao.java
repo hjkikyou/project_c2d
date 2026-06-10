@@ -30,4 +30,6 @@ public interface MemberDao {
 
 	List<MemberDto> selectMembersByPhone(String keyword);
 
+	MemberDto login(MemberDto memberDto);
+
 }
