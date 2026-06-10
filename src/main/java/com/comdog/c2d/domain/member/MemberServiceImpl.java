@@ -83,4 +83,10 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberDto> findMembersByPhone(String keyword) {
 		return memberDao.selectMembersByPhone(keyword);
 	}
+
+	@Override
+    public MemberDto login(MemberDto memberDto) {
+        // 컨트롤러에서 넘어온 아이디/비밀번호 데이터를 DAO로 전달하여 DB 조회
+        return memberDao.login(memberDto);
+    }
 }
