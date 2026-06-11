@@ -115,12 +115,30 @@
 	<select id="login" parameterType="com.comdog.c2d.dto.MemberDto" resultType="com.comdog.c2d.dto.MemberDto">
     SELECT 
         member_id AS id,   email,
-        name,
+        password, name,
         user_type AS userType
     FROM 
         member
     WHERE 
         email = #{email} 
-        AND password = #{password}
-</select>
+	</select>
+	<!-- 회원가입: 회원 정보 INSERT -->
+	<insert id="insertMember" parameterType="com.comdog.c2d.dto.MemberDto">
+	    INSERT INTO member (
+	        email, password, name, phone,
+	        birth_date, gender_digit, user_type, is_subscribed
+	    ) VALUES (
+	        #{email}, #{password}, #{name}, #{phone},
+	        #{birthDate}, #{genderDigit}, #{userType}, #{isSubscribed}
+	    )
+	</insert>
+	
+	<!-- 이메일 중복 확인용 카운트 -->
+	<select id="countByEmail" parameterType="string" resultType="int">
+	    SELECT COUNT(*)
+	    FROM member
+	    WHERE email = #{email}
+	</select>
+
+
 </mapper>
