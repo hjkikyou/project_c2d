@@ -31,12 +31,7 @@ public class UserRootController {
 	    }
 	 
 
-	 
-	 @GetMapping("/sign-up-ok")
-	    public String signUpOk(){
-	        return "user/auth/sign-up-ok";
-	    }
-	 
+
 
 	 @GetMapping("/reset-password")
 	    public String resetPassword(){
