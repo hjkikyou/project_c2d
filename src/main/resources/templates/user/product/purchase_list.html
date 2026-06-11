@@ -80,20 +80,22 @@
     <section class="product-grid-section">
 	  <div class="product-grid">
 	
-	    <div class="prod-card" th:each="product : ${productList}">
-	      <div class="prod-img-box">
-	        <!-- 이미지 있으면 이미지, 없으면 placeholder -->
-	        <img th:if="${product.imageUrl != null}"
-	             th:src="${product.imageUrl}"
-	             th:alt="${product.name}"
-	             class="prod-img">
-	        <div th:unless="${product.imageUrl != null}" class="img-placeholder--sm"></div>
-	      </div>
-	      <div class="prod-body">
-	        <p class="prod-name"  th:text="${product.name}">Text</p>
-	        <p class="prod-price" th:text="${#numbers.formatInteger(product.basePrice, 3, 'COMMA')} + '원'">$0</p>
-	      </div>
-	    </div>
+		<!-- prod-card를 a 링크로 변경, productId를 쿼리 파라미터로 전달 -->
+<a class="prod-card" th:each="product : ${productList}"
+   th:href="@{/product-detail(productId=${product.productId})}">
+  <div class="prod-img-box">
+    <!-- 이미지 있으면 이미지, 없으면 placeholder -->
+    <img th:if="${product.imageUrl != null}"
+         th:src="${product.imageUrl}"
+         th:alt="${product.name}"
+         class="prod-img">
+    <div th:unless="${product.imageUrl != null}" class="img-placeholder--sm"></div>
+  </div>
+  <div class="prod-body">
+    <p class="prod-name"  th:text="${product.name}">Text</p>
+    <p class="prod-price" th:text="${#numbers.formatInteger(product.basePrice, 3, 'COMMA')} + '원'">$0</p>
+  </div>
+</a>
 	
 	    <!-- 상품이 없을 때 -->
 	    <p th:if="${#lists.isEmpty(productList)}" class="no-product">상품이 없습니다.</p>
