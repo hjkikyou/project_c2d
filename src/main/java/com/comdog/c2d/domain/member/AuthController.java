@@ -53,4 +53,33 @@ public class AuthController {
         session.invalidate(); // 현재 세션에 저장된 모든 정보(로그인 정보 등)를 삭제
         return "redirect:/"; // 로그아웃 후 메인 페이지로 이동
     }
+    
+    /*-- 회원가입 기능 (URL: /user/auth/sign-up) --*/
+    
+    // 회원가입 페이지 매핑
+    @GetMapping("/sign-up")
+    public String signupForm(Model model) {
+    	model.addAttribute("showHeader", false); // 회원가입 페이지도 헤더 숨김
+    	return "user/auth/sign-up-form"; // templates/user/auth/sign-up-form.html
+    }
+    
+    // 실제 회원가입 처리 매핑
+    @PostMapping("/sign-up")
+    public String signupProcess(MemberDto memberDto, Model model) throws Exception {
+    	
+    	//이메일 중복 확인
+    	if (authService.isEmailDuplicated(memberDto.getEmail())) {
+    		model.addAttribute("signupError", "이미 사용 중인 이메일입니다.");
+    		model.addAttribute("showHeader", false);
+    		return "user/auth/sign-up-form";
+    	}
+    	
+    	// 회원가입 처리(비밀번호 암호화는 Service에서)
+    	authService.signup(memberDto);
+    	
+    	// 가입 성공 시 로그인 페이지로 이동
+    	return "redirect:/user/auth/log-in";
+    	
+    }
+    
 }

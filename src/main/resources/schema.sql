@@ -89,8 +89,7 @@ CREATE UNIQUE INDEX uk_member_email
 ALTER TABLE member
 	MODIFY COLUMN member_id BIGINT NOT NULL AUTO_INCREMENT COMMENT '사용자 고유번호';
 	
-
--- ======com.comdog.c2d.domain.member========	
+	
 -- ==========================================
 -- (1-1)    법인 프로필 (business_profile)
 -- ==========================================
@@ -120,7 +119,6 @@ ALTER TABLE business_profile
         member_id
     ) ON DELETE CASCADE;
 
--- ======com.comdog.c2d.domain.member========
 -- ==========================================
 -- (1-2)          주소록 (address)
 -- ==========================================
