@@ -40,8 +40,13 @@ public class AuthController {
             session.setAttribute("loginMember", loginMember);
             return "redirect:/"; // 메인 페이지로 리다이렉트
         } else {
-            // 로그인 실패 시 에러 메시지와 함께 다시 로그인 페이지로
-            model.addAttribute("loginError", "이메일 또는 비밀번호가 일치하지 않습니다.");
+            // 로그인 실패 시 에러 메시지와 함께 다시 로그인 페이지로 
+        	// 비번 틀림 + 회원 없음(DB에 정보 없음) 둘 다 여기로 옴
+        	// 비번 틀림과 회원 없음(DB에 정보 없음)은 둘 다 login()이 null을 반환하는 같은 경우라,
+        	//메시지 하나로 처리하면 돼요. 보안상으로도 "이메일이 없다" / "비번이 틀리다"를 구분해서 알려주지 않는 게 좋아요
+        	// (공격자에게 힌트가 되니까요).
+        	
+            model.addAttribute("loginError", "※이메일 또는 비밀번호가 일치하지 않습니다※");
             model.addAttribute("showHeader", false); // 실패해서 다시 돌아갈 때도 헤더 숨김 유지
             return "user/auth/log-in";
         } 
@@ -79,7 +84,7 @@ public class AuthController {
     	
     	// 가입 성공 시 로그인 페이지로 이동 
     	// return "user/auth/sign-up-ok"; // forward 없이 뷰 직접 반환
-    	return "redirect:/user/auth/log-in"; // 아래 GET 매핑으로 리다이렉트 , 리다이렉트 (새로고침 시 중복가입 방지, 더 안전)
+    	return "redirect:/user/auth/sign-up-ok"; // 아래 GET 매핑으로 리다이렉트 , 리다이렉트 (새로고침 시 중복가입 방지, 더 안전)
     	
     }
     
@@ -90,5 +95,7 @@ public class AuthController {
         model.addAttribute("showHeader", false);
         return "user/auth/sign-up-ok"; // templates/user/auth/sign-up-ok.html
     }
+    
+
     
 }
