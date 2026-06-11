@@ -4,17 +4,19 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- 1. 회원 (B2C 개인회원 7명, B2B 기업회원 3명)
+-- ※ 모든 비밀번호는 평문 '1234'의 BCrypt 해시 (로그인 시 비밀번호: 1234)
 INSERT INTO member (member_id, email, password, name, phone, birth_date, gender_digit, user_type, is_subscribed) VALUES
-(1,  'janedoe@gmail.com',      'bomb!',           '레제', '010-1111-1111', '950315', '1', 'PERSONAL', 1),
-(2,  'user2@gmail.com',        'hashed_pwd_2',  '이서연', '010-2222-2222', '980722', '2', 'PERSONAL', 0),
-(3,  'user3@gmail.com',        'hashed_pwd_3',  '박도현', '010-3333-3333', '001210', '3', 'PERSONAL', 1),
-(4,  'user4@gmail.com',        'hashed_pwd_4',  '최유진', '010-4444-4444', '921005', '2', 'PERSONAL', 0),
-(5,  'user5@gmail.com',        'hashed_pwd_5',  '정민우', '010-5555-5555', '870428', '1', 'PERSONAL', 0),
-(6,  'user6@gmail.com',        'hashed_pwd_6',  '강수아', '010-6666-6666', '991130', '4', 'PERSONAL', 1),
-(7,  'user7@gmail.com',        'hashed_pwd_7',  '조현우', '010-7777-7777', '030817', '3', 'PERSONAL', 0),
-(8,  'b2b1@company.com',       'hashed_pwd_8',  '윤태양', '010-8888-8888', '780601', '1', 'BUSINESS', 1),
-(9,  'b2b2@startup.com',       'hashed_pwd_9',  '임지아', '010-9999-9999', '830214', '2', 'BUSINESS', 0),
-(10, 'b2b3@enterprise.com',    'hashed_pwd_10', '한승민', '010-0000-0000', '910923', '1', 'BUSINESS', 1);
+(1,  'janedoe@gmail.com',   '$2a$10$vbv5NeWHwapHt5m23u/dZ.bIII3pawrJhoC61Tqe1O2afIgoS.plK', '레제',   '010-1111-1111', '950315', '1', 'PERSONAL', 1),
+(2,  'user2@gmail.com',     '$2a$10$vbv5NeWHwapHt5m23u/dZ.bIII3pawrJhoC61Tqe1O2afIgoS.plK', '이서연', '010-2222-2222', '980722', '2', 'PERSONAL', 0),
+(3,  'user3@gmail.com',     '$2a$10$vbv5NeWHwapHt5m23u/dZ.bIII3pawrJhoC61Tqe1O2afIgoS.plK', '박도현', '010-3333-3333', '001210', '3', 'PERSONAL', 1),
+(4,  'user4@gmail.com',     '$2a$10$vbv5NeWHwapHt5m23u/dZ.bIII3pawrJhoC61Tqe1O2afIgoS.plK', '최유진', '010-4444-4444', '921005', '2', 'PERSONAL', 0),
+(5,  'user5@gmail.com',     '$2a$10$vbv5NeWHwapHt5m23u/dZ.bIII3pawrJhoC61Tqe1O2afIgoS.plK', '정민우', '010-5555-5555', '870428', '1', 'PERSONAL', 0),
+(6,  'user6@gmail.com',     '$2a$10$vbv5NeWHwapHt5m23u/dZ.bIII3pawrJhoC61Tqe1O2afIgoS.plK', '강수아', '010-6666-6666', '991130', '4', 'PERSONAL', 1),
+(7,  'user7@gmail.com',     '$2a$10$vbv5NeWHwapHt5m23u/dZ.bIII3pawrJhoC61Tqe1O2afIgoS.plK', '조현우', '010-7777-7777', '030817', '3', 'PERSONAL', 0),
+(8,  'b2b1@company.com',    '$2a$10$vbv5NeWHwapHt5m23u/dZ.bIII3pawrJhoC61Tqe1O2afIgoS.plK', '윤태양', '010-8888-8888', '780601', '1', 'BUSINESS', 1),
+(9,  'b2b2@startup.com',    '$2a$10$vbv5NeWHwapHt5m23u/dZ.bIII3pawrJhoC61Tqe1O2afIgoS.plK', '임지아', '010-9999-9999', '830214', '2', 'BUSINESS', 0),
+(10, 'b2b3@enterprise.com', '$2a$10$vbv5NeWHwapHt5m23u/dZ.bIII3pawrJhoC61Tqe1O2afIgoS.plK', '한승민', '010-0000-0000', '910923', '1', 'BUSINESS', 1);
+
 -- 2. 사업자 프로필 (기업 회원 3명)
 INSERT INTO business_profile (member_id, company_name, business_reg_no, representative_name) VALUES
 (8, '(주)테크솔루션', '123-45-67890', '윤태양'),

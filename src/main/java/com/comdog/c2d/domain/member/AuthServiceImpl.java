@@ -29,11 +29,29 @@ public class AuthServiceImpl implements AuthService {
 			return null;
 		}
 		
+		// ↓ 디버그용 (확인 후 삭제)
+	    System.out.println(">>> 입력 평문: [" + memberDto.getPassword() + "]");
+	    System.out.println(">>> DB 해시: [" + findMember.getPassword() + "]");
+
+		
 		// 3) 입력한 평문 비밀번호와 DB의 BCrpt 해시 비교
 		boolean matched = passwordEncoder.matches(
 				memberDto.getPassword(), //사용자가 입력한 평문
 				findMember.getPassword() //DB에 저장된 해시
 				);
+		
+		try {
+		    matched = passwordEncoder.matches(
+		        memberDto.getPassword(),
+		        findMember.getPassword()
+		    );
+		    System.out.println(">>>>> matches 최종 결과: " + matched);  // 눈에 띄게
+		} catch (Exception e) {
+		    System.out.println(">>>>> matches 예외 발생!");
+		    e.printStackTrace();
+		}
+		
+		
 		 // 4) 일치하면 회원정보 반환, 아니면 null
 	    return matched ? findMember : null;
 		
