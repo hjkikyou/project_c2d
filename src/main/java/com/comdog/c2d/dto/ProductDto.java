@@ -15,6 +15,20 @@ public class ProductDto {
     private int stockQuantity;    // 재고 수량
     private String description;   // 상세 스펙 / 렌탈 유의사항
     private String isDeleted;     // 삭제 여부 (Y/N)
+    
+    private String isPurchasable; // 구매 가능 여부 (Y/N) ← 추가
+    private String isRentable;    // 대여 가능 여부 (Y/N) ← 추가
+    private Integer rentalPrice;  // 대표 월 렌탈료 (NULL 가능) ← 추가
+    
+    
+    //그대로 두면 되는 미사용 필드: avgRating, reviewCount, discountRate, salePrice
+    //— 리뷰·할인 기능 만들 때 채울 거라 지금은 비워둬도 무방해요. 삭제 안 해도 돼요.
+    
+    //테이블엔 있는데 DTO엔 없는 컬럼: is_purchasable, is_rentable, rental_price, is_recommended,
+    //view_count, rental_count,
+    //created_at, updated_at, is_deleted. 이 중 정렬·필터·상태관리에 쓰이는 것들이라 화면에서 점점 필요해질 거예요.
+    
+    
 
     // ── product_spec 테이블 (JOIN) ──
     // spec_key → spec_value 형태로 Map에 담기
@@ -33,6 +47,8 @@ public class ProductDto {
     private int discountRate;     // 할인율 (%)
     private int salePrice;        // 할인 적용가 (구매용)
     private boolean isB2bOnly;    // B2B 전용 여부
+    
+    //RentalPriceDto엔 앞서 말한 depositFee 추가가 필요, 나중에
 
     // ── 내부 클래스: 렌탈가 ──
     public static class RentalPriceDto {
@@ -112,4 +128,13 @@ public class ProductDto {
 
     public boolean isB2bOnly() { return isB2bOnly; }
     public void setB2bOnly(boolean b2bOnly) { isB2bOnly = b2bOnly; }
+    
+    public String getIsPurchasable() { return isPurchasable; }
+    public void setIsPurchasable(String isPurchasable) { this.isPurchasable = isPurchasable; }
+
+    public String getIsRentable() { return isRentable; }
+    public void setIsRentable(String isRentable) { this.isRentable = isRentable; }
+
+    public Integer getRentalPrice() { return rentalPrice; }
+    public void setRentalPrice(Integer rentalPrice) { this.rentalPrice = rentalPrice; }
 }

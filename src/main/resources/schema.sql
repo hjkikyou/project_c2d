@@ -193,7 +193,6 @@ ALTER TABLE category
 
 
 
--- =====com.comdog.c2d.domain.product========
 -- ==========================================
 -- (2)           상품 (product) 
 -- ==========================================
@@ -214,6 +213,7 @@ CREATE TABLE product (
     
     stock_quantity INT            NOT NULL DEFAULT 0   COMMENT '재고 수량', 
     description    TEXT           NULL                 COMMENT '기기의 상세 스펙이나 렌탈 유의사항',
+     image_url      VARCHAR(500)   NULL                 COMMENT '상품 대표 이미지 URL', -- ← 추가
     
     -- 웹 UI 정렬/필터링을 위해 새로 추가된 컬럼들!
     is_recommended CHAR(1)        NOT NULL DEFAULT 'N' COMMENT '추천 상품 여부 (Y/N) - 추천순/메인노출용',
