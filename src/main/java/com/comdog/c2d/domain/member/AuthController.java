@@ -77,9 +77,18 @@ public class AuthController {
     	// 회원가입 처리(비밀번호 암호화는 Service에서)
     	authService.signup(memberDto);
     	
-    	// 가입 성공 시 로그인 페이지로 이동
-    	return "redirect:/user/auth/log-in";
+    	// 가입 성공 시 로그인 페이지로 이동 
+    	// return "user/auth/sign-up-ok"; // forward 없이 뷰 직접 반환
+    	return "redirect:/user/auth/log-in"; // 아래 GET 매핑으로 리다이렉트 , 리다이렉트 (새로고침 시 중복가입 방지, 더 안전)
     	
+    }
+    
+    // PRG(Post-Redirect-Get) 패턴. 가입 완료 페이지를 보여주는 GET 매핑을 따로 만들고, POST는 그쪽으로 리다이렉트
+    // GET: 가입 완료 페이지 보여주기
+    @GetMapping("/sign-up-ok")
+    public String signupOk(Model model) {
+        model.addAttribute("showHeader", false);
+        return "user/auth/sign-up-ok"; // templates/user/auth/sign-up-ok.html
     }
     
 }
