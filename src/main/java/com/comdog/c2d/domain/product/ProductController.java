@@ -97,7 +97,19 @@ public class ProductController {
         return "user/product/rental_list_more";
     }
     
-    
+    //상품 상세 페이지 추가
+    @GetMapping("/product-detail")
+    public String getProductDetail(
+    		@RequestParam(name = "productId") Long productId,
+    		Model model) {
+    	ProductDto product = service.findProductById(productId);
+    	model.addAttribute("product", product);
+    	
+    	return "user/product/product-detail";
+    }
     
 }
+    
+    
+
 	

@@ -25,12 +25,12 @@ public class ContractController {
 	//계약 목록 조회
 	@GetMapping("/list")
 	public String getContractListPage(Model model,
-			@RequestParam(value = "search", required = false) String search,
-			@RequestParam(value = "keyword", required = false) String keyword) {
+		@RequestParam(value = "search", required = false) String search,
+		@RequestParam(value = "keyword", required = false) String keyword) {
 	
 	Map<String, String> searchParams = new HashMap<>();
-	searchParams.put("search", search);
-	searchParams.put("keyword", keyword);
+		searchParams.put("search", search);
+		searchParams.put("keyword", keyword);
 	
 	List<ContractListDto> contractList = service.searchContracts(searchParams);
 	

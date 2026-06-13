@@ -182,7 +182,7 @@ a  { text-decoration: none; color: inherit; }
 }
 
 /* 검색창 */
-.search-box {
+.list-search-box {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -194,12 +194,12 @@ a  { text-decoration: none; color: inherit; }
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.search-box:focus-within {
+.list-search-box:focus-within {
     border-color: #2563eb;
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-.search-input {
+.list-search-input {
     border: none;
     outline: none;
     font-size: 13px;
@@ -208,9 +208,9 @@ a  { text-decoration: none; color: inherit; }
     width: 100%;
 }
 
-.search-input::placeholder { color: #9ca3af; }
+.list-search-input::placeholder { color: #9ca3af; }
 
-.search-icon {
+.list-search-icon {
     font-size: 13px;
     color: #9ca3af;
     flex-shrink: 0;
@@ -270,20 +270,26 @@ a  { text-decoration: none; color: inherit; }
 .prod-card {
 	text-decoration: none; /* 밑줄제거*/
 	color: inherit; /*글자색 원래대로*/
-	cursor: pointer;
+    cursor: pointer;
+    min-width: 0;          /* ★ 긴 텍스트가 칸을 밀어내는 것 차단 */
     border: 1px solid #e5e7eb;
     border-radius: 6px;
     overflow: hidden;
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .prod-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.prod-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* 비율 유지하면서 꽉 채우기 */
 }
 
 .prod-img-box {
@@ -293,10 +299,15 @@ a  { text-decoration: none; color: inherit; }
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
 .prod-body {
     padding: 12px 14px 14px;
+    display: flex;             /* ★ 추가: 내부 요소를 flex로 배치 */
+    flex-direction: column;    /* ★ 추가: 세로 방향 정렬 */
+    flex: 1;                   /* ★ 추가: 남은 카드 높이를 꽉 채움 */
+    justify-content: space-between; /* ★ 추가: 이름은 위로, 가격은 아래로 밀어냄 */
 }
 
 .prod-name {
@@ -304,6 +315,24 @@ a  { text-decoration: none; color: inherit; }
     color: #374151;
     margin: 0 0 4px;
     font-weight: 400;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.8em;
+    word-break: break-all;     /* ★ 추가: 띄어쓰기가 없는 긴 텍스트(예: 영문/숫자 모델명) 강제 줄바꿈 */
+}
+
+.prod-name {
+    font-size: 13px;
+    color: #374151;
+    margin: 0 0 4px;
+    font-weight: 400;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.8em;   /* 2줄 높이 확보 → 카드 높이 통일 */
 }
 
 .prod-price {

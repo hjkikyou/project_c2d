@@ -1,98 +1,80 @@
 /* =============================================
-   FOOTER.CSS — 사이트 공통 푸터
+   FOOTER.CSS — 푸터 전용 레이아웃
    ============================================= */
 
-/* ─── CSS 변수 ─── */
-:root {
-    --footer-accent: #3b00ff;
-    --footer-bg:     #f5f5f7;
-    --footer-border: #e0e0e0;
-    --footer-text:   #333;
-    --footer-muted:  #888;
-}
-
-/* ─── 기본 리셋 (푸터 범위만) ─── */
-.site-footer *,
-.site-footer *::before,
-.site-footer *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-.site-footer ul { list-style: none; }
-.site-footer a  { text-decoration: none; color: inherit; }
-.site-footer button { font-family: inherit; }
-
 /* ─── 푸터 전체 ─── */
+/* reset.css에서 처리된 margin, padding, list-style 등은 제거했습니다. */
+/* common.css의 공통 폰트를 상속받으므로 font-family 지정도 생략 가능합니다. */
 .site-footer {
     width: 100%;
-    background-color: var(--footer-bg);
-    color: var(--footer-text);
-    font-family: 'Noto Sans KR', 'Pretendard', -apple-system, sans-serif;
+    /* 화면을 아무리 줄여도 1200px 이하로는 줄어들지 않도록 강제 (가로 스크롤 생성) */
+    min-width: 1200px;
+    background-color: var(--bg-gray);
+    color: var(--color-text);
     font-size: 14px;
-    border-top: 1px solid var(--footer-border);
+    border-top: 1px solid var(--color-border);
+}
+
+.site-footer button {
+    font-family: inherit;
 }
 
 /* ─── 공통 내부 컨테이너 ─── */
-.footer-container {
-    width: min(1200px, 100%);
+.site-footer .footer-container {
+    width: 1200px; /* 반응형(min) 속성 제거하고 1200px로 완전 고정 */
     margin: 0 auto;
     padding: 0 24px;
 }
 
-
 /* ════════════════════════════════════
    상단 영역 (로고 + 5컬럼)
 ════════════════════════════════════ */
-
-.footer-top {
+.site-footer .footer-top {
     padding: 36px 0 0;
 }
 
 /* ─── 로고 ─── */
-.footer-logo {
+.site-footer .footer-logo {
     margin-bottom: 24px;
 }
 
-.logo-text {
-    color: var(--footer-accent);
+.site-footer .logo-text {
+    color: var(--color-accent);
     font-size: 22px;
     font-weight: 800;
     letter-spacing: -0.02em;
 }
 
-.logo-sub {
+.site-footer .logo-sub {
     font-size: 12px;
-    color: var(--footer-muted);
+    color: var(--color-muted);
     margin-top: 4px;
 }
 
 /* ─── 5단 컬럼 레이아웃 ─── */
-.footer-columns {
+.site-footer .footer-columns {
     display: flex;
     gap: 24px;
     padding-bottom: 36px;
     align-items: flex-start;
 }
 
-.col { flex: 1; min-width: 0; }
+.site-footer .col { flex: 1; min-width: 0; }
 
 /* 공지사항/이벤트 — 더 넓게 */
-.col--notice { flex: 2; }
+.site-footer .col--notice { flex: 2; }
 
 /* 상담/문의 — 더 좁게 */
-.col--consulting { flex: 0.6; }
-
+.site-footer .col--consulting { flex: 0.6; }
 
 /* ─── 공지사항 탭 헤더 ─── */
-.tab-header {
+.site-footer .tab-header {
     display: flex;
-    border-bottom: 2px solid var(--footer-accent);
+    border-bottom: 2px solid var(--color-accent);
     margin-bottom: 14px;
 }
 
-.tab-btn {
+.site-footer .tab-btn {
     flex: 1;
     text-align: center;
     padding: 9px 0;
@@ -101,22 +83,23 @@
     font-weight: 500;
     background: none;
     border: none;
-    color: var(--footer-accent);
+    color: var(--color-accent);
     transition: color 0.15s, background-color 0.15s;
     border-radius: 0;
 }
 
-.tab-btn--active {
-    color: var(--footer-text);
+.site-footer .tab-btn--active {
+    color: var(--color-text);
     font-weight: 700;
 }
 
-.tab-btn:hover:not(.tab-btn--active) {
-    background-color: rgba(59, 0, 255, 0.05);
+.site-footer .tab-btn:hover:not(.tab-btn--active) {
+    /* 기존 #3b00ff 기반에서 common.css의 #6D3AFF에 맞춘 투명도로 변경 */
+    background-color: rgba(109, 58, 255, 0.05);
 }
 
 /* ─── 공지사항 목록 ─── */
-.notice-list li {
+.site-footer .notice-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -125,8 +108,8 @@
     font-size: 13px;
 }
 
-.notice-list a {
-    color: var(--footer-text);
+.site-footer .notice-list a {
+    color: var(--color-text);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -134,52 +117,50 @@
     transition: color 0.15s;
 }
 
-.notice-list a:hover { color: var(--footer-accent); }
+.site-footer .notice-list a:hover { color: var(--color-accent); }
 
-.notice-date {
-    color: var(--footer-muted);
+.site-footer .notice-date {
+    color: var(--color-muted);
     font-size: 11px;
     flex-shrink: 0;
     white-space: nowrap;
 }
 
 /* ─── 컬럼 제목 ─── */
-.col-title {
-    color: var(--footer-accent);
+.site-footer .col-title {
+    color: var(--color-accent);
     font-size: 13px;
     font-weight: 600;
     text-align: center;
     padding-bottom: 9px;
-    border-bottom: 2px solid var(--footer-accent);
+    border-bottom: 2px solid var(--color-accent);
     margin-bottom: 14px;
-
-    /* ✅ 추가: 탭 헤더 높이에 맞춤 */
-    min-height: 37.33px;          /* 탭 헤더와 동일한 높이 */
+    min-height: 37.33px;
     display: flex;
-    align-items: flex-end;     /* 텍스트를 아래쪽 기준으로 정렬 */
+    align-items: flex-end;
     justify-content: center;
 }
 
 /* ─── 링크 목록 ─── */
-.link-list li {
+.site-footer .link-list li {
     margin-bottom: 10px;
     font-size: 13px;
 }
 
-.link-list a {
-    color: var(--footer-text);
+.site-footer .link-list a {
+    color: var(--color-text);
     display: inline-flex;
     align-items: center;
     gap: 4px;
     transition: color 0.15s;
 }
 
-.link-list a:hover { color: var(--footer-accent); }
+.site-footer .link-list a:hover { color: var(--color-accent); }
 
-.fa-chevron-down { font-size: 9px; }
+.site-footer .fa-chevron-down { font-size: 9px; }
 
 /* ─── 매장찾기 버튼 ─── */
-.btn-store {
+.site-footer .btn-store {
     display: block;
     width: 100%;
     background-color: #111;
@@ -193,90 +174,88 @@
     transition: background-color 0.15s;
 }
 
-.btn-store:hover { background-color: #333; }
+.site-footer .btn-store:hover { background-color: #333; }
 
 /* ─── SNS ─── */
-.col-title--sns {
+.site-footer .col-title--sns {
     margin-top: 20px;
 }
 
-.sns-links {
+.site-footer .sns-links {
     display: flex;
     justify-content: space-between;
     padding: 0 4px;
 }
 
-.sns-links a {
+.site-footer .sns-links a {
     font-size: 22px;
-    color: var(--footer-text);
+    color: var(--color-text);
     transition: color 0.15s, transform 0.15s;
 }
 
-.sns-links a:hover {
-    color: var(--footer-accent);
+.site-footer .sns-links a:hover {
+    color: var(--color-accent);
     transform: translateY(-2px);
 }
-
 
 /* ════════════════════════════════════
    중단: 약관 메뉴
 ════════════════════════════════════ */
-.footer-policy {
-    border-top: 1px solid var(--footer-border);
-    border-bottom: 1px solid var(--footer-border);
+.site-footer .footer-policy {
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
     padding: 13px 0;
     background-color: #ededef;
 }
 
-.policy-menu {
+.site-footer .policy-menu {
     display: flex;
     flex-wrap: wrap;
     gap: 6px 20px;
 }
 
-.policy-menu li a {
+.site-footer .policy-menu li a {
     font-size: 13px;
     color: #444;
     transition: color 0.15s;
 }
 
-.policy-menu li a:hover { color: var(--footer-accent); }
+.site-footer .policy-menu li a:hover { color: var(--color-accent); }
 
-.policy-menu__bold {
+.site-footer .policy-menu__bold {
     font-weight: 700;
     color: #111 !important;
 }
 
-
 /* ════════════════════════════════════
    하단: 회사 정보
 ════════════════════════════════════ */
-.footer-info {
+.site-footer .footer-info {
     padding: 28px 0 36px;
     color: #555;
     font-size: 12px;
     line-height: 1.9;
 }
 
-.footer-info p + p {
+.site-footer .footer-info p + p {
     margin-top: 2px;
 }
 
-.footer-info strong {
+.site-footer .footer-info strong {
     font-size: 15px;
     color: #111;
     font-weight: 700;
 }
 
-.footer-info__service {
+.site-footer .footer-info__service {
     margin-top: 8px;
 }
 
 /* ─── 인라인 소형 버튼 ─── */
-.btn-small {
+.site-footer .btn-small {
     display: inline-block;
     background-color: #ece8ff;
-    color: var(--footer-accent);
+    color: var(--color-accent);
     border: 1px solid #c9b8ff;
     padding: 2px 8px;
     font-size: 11px;
@@ -288,35 +267,11 @@
     transition: background-color 0.15s, border-color 0.15s;
 }
 
-.btn-small:hover {
+.site-footer .btn-small:hover {
     background-color: #ddd4ff;
     border-color: #a98fff;
 }
 
-
 /* ════════════════════════════════════
-   반응형
+   반응형X
 ════════════════════════════════════ */
-@media (max-width: 1024px) {
-    .footer-columns {
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-
-    .col { flex: 0 0 calc(33.33% - 14px); }
-    .col--notice { flex: 0 0 100%; }
-    .col--store  { flex: 0 0 calc(50% - 10px); }
-}
-
-@media (max-width: 640px) {
-    .footer-container { padding: 0 16px; }
-    .footer-top { padding-top: 28px; }
-
-    .col,
-    .col--store { flex: 0 0 100%; }
-
-    .policy-menu { gap: 6px 14px; }
-
-    .footer-info { font-size: 11px; }
-    .footer-info strong { font-size: 14px; }
-}
