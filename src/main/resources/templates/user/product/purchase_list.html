@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layouts/base-layout}">
+      layout:decorate="~{layouts/base-layout}">
   <head>
     <link rel="stylesheet" href="/css/purchase_list.css">
   </head>
@@ -59,9 +59,9 @@
          검색 + 정렬 필터바
     ════════════════════════════════════ -->
     <div class="filter-bar">
-      <div class="search-box">
-        <input type="text" class="search-input" placeholder="Search">
-        <span class="search-icon">🔍</span>
+      <div class="list-search-box">
+        <input type="text" class="list-search-input" placeholder="Search">
+        <span class="list-search-icon">🔍</span>
       </div>
 
       <div class="sort-tabs">
@@ -81,27 +81,27 @@
 	  <div class="product-grid">
 	
 		<!-- prod-card를 a 링크로 변경, productId를 쿼리 파라미터로 전달 -->
-<a class="prod-card" th:each="product : ${productList}"
-   th:href="@{/product-detail(productId=${product.productId})}">
-  <div class="prod-img-box">
-    <!-- 이미지 있으면 이미지, 없으면 placeholder -->
-    <img th:if="${product.imageUrl != null}"
-         th:src="${product.imageUrl}"
-         th:alt="${product.name}"
-         class="prod-img">
-    <div th:unless="${product.imageUrl != null}" class="img-placeholder--sm"></div>
-  </div>
-  <div class="prod-body">
-    <p class="prod-name"  th:text="${product.name}">Text</p>
-    <p class="prod-price" th:text="${#numbers.formatInteger(product.basePrice, 3, 'COMMA')} + '원'">$0</p>
-  </div>
-</a>
-	
-	    <!-- 상품이 없을 때 -->
-	    <p th:if="${#lists.isEmpty(productList)}" class="no-product">상품이 없습니다.</p>
-	
-	  </div>
-	</section>
+		<a class="prod-card" 
+		   th:each="product : ${productList}"
+		   th:href="@{/user/product/product-detail(productId=${product.productId})}">
+		  <div class="prod-img-box">
+		    <img th:if="${product.imageUrl != null}"
+		         th:src="${product.imageUrl}"
+		         th:alt="${product.name}"
+		         class="prod-img">
+		    <div th:unless="${product.imageUrl != null}" class="img-placeholder--sm"></div>
+		  </div>
+		  <div class="prod-body">
+		    <p class="prod-name" th:text="${product.name}">Text</p>
+		    <p class="prod-price" th:text="${#numbers.formatInteger(product.basePrice, 3, 'COMMA')} + '원'">$0</p>
+		  </div>
+		</a>
+		
+		<!-- 상품이 없을 때 -->
+		<p th:if="${#lists.isEmpty(productList)}" class="no-product">상품이 없습니다.</p>
+		</div>
+		</section>
+		
     <!-- ════════════════════════════════════
          페이지네이션
     ════════════════════════════════════ -->
