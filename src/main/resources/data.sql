@@ -117,14 +117,15 @@ INSERT INTO product (
 
 
 --1. PC(일반/사무용 PC: 11, 전문가용 PC: 12, 게이밍 PC: 13, 미니 PC: 14)
-(4, 12, 'RTX 4070 게이밍 데스크탑', 'ASUS', 'ROG-4070', 'Y', 2500000, 'Y', 75000, 20, '하이엔드 게이밍 브랜드 PC', 'N', 230, 18),
-(8, 13, '사무용 미니 PC', 'Intel', 'NUC-13', 'Y', 700000, 'Y', 20000, 100, '공간 절약형 사무용 PC', 'N', 110, 55),
+-- (4, 12, 'RTX 4070 게이밍 데스크탑', 'ASUS', 'ROG-4070', 'Y', 2500000, 'Y', 75000, 20, '하이엔드 게이밍 브랜드 PC', 'N', 230, 18),
+-- (8, 13, '사무용 미니 PC', 'Intel', 'NUC-13', 'Y', 700000, 'Y', 20000, 100, '공간 절약형 사무용 PC', 'N', 110, 55),
 
--- (100, 42, '[Apple] MacBook Pro 16, M5, Silver', 'Apple', 'Z1N00005U', 'Y', 3000000, 'N', NULL, 250, '애플 맥북 프로 16 M5 실버 색상 노트북입니다(대여 불가)', 'Y', 300, 0),
--- (101, 42, '[Apple] MacBook Pro 14, M5, Silver', 'Apple', 'MGDR4KH/A', 'Y', 2500000, 'Y', 75000, 3, '애플 맥북 프로 14 M5 실버 색상 노트북입니다', 'Y', 400, 7),
--- (102, 41, '[Apple] MacBook Air 15, M3, StarLight', 'Apple', 'Z1GF00013', 'Y', 2000000, 'Y', 60000, 30, '애플 맥북 에어 15 M3 스타라이트 색상 노트북입니다', 'N', 520, 45),
--- (103, 41, '[Apple] MacBook Air 13, M5, Silver', 'Apple', 'Z1L0000Q0', 'Y', 2250000, 'Y', 69000, 24, '애플 맥북 에어 13 M5 실버 색상 노트북입니다.', 'Y', 520, 22),
--- (104, 41, '[Apple] MacBook Neo, A18, Silver', 'Apple', 'Z1TN0000F', 'Y', 1700000, 'N', NULL, 38, '애플 맥북 네오 A18 실버 색상 노트북입니다(대여불가)', 'Y', 388, 0),
+(100, 12, '[Apple] iMac 27인치 2024년형 M4', 'Apple', 'MWUC3KH/A', 'Y', 1940000, 'Y', 70000, 250, '애플 아이맥 27인치 2024년형 M4 실버 색상 PC입니다', 'Y', 300, 23),
+(101, 12, '[Apple] iMac 27인치 2020년형 인텔i7', 'Apple', 'MGSCX4KH/A', 'Y', 1450000, 'Y', 65000, 14, '애플 아이맥 27인치 2019년형 인텔i9 PC입니다', 'Y', 400, 7),
+(102, 12, '[Apple] iMac 27인치 2019년형 인텔i9', 'Apple', 'MRR12KH/A', 'Y', 910000, 'Y', 48000, 30, '애플 아이맥 27인치 2019년형 인텔i9 PC입니다', 'N', 999, 45),
+(103, 12, '[Apple] iMac G3 1998년형', 'Apple', 'G300001/A', 'Y', 2000000, 'N', NULL, 2, '애플 아이맥 G3 1998년형 PC입니다', 'N', 100, 0),
+(104, 12, '[Apple] Macintosh 1984년형', 'Apple', 'MAC1984/A', 'Y', 500000000, 'N', NULL, 1, '애플 아이맥 맥킨토시 1984년형 PC입니다', 'N', 12, 0),
+(105, 14, '[Apple] Mac Mini 2023 M2 실버', 'Apple', 'Z1700003N', 'Y', 2180000, 'N', NULL, 55, '애플 맥 미니 2023년 M2 실버 미니PC입니다', 'Y', 112, 0),
 
 -- (110, 42, '[삼성] 갤럭시북5 프로, IntelCore-Ultra_7, Coplit+ PC', 'Samsung', 'NT960XHA-KC71G', 'Y', 2499999, 'Y', 75000, 100, '삼성 갤럭시북5 프로, 인텔 코어 울트라 7, Copliot+ 노트북입니다', 'Y', 800, 12),
 -- (111, 42, '[삼성] 갤럭시북6 프로, 그레이', 'Samsung', 'NT940XJG-K72A', 'Y', 3650000, 'N', NULL, 110, '삼성 갤럭시북6 프로 그레이 색상 노트북입니다(대여불가)', 'Y', 777, 0),
@@ -138,15 +139,15 @@ INSERT INTO product (
 -- (123, 41, '[LG] 그램 AI 2026, AMD Ryzen_AI-5, Copilot+ PC', 'LG', '15Z95U-GS5SK', 'Y', 2500000, 'Y', 72000, 12, 'LG노트북입니다', 'Y', 99, 9),
 -- (124, 41, '[LG] 그램, IntelCore_Ultra-5', 'LG', '14ZB90S-GA5WK', 'Y', 1300000, 'N', NULL, 77, 'LG 노트북입니다(대여불가)', 'N', 43, 0),
 
--- (130, 42, '[Lenovo] Thinkpad E14 IPL G8 U7 3K AI', 'Lenovo', '21Y60065KR', 'Y', 1899000, 'Y', 60000, 200, 'Lenovo Thinkpad 노트북 입니다', 'N', 66, 21),
+(130, 11, '[Lenovo] Thinkcentre Neo 30t Gen5 13K8S00A00 (i5-13420H)', 'Lenovo', '13K8S00A00', 'Y', 1379000, 'Y', 40000, 20, 'Lenovo Thinkcentre Neo PC입니다', 'Y', 333, 23),
 -- (131, 41, '[Lenovo] Ideapad Slim3-15IRU8', 'Lenovo', '82X700HWKR', 'Y', 1200000, 'N', NULL, 11, 'Lenovo Ideapad노트북 입니다(대여X)', 'N', 87, 0),
 -- (132, 42, '[Lenovo] Thinkpad X1 carbone Gen 13', 'Lenovo', '21NSS02W00', 'Y', 2100000, 'Y', 62000, 15, 'Lenovo Thinkpad X1 노트북입니다', 'Y', 180, 8),
 
--- (140, 41, '[ASUS] 비보북 S16 QLED', 'ASUS', 'M3607HA-SH113', 'Y', 990000, 'N', NULL, 15, 'ASUS 비보북 노트북 입니다(대여X)', 'Y', 35, 0),
+(140, 13, '[ASUS] TUF GAMING TM500MH-R560W (Ryzen5)', 'ASUS', 'TM500MH-R560W', 'Y', 1892000, 'Y', 50000, 120, 'ASUS 터프게이밍 Ryzen5 PC입니다', 'Y', 1223, 43),
 -- (141, 43, '[ASUS] ROG 제피러스 G16', 'ASUS', 'GU606AP-TB025W', 'Y', 1500000, 'N', NULL, 32, 'ASUS 제피러스 G16 게이밍 노트북입니다. (대여X)', 'Y', 32, 0),
 -- (142, 42, '[ASUS] ExpertBook P1', 'ASUS', 'PM1503CDA-S70237', 'Y', 1760000, 'N', NULL, 88, 'AsUS ExpertBook P1 노트북입니다. (대여X)', 'N', 99, 0),
 
--- (150, 43, '[HP] HyperX 오멘, Intel_i7-14650HX', 'HP', '15-ga0030TX', 'Y', 3259000, 'N', NULL, 12, 'HP HyperX오멘 게이밍 노트북입니다. (대여X)', 'Y', 111, 0),
+(150, 13, '[HP] 오멘 35L-GT16-1001KL Ryzen7-9800X3D', 'HP', '35L-GT16-1001KL', 'Y', 5100000, 'Y', 90000, 33, 'HP Omen Ryzen7 PC입니다', 'Y', 166, 32),
 -- (151, 42, '[HP] 엘리트북 860 G11 울트라5-125H', 'HP', 'A1VH4PT', 'Y', 2280000, 'Y', 68000, 423, 'HP 엘리트북 860 G11 울트라5-125H 노트북입니다.', 'Y', 123, 33),
 -- (152, 42, '[HP] 옴니북5 AI 코어5-320', 'HP', '14-kf0024TU', 'Y', 1700000, 'Y', 52000, 100, 'HP 옴니북5 AI 코어5-320 노트북입니다', 'Y', 79, 8),
 
@@ -186,43 +187,39 @@ INSERT INTO product (
 -- (252, 42, '[HP] 옴니북5 AI 코어5-320', 'HP', '14-kf0024TU', 'Y', 1700000, 'Y', 52000, 100, 'HP 옴니북5 AI 코어5-320 노트북입니다', 'Y', 79, 8),
 
 
+--3. 모니터 (일반/사무용(FHD/QHD) : 31, 전문가용(4K/디자이너) : 32, 게이밍(고주사율): 33, 휴대용 모니터: 34)
+-- (5, 33, '32인치 4K UHD 모니터', 'LG전자', '32UN880', 'Y', 800000, 'Y', 25000, 50, '디자인 작업용 4K 모니터', 'Y', 300, 25),
+-- (9, 32, '27인치 QHD 게이밍 모니터', 'LG전자', '27GP850', 'Y', 500000, 'Y', 15000, 40, '165Hz 게이밍 모니터', 'N', 280, 32),
 
+-- (300, 42, '[DELL] MacBook Pro 16, M5, Silver', 'Apple', 'Z1N00005U', 'Y', 3000000, 'N', NULL, 250, '애플 맥북 프로 16 M5 실버 색상 노트북입니다(대여 불가)', 'Y', 300, 0),
+-- (301, 42, '[DELL] MacBook Pro 14, M5, Silver', 'Apple', 'MGDR4KH/A', 'Y', 2500000, 'Y', 75000, 3, '애플 맥북 프로 14 M5 실버 색상 노트북입니다', 'Y', 400, 7),
+-- (302, 41, '[DELL] MacBook Air 15, M3, StarLight', 'Apple', 'Z1GF00013', 'Y', 2000000, 'Y', 60000, 30, '애플 맥북 에어 15 M3 스타라이트 색상 노트북입니다', 'N', 520, 45),
+-- (303, 41, '[DELL] MacBook Air 13, M5, Silver', 'Apple', 'Z1L0000Q0', 'Y', 2250000, 'Y', 69000, 24, '애플 맥북 에어 13 M5 실버 색상 노트북입니다.', 'Y', 520, 22),
+-- (304, 41, '[DELL] MacBook Neo, A18, Silver', 'Apple', 'Z1TN0000F', 'Y', 1700000, 'N', NULL, 38, '애플 맥북 네오 A18 실버 색상 노트북입니다(대여불가)', 'Y', 388, 0),
 
---3. 모니터 (게이밍: 32, 전문가용: 33) 
--- 31, '일반/사무용 모니터 (FHD/QHD)', 32, '전문가용 모니터 (4K/디자이너)', 33, '게이밍 모니터 (고주사율)', 34, '휴대용 모니터'
-(5, 33, '32인치 4K UHD 모니터', 'LG전자', '32UN880', 'Y', 800000, 'Y', 25000, 50, '디자인 작업용 4K 모니터', 'Y', 300, 25),
-(9, 32, '27인치 QHD 게이밍 모니터', 'LG전자', '27GP850', 'Y', 500000, 'Y', 15000, 40, '165Hz 게이밍 모니터', 'N', 280, 32),
-
-
--- (300, 42, '[Apple] MacBook Pro 16, M5, Silver', 'Apple', 'Z1N00005U', 'Y', 3000000, 'N', NULL, 250, '애플 맥북 프로 16 M5 실버 색상 노트북입니다(대여 불가)', 'Y', 300, 0),
--- (301, 42, '[Apple] MacBook Pro 14, M5, Silver', 'Apple', 'MGDR4KH/A', 'Y', 2500000, 'Y', 75000, 3, '애플 맥북 프로 14 M5 실버 색상 노트북입니다', 'Y', 400, 7),
--- (302, 41, '[Apple] MacBook Air 15, M3, StarLight', 'Apple', 'Z1GF00013', 'Y', 2000000, 'Y', 60000, 30, '애플 맥북 에어 15 M3 스타라이트 색상 노트북입니다', 'N', 520, 45),
--- (303, 41, '[Apple] MacBook Air 13, M5, Silver', 'Apple', 'Z1L0000Q0', 'Y', 2250000, 'Y', 69000, 24, '애플 맥북 에어 13 M5 실버 색상 노트북입니다.', 'Y', 520, 22),
--- (304, 41, '[Apple] MacBook Neo, A18, Silver', 'Apple', 'Z1TN0000F', 'Y', 1700000, 'N', NULL, 38, '애플 맥북 네오 A18 실버 색상 노트북입니다(대여불가)', 'Y', 388, 0),
-
--- (310, 42, '[삼성] 갤럭시북5 프로, IntelCore-Ultra_7, Coplit+ PC', 'Samsung', 'NT960XHA-KC71G', 'Y', 2499999, 'Y', 75000, 100, '삼성 갤럭시북5 프로, 인텔 코어 울트라 7, Copliot+ 노트북입니다', 'Y', 800, 12),
--- (311, 42, '[삼성] 갤럭시북6 프로, 그레이', 'Samsung', 'NT940XJG-K72A', 'Y', 3650000, 'N', NULL, 110, '삼성 갤럭시북6 프로 그레이 색상 노트북입니다(대여불가)', 'Y', 777, 0),
--- (312, 41, '[삼성] 갤럭시북6 엣지, Snapdragon X2 Elite, Copliot+ PC', 'Samsung', 'NT960XRD-KC01B', 'Y', 2870000, 'Y', 80000, 99, '삼성 갤럭시북6 엣지, 스냅드래곤X2엘리트 copliot+PC 노트북입니다', 'N', 500, 42),
--- (313, 41, '[삼성] 갤럭시북5, 그레이', 'Samsung', 'NT750XHD-K71A', 'Y', 2200000, 'N', NULL, 70, '삼성 갤럭시북5 그레이 색상 노트북입니다', 'Y', 76, 0),
+(310, 31, '[삼성] 모니터 S24C750P (61cm)', 'Samsung', 'S24C750P', 'Y', 1200000, 'N', NULL, 40, '삼성 일반 모니터입니다', 'Y', 132, 0),
+(311, 32, '[삼성] 오디세이 OLED G8 G80SH 4K 240Hz (LS27HG802S)', 'Samsung', 'LS27HG802SKXKR', 'Y', 1440000, 'N', NULL, 110, '삼성 전문가용 모니터입니다(대여불가)', 'Y', 77, 0),
+(312, 32, '[삼성] 뷰피니티 S8 S85TH 5K2K WUHD (LS40H852)', 'Samsung', 'LS40H852TAKXKR', 'Y', 1470000, 'Y', 50000, 99, '삼성 전문가용 모니터입니다', 'N', 132, 27),
+(313, 32, '[삼성] 오디세이 OLED G8 G81SF 4K 240Hz (LS32FG812)', 'Samsung', 'LS32FG812SKXKR', 'Y', 1200000, 'N', NULL, 70, '삼성 전문가용 모니터입니다(대여X)', 'Y', 129, 0),
 -- (314, 41, '[삼성] 갤럭시북4, 그레이', 'Samsung', 'NT750XGR-A71A', 'Y', 1140000, 'N', NULL, 20, '삼성 갤럭시북4 그레이 색상 노트북입니다','N', 23, 0),
 
 (320, 31, '[LG] PC 모니터 U4 FHD', 'LG', '27U411B', 'Y', 180000, 'Y', 8000, 100, 'LG PC 모니터 입니다', 'Y', 888, 28),
--- (321, 42, '[LG] 그램 Pro AI 2026, IntelCore-Ultra_5, Copilot+ PC', 'LG', '16Z90U-KS5WK', 'Y', 3240000, 'Y', 97000, 25, 'LG노트북입니다', 'Y', 120, 20),
--- (322, 42, '[LG] 그램 Pro AI 2026, AMD Ryzen-AI_5, Copilot+ PC', 'LG', '16Z95U-GS5W', 'Y', 3000000, 'Y', 95000, 33, 'LG노트북입니다', 'N', 100, 42 ),
--- (323, 41, '[LG] 그램 AI 2026, AMD Ryzen_AI-5, Copilot+ PC', 'LG', '15Z95U-GS5SK', 'Y', 2500000, 'Y', 72000, 12, 'LG노트북입니다', 'Y', 99, 9),
+(321, 32, '[LG] 울트라HD 모니터 4K', 'LG', '27US550', 'Y', 399000, 'Y', 25000, 120, 'LG 울트라HD 4K 모니터입니다', 'Y', 120, 20),
+(322, 33, '[LG] 울트라기어 evo AI 올레드 게이밍모니터 GX9 5K', 'LG', '39GX950B', 'Y', 2070000, 'Y', 90000, 23, 'LG 게이밍모니터입니다', 'Y', 140, 23),
+(323, 33, '[LG] 울트라기어 게이밍모니터 QHD', 'LG', '32GS60QC', 'Y', 369000, 'Y', 12000, 122, 'LG 게이밍 모니터입니다', 'Y', 363, 99),
 -- (324, 41, '[LG] 그램, IntelCore_Ultra-5', 'LG', '14ZB90S-GA5WK', 'Y', 1300000, 'N', NULL, 77, 'LG 노트북입니다(대여불가)', 'N', 43, 0),
 
--- (330, 42, '[Lenovo] Thinkpad E14 IPL G8 U7 3K AI', 'Lenovo', '21Y60065KR', 'Y', 1899000, 'Y', 60000, 200, 'Lenovo Thinkpad 노트북 입니다', 'N', 66, 21),
--- (331, 41, '[Lenovo] Ideapad Slim3-15IRU8', 'Lenovo', '82X700HWKR', 'Y', 1200000, 'N', NULL, 11, 'Lenovo Ideapad노트북 입니다(대여X)', 'N', 87, 0),
--- (332, 42, '[Lenovo] Thinkpad X1 carbone Gen 13', 'Lenovo', '21NSS02W00', 'Y', 2100000, 'Y', 62000, 15, 'Lenovo Thinkpad X1 노트북입니다', 'Y', 180, 8),
+-- (330, 42, '[ASUS] Thinkpad E14 IPL G8 U7 3K AI', 'Lenovo', '21Y60065KR', 'Y', 1899000, 'Y', 60000, 200, 'Lenovo Thinkpad 노트북 입니다', 'N', 66, 21),
+-- (331, 41, '[ASUS] Ideapad Slim3-15IRU8', 'Lenovo', '82X700HWKR', 'Y', 1200000, 'N', NULL, 11, 'Lenovo Ideapad노트북 입니다(대여X)', 'N', 87, 0),
+-- (332, 42, '[ASUS] Thinkpad X1 carbone Gen 13', 'Lenovo', '21NSS02W00', 'Y', 2100000, 'Y', 62000, 15, 'Lenovo Thinkpad X1 노트북입니다', 'Y', 180, 8),
 
--- (340, 41, '[ASUS] 비보북 S16 QLED', 'ASUS', 'M3607HA-SH113', 'Y', 990000, 'N', NULL, 15, 'ASUS 비보북 노트북 입니다(대여X)', 'Y', 35, 0),
--- (341, 43, '[ASUS] ROG 제피러스 G16', 'ASUS', 'GU606AP-TB025W', 'Y', 1500000, 'N', NULL, 32, 'ASUS 제피러스 G16 게이밍 노트북입니다. (대여X)', 'Y', 32, 0),
--- (342, 42, '[ASUS] ExpertBook P1', 'ASUS', 'PM1503CDA-S70237', 'Y', 1760000, 'N', NULL, 88, 'AsUS ExpertBook P1 노트북입니다. (대여X)', 'N', 99, 0),
+-- (340, 41, '[MSI] 비보북 S16 QLED', 'ASUS', 'M3607HA-SH113', 'Y', 990000, 'N', NULL, 15, 'ASUS 비보북 노트북 입니다(대여X)', 'Y', 35, 0),
+-- (341, 43, '[MSI] ROG 제피러스 G16', 'ASUS', 'GU606AP-TB025W', 'Y', 1500000, 'N', NULL, 32, 'ASUS 제피러스 G16 게이밍 노트북입니다. (대여X)', 'Y', 32, 0),
+-- (342, 42, '[MSI] ExpertBook P1', 'ASUS', 'PM1503CDA-S70237', 'Y', 1760000, 'N', NULL, 88, 'AsUS ExpertBook P1 노트북입니다. (대여X)', 'N', 99, 0),
 
--- (350, 43, '[HP] HyperX 오멘, Intel_i7-14650HX', 'HP', '15-ga0030TX', 'Y', 3259000, 'N', NULL, 12, 'HP HyperX오멘 게이밍 노트북입니다. (대여X)', 'Y', 111, 0),
--- (351, 42, '[HP] 엘리트북 860 G11 울트라5-125H', 'HP', 'A1VH4PT', 'Y', 2280000, 'Y', 68000, 423, 'HP 엘리트북 860 G11 울트라5-125H 노트북입니다.', 'Y', 123, 33),
--- (352, 42, '[HP] 옴니북5 AI 코어5-320', 'HP', '14-kf0024TU', 'Y', 1700000, 'Y', 52000, 100, 'HP 옴니북5 AI 코어5-320 노트북입니다', 'Y', 79, 8),
+-- (350, 43, '[알파스캔] HyperX 오멘, Intel_i7-14650HX', 'HP', '15-ga0030TX', 'Y', 3259000, 'N', NULL, 12, 'HP HyperX오멘 게이밍 노트북입니다. (대여X)', 'Y', 111, 0),
+-- (351, 42, '[알파스캔] 엘리트북 860 G11 울트라5-125H', 'HP', 'A1VH4PT', 'Y', 2280000, 'Y', 68000, 423, 'HP 엘리트북 860 G11 울트라5-125H 노트북입니다.', 'Y', 123, 33),
+-- (352, 42, '[알파스캔] 옴니북5 AI 코어5-320', 'HP', '14-kf0024TU', 'Y', 1700000, 'Y', 52000, 100, 'HP 옴니북5 AI 코어5-320 노트북입니다', 'Y', 79, 8),
 
 
 
@@ -264,42 +261,29 @@ INSERT INTO product (
 
 
 --5. 스마트 기기 (태블릿 (iPad/GalaxyTab): 51, 스마트워치/웨어러블: 52, VR/AR 기기: 53)
-(13, 51, '애플 아이패드 프로', 'Apple', 'ipadprotest', 'Y', 1232323, 'Y', 30000, 999, '애플 아이패드 프로 태블릿입니다.', 'Y', 312, 21), 
-(14, 51, '갤럭시 탭 S10+', 'Samsung', 'SM-X820NZAAKOO', 'Y', 1240000, 'Y', 60000, 500, '삼성 갤럭시 탭 S10+ (Wi-Fi) 태블릿입니다.', 'Y', 412, 23),
-(15, 52, '애플 워치 6', 'Apple', 'applewatch6', 'Y', 230000, 'N', NULL, 400, '애플워치6 입니다(대여x)', 'Y', 123, 0),
-(16, 53, '메타 오큘러스 VR', 'Meta', 'oculus123', 'Y', 400000, 'N', NULL, 123, '메타 오큘러스 VR기기 입니다(대여x)', 'N', 32, 0),
+-- (13, 51, '애플 아이패드 프로', 'Apple', 'ipadprotest', 'Y', 1232323, 'Y', 30000, 999, '애플 아이패드 프로 태블릿입니다.', 'Y', 312, 21),
+-- (14, 51, '갤럭시 탭 S10+', 'Samsung', 'SM-X820NZAAKOO', 'Y', 1240000, 'Y', 60000, 500, '삼성 갤럭시 탭 S10+ (Wi-Fi) 태블릿입니다.', 'Y', 412, 23),
+-- (15, 52, '애플 워치 6', 'Apple', 'applewatch6', 'Y', 230000, 'N', NULL, 400, '애플워치6 입니다(대여x)', 'Y', 123, 0),
+-- (16, 53, '메타 오큘러스 VR', 'Meta', 'oculus123', 'Y', 400000, 'N', NULL, 123, '메타 오큘러스 VR기기 입니다(대여x)', 'N', 32, 0),
 
 
--- (500, 42, '[Apple] MacBook Pro 16, M5, Silver', 'Apple', 'Z1N00005U', 'Y', 3000000, 'N', NULL, 250, '애플 맥북 프로 16 M5 실버 색상 노트북입니다(대여 불가)', 'Y', 300, 0),
+(500, 51, '[Apple] Apple 2025 아이패드 프로 13(M5 모델) 스탠다드 글래스', 'Apple', 'MDYJ4KH/A', 'Y', 1900000, 'Y', 42000, 777, '애플 아이패드 프로 13(M5 모델) 스탠다드 글래스 태블릿입니다', 'Y', 888, 99),
 -- (501, 42, '[Apple] MacBook Pro 14, M5, Silver', 'Apple', 'MGDR4KH/A', 'Y', 2500000, 'Y', 75000, 3, '애플 맥북 프로 14 M5 실버 색상 노트북입니다', 'Y', 400, 7),
 -- (502, 41, '[Apple] MacBook Air 15, M3, StarLight', 'Apple', 'Z1GF00013', 'Y', 2000000, 'Y', 60000, 30, '애플 맥북 에어 15 M3 스타라이트 색상 노트북입니다', 'N', 520, 45),
--- (503, 41, '[Apple] MacBook Air 13, M5, Silver', 'Apple', 'Z1L0000Q0', 'Y', 2250000, 'Y', 69000, 24, '애플 맥북 에어 13 M5 실버 색상 노트북입니다.', 'Y', 520, 22),
+(503, 52, '[Apple] Apple 워치 11 GPS 스페이스 그레이 알루미늄 46mm, 블랙 스포츠 밴드', 'Apple', 'MEV44KH/A', 'Y', 539000, 'N', NULL, 18, '애플워치 11 GPS 46mm 스페이스 그레이 알루미늄 케이스, 블랙 스포츠 밴드 스마트워치입니다', 'Y', 642, 99),
 -- (504, 41, '[Apple] MacBook Neo, A18, Silver', 'Apple', 'Z1TN0000F', 'Y', 1700000, 'N', NULL, 38, '애플 맥북 네오 A18 실버 색상 노트북입니다(대여불가)', 'Y', 388, 0),
 
 -- (510, 42, '[삼성] 갤럭시북5 프로, IntelCore-Ultra_7, Coplit+ PC', 'Samsung', 'NT960XHA-KC71G', 'Y', 2499999, 'Y', 75000, 100, '삼성 갤럭시북5 프로, 인텔 코어 울트라 7, Copliot+ 노트북입니다', 'Y', 800, 12),
 -- (511, 42, '[삼성] 갤럭시북6 프로, 그레이', 'Samsung', 'NT940XJG-K72A', 'Y', 3650000, 'N', NULL, 110, '삼성 갤럭시북6 프로 그레이 색상 노트북입니다(대여불가)', 'Y', 777, 0),
--- (512, 41, '[삼성] 갤럭시북6 엣지, Snapdragon X2 Elite, Copliot+ PC', 'Samsung', 'NT960XRD-KC01B', 'Y', 2870000, 'Y', 80000, 99, '삼성 갤럭시북6 엣지, 스냅드래곤X2엘리트 copliot+PC 노트북입니다', 'N', 500, 42),
--- (513, 41, '[삼성] 갤럭시북5, 그레이', 'Samsung', 'NT750XHD-K71A', 'Y', 2200000, 'N', NULL, 70, '삼성 갤럭시북5 그레이 색상 노트북입니다', 'Y', 76, 0),
+(512, 51, '[삼성] 갤럭시탭 S10 Lite 라이트 128GB 그레이 (WI-FI)', 'Samsung', 'SM-X400NZAAKOO', 'Y', 530000, 'Y', 15000, 54, '삼성 갤탭 S10 라이트 태블릿입니다', 'N', 312, 12),
+(513, 52, '[삼성] 갤럭시워치8 클래식 스마트워치 SM-L500N, 블랙, 46mm, 블루투스', 'Samsung', 'SM-L500N', 'Y', 500000, 'N', NULL, 70, '삼성 갤럭시워치8 클래식 46mm 블루투스 블랙 스마트워치입니다', 'Y', 124, 0),
 -- (514, 41, '[삼성] 갤럭시북4, 그레이', 'Samsung', 'NT750XGR-A71A', 'Y', 1140000, 'N', NULL, 20, '삼성 갤럭시북4 그레이 색상 노트북입니다','N', 23, 0),
 
--- (520, 42, '[LG] 그램 Pro 360 AI, IntelCore-Ultra_7', 'LG', '16T90TP-GD7BK', 'Y', 2350000, 'Y', 70000, 100, 'LG 그램 프로 360 AI 인텔코어 울트라 7 노트북입니다', 'Y', 888, 28),
+(520, 53, '[Meta] Meta Quest 3S 128GB VR', 'Meta', 'Meta-Quest-3S', 'Y', 550000, 'N', NULL, 33, 'Meta Quest 3S 128GB VR입니다', 'Y', 14, 0),
 -- (521, 42, '[LG] 그램 Pro AI 2026, IntelCore-Ultra_5, Copilot+ PC', 'LG', '16Z90U-KS5WK', 'Y', 3240000, 'Y', 97000, 25, 'LG노트북입니다', 'Y', 120, 20),
 -- (522, 42, '[LG] 그램 Pro AI 2026, AMD Ryzen-AI_5, Copilot+ PC', 'LG', '16Z95U-GS5W', 'Y', 3000000, 'Y', 95000, 33, 'LG노트북입니다', 'N', 100, 42 ),
 -- (523, 41, '[LG] 그램 AI 2026, AMD Ryzen_AI-5, Copilot+ PC', 'LG', '15Z95U-GS5SK', 'Y', 2500000, 'Y', 72000, 12, 'LG노트북입니다', 'Y', 99, 9),
 -- (524, 41, '[LG] 그램, IntelCore_Ultra-5', 'LG', '14ZB90S-GA5WK', 'Y', 1300000, 'N', NULL, 77, 'LG 노트북입니다(대여불가)', 'N', 43, 0),
-
--- (530, 42, '[Lenovo] Thinkpad E14 IPL G8 U7 3K AI', 'Lenovo', '21Y60065KR', 'Y', 1899000, 'Y', 60000, 200, 'Lenovo Thinkpad 노트북 입니다', 'N', 66, 21),
--- (531, 41, '[Lenovo] Ideapad Slim3-15IRU8', 'Lenovo', '82X700HWKR', 'Y', 1200000, 'N', NULL, 11, 'Lenovo Ideapad노트북 입니다(대여X)', 'N', 87, 0),
--- (532, 42, '[Lenovo] Thinkpad X1 carbone Gen 13', 'Lenovo', '21NSS02W00', 'Y', 2100000, 'Y', 62000, 15, 'Lenovo Thinkpad X1 노트북입니다', 'Y', 180, 8),
-
--- (540, 41, '[ASUS] 비보북 S16 QLED', 'ASUS', 'M3607HA-SH113', 'Y', 990000, 'N', NULL, 15, 'ASUS 비보북 노트북 입니다(대여X)', 'Y', 35, 0),
--- (541, 43, '[ASUS] ROG 제피러스 G16', 'ASUS', 'GU606AP-TB025W', 'Y', 1500000, 'N', NULL, 32, 'ASUS 제피러스 G16 게이밍 노트북입니다. (대여X)', 'Y', 32, 0),
--- (542, 42, '[ASUS] ExpertBook P1', 'ASUS', 'PM1503CDA-S70237', 'Y', 1760000, 'N', NULL, 88, 'AsUS ExpertBook P1 노트북입니다. (대여X)', 'N', 99, 0),
-
--- (550, 43, '[HP] HyperX 오멘, Intel_i7-14650HX', 'HP', '15-ga0030TX', 'Y', 3259000, 'N', NULL, 12, 'HP HyperX오멘 게이밍 노트북입니다. (대여X)', 'Y', 111, 0),
--- (551, 42, '[HP] 엘리트북 860 G11 울트라5-125H', 'HP', 'A1VH4PT', 'Y', 2280000, 'Y', 68000, 423, 'HP 엘리트북 860 G11 울트라5-125H 노트북입니다.', 'Y', 123, 33),
--- (552, 42, '[HP] 옴니북5 AI 코어5-320', 'HP', '14-kf0024TU', 'Y', 1700000, 'Y', 52000, 100, 'HP 옴니북5 AI 코어5-320 노트북입니다', 'Y', 79, 8),
-
 
 
 --6. 사무/주변기기 (프린터/복합기 : 61, 빔프로젝터/화상장비: 62, 기타(키보드/마우스/허브): 63, 기타(악세서리/관련 케이블): 64)
@@ -309,35 +293,35 @@ INSERT INTO product (
 (20, 64, 'HDMI케이블', 'HDMI', '123123', 'Y', 20000, 'N', NULL, 100, 'HDMI케이블입니다', 'N', 100, 0),
 
 
--- (600, 42, '[Apple] MacBook Pro 16, M5, Silver', 'Apple', 'Z1N00005U', 'Y', 3000000, 'N', NULL, 250, '애플 맥북 프로 16 M5 실버 색상 노트북입니다(대여 불가)', 'Y', 300, 0),
--- (601, 42, '[Apple] MacBook Pro 14, M5, Silver', 'Apple', 'MGDR4KH/A', 'Y', 2500000, 'Y', 75000, 3, '애플 맥북 프로 14 M5 실버 색상 노트북입니다', 'Y', 400, 7),
--- (602, 41, '[Apple] MacBook Air 15, M3, StarLight', 'Apple', 'Z1GF00013', 'Y', 2000000, 'Y', 60000, 30, '애플 맥북 에어 15 M3 스타라이트 색상 노트북입니다', 'N', 520, 45),
--- (603, 41, '[Apple] MacBook Air 13, M5, Silver', 'Apple', 'Z1L0000Q0', 'Y', 2250000, 'Y', 69000, 24, '애플 맥북 에어 13 M5 실버 색상 노트북입니다.', 'Y', 520, 22),
--- (604, 41, '[Apple] MacBook Neo, A18, Silver', 'Apple', 'Z1TN0000F', 'Y', 1700000, 'N', NULL, 38, '애플 맥북 네오 A18 실버 색상 노트북입니다(대여불가)', 'Y', 388, 0),
+-- (600, 42, '[Canon] MacBook Pro 16, M5, Silver', 'Apple', 'Z1N00005U', 'Y', 3000000, 'N', NULL, 250, '애플 맥북 프로 16 M5 실버 색상 노트북입니다(대여 불가)', 'Y', 300, 0),
+-- (601, 42, '[Canon] MacBook Pro 14, M5, Silver', 'Apple', 'MGDR4KH/A', 'Y', 2500000, 'Y', 75000, 3, '애플 맥북 프로 14 M5 실버 색상 노트북입니다', 'Y', 400, 7),
+-- (602, 41, '[Canon] MacBook Air 15, M3, StarLight', 'Apple', 'Z1GF00013', 'Y', 2000000, 'Y', 60000, 30, '애플 맥북 에어 15 M3 스타라이트 색상 노트북입니다', 'N', 520, 45),
+-- (603, 41, '[Canon] MacBook Air 13, M5, Silver', 'Apple', 'Z1L0000Q0', 'Y', 2250000, 'Y', 69000, 24, '애플 맥북 에어 13 M5 실버 색상 노트북입니다.', 'Y', 520, 22),
+-- (604, 41, '[Canon] MacBook Neo, A18, Silver', 'Apple', 'Z1TN0000F', 'Y', 1700000, 'N', NULL, 38, '애플 맥북 네오 A18 실버 색상 노트북입니다(대여불가)', 'Y', 388, 0),
 
--- (610, 42, '[삼성] 갤럭시북5 프로, IntelCore-Ultra_7, Coplit+ PC', 'Samsung', 'NT960XHA-KC71G', 'Y', 2499999, 'Y', 75000, 100, '삼성 갤럭시북5 프로, 인텔 코어 울트라 7, Copliot+ 노트북입니다', 'Y', 800, 12),
--- (611, 42, '[삼성] 갤럭시북6 프로, 그레이', 'Samsung', 'NT940XJG-K72A', 'Y', 3650000, 'N', NULL, 110, '삼성 갤럭시북6 프로 그레이 색상 노트북입니다(대여불가)', 'Y', 777, 0),
--- (612, 41, '[삼성] 갤럭시북6 엣지, Snapdragon X2 Elite, Copliot+ PC', 'Samsung', 'NT960XRD-KC01B', 'Y', 2870000, 'Y', 80000, 99, '삼성 갤럭시북6 엣지, 스냅드래곤X2엘리트 copliot+PC 노트북입니다', 'N', 500, 42),
--- (613, 41, '[삼성] 갤럭시북5, 그레이', 'Samsung', 'NT750XHD-K71A', 'Y', 2200000, 'N', NULL, 70, '삼성 갤럭시북5 그레이 색상 노트북입니다', 'Y', 76, 0),
--- (614, 41, '[삼성] 갤럭시북4, 그레이', 'Samsung', 'NT750XGR-A71A', 'Y', 1140000, 'N', NULL, 20, '삼성 갤럭시북4 그레이 색상 노트북입니다','N', 23, 0),
+-- (610, 42, '[EPSON] 갤럭시북5 프로, IntelCore-Ultra_7, Coplit+ PC', 'Samsung', 'NT960XHA-KC71G', 'Y', 2499999, 'Y', 75000, 100, '삼성 갤럭시북5 프로, 인텔 코어 울트라 7, Copliot+ 노트북입니다', 'Y', 800, 12),
+-- (611, 42, '[EPSON] 갤럭시북6 프로, 그레이', 'Samsung', 'NT940XJG-K72A', 'Y', 3650000, 'N', NULL, 110, '삼성 갤럭시북6 프로 그레이 색상 노트북입니다(대여불가)', 'Y', 777, 0),
+-- (612, 41, '[EPSON] 갤럭시북6 엣지, Snapdragon X2 Elite, Copliot+ PC', 'Samsung', 'NT960XRD-KC01B', 'Y', 2870000, 'Y', 80000, 99, '삼성 갤럭시북6 엣지, 스냅드래곤X2엘리트 copliot+PC 노트북입니다', 'N', 500, 42),
+-- (613, 41, '[EPSON] 갤럭시북5, 그레이', 'Samsung', 'NT750XHD-K71A', 'Y', 2200000, 'N', NULL, 70, '삼성 갤럭시북5 그레이 색상 노트북입니다', 'Y', 76, 0),
+-- (614, 41, '[EPSON] 갤럭시북4, 그레이', 'Samsung', 'NT750XGR-A71A', 'Y', 1140000, 'N', NULL, 20, '삼성 갤럭시북4 그레이 색상 노트북입니다','N', 23, 0),
 
--- (620, 42, '[LG] 그램 Pro 360 AI, IntelCore-Ultra_7', 'LG', '16T90TP-GD7BK', 'Y', 2350000, 'Y', 70000, 100, 'LG 그램 프로 360 AI 인텔코어 울트라 7 노트북입니다', 'Y', 888, 28),
--- (621, 42, '[LG] 그램 Pro AI 2026, IntelCore-Ultra_5, Copilot+ PC', 'LG', '16Z90U-KS5WK', 'Y', 3240000, 'Y', 97000, 25, 'LG노트북입니다', 'Y', 120, 20),
--- (622, 42, '[LG] 그램 Pro AI 2026, AMD Ryzen-AI_5, Copilot+ PC', 'LG', '16Z95U-GS5W', 'Y', 3000000, 'Y', 95000, 33, 'LG노트북입니다', 'N', 100, 42 ),
--- (623, 41, '[LG] 그램 AI 2026, AMD Ryzen_AI-5, Copilot+ PC', 'LG', '15Z95U-GS5SK', 'Y', 2500000, 'Y', 72000, 12, 'LG노트북입니다', 'Y', 99, 9),
--- (624, 41, '[LG] 그램, IntelCore_Ultra-5', 'LG', '14ZB90S-GA5WK', 'Y', 1300000, 'N', NULL, 77, 'LG 노트북입니다(대여불가)', 'N', 43, 0),
+-- (620, 42, '[SONY] 그램 Pro 360 AI, IntelCore-Ultra_7', 'LG', '16T90TP-GD7BK', 'Y', 2350000, 'Y', 70000, 100, 'LG 그램 프로 360 AI 인텔코어 울트라 7 노트북입니다', 'Y', 888, 28),
+-- (621, 42, '[SONY] 그램 Pro AI 2026, IntelCore-Ultra_5, Copilot+ PC', 'LG', '16Z90U-KS5WK', 'Y', 3240000, 'Y', 97000, 25, 'LG노트북입니다', 'Y', 120, 20),
+-- (622, 42, '[SONY] 그램 Pro AI 2026, AMD Ryzen-AI_5, Copilot+ PC', 'LG', '16Z95U-GS5W', 'Y', 3000000, 'Y', 95000, 33, 'LG노트북입니다', 'N', 100, 42 ),
+-- (623, 41, '[SONY] 그램 AI 2026, AMD Ryzen_AI-5, Copilot+ PC', 'LG', '15Z95U-GS5SK', 'Y', 2500000, 'Y', 72000, 12, 'LG노트북입니다', 'Y', 99, 9),
+-- (624, 41, '[SONY] 그램, IntelCore_Ultra-5', 'LG', '14ZB90S-GA5WK', 'Y', 1300000, 'N', NULL, 77, 'LG 노트북입니다(대여불가)', 'N', 43, 0),
 
--- (630, 42, '[Lenovo] Thinkpad E14 IPL G8 U7 3K AI', 'Lenovo', '21Y60065KR', 'Y', 1899000, 'Y', 60000, 200, 'Lenovo Thinkpad 노트북 입니다', 'N', 66, 21),
--- (631, 41, '[Lenovo] Ideapad Slim3-15IRU8', 'Lenovo', '82X700HWKR', 'Y', 1200000, 'N', NULL, 11, 'Lenovo Ideapad노트북 입니다(대여X)', 'N', 87, 0),
--- (632, 42, '[Lenovo] Thinkpad X1 carbone Gen 13', 'Lenovo', '21NSS02W00', 'Y', 2100000, 'Y', 62000, 15, 'Lenovo Thinkpad X1 노트북입니다', 'Y', 180, 8),
+-- (630, 42, '[Logitech] Thinkpad E14 IPL G8 U7 3K AI', 'Lenovo', '21Y60065KR', 'Y', 1899000, 'Y', 60000, 200, 'Lenovo Thinkpad 노트북 입니다', 'N', 66, 21),
+-- (631, 41, '[Logitech] Ideapad Slim3-15IRU8', 'Lenovo', '82X700HWKR', 'Y', 1200000, 'N', NULL, 11, 'Lenovo Ideapad노트북 입니다(대여X)', 'N', 87, 0),
+-- (632, 42, '[Logitech] Thinkpad X1 carbone Gen 13', 'Lenovo', '21NSS02W00', 'Y', 2100000, 'Y', 62000, 15, 'Lenovo Thinkpad X1 노트북입니다', 'Y', 180, 8),
 
--- (640, 41, '[ASUS] 비보북 S16 QLED', 'ASUS', 'M3607HA-SH113', 'Y', 990000, 'N', NULL, 15, 'ASUS 비보북 노트북 입니다(대여X)', 'Y', 35, 0),
--- (641, 43, '[ASUS] ROG 제피러스 G16', 'ASUS', 'GU606AP-TB025W', 'Y', 1500000, 'N', NULL, 32, 'ASUS 제피러스 G16 게이밍 노트북입니다. (대여X)', 'Y', 32, 0),
--- (642, 42, '[ASUS] ExpertBook P1', 'ASUS', 'PM1503CDA-S70237', 'Y', 1760000, 'N', NULL, 88, 'AsUS ExpertBook P1 노트북입니다. (대여X)', 'N', 99, 0),
+-- (640, 41, '[RAZER] 비보북 S16 QLED', 'ASUS', 'M3607HA-SH113', 'Y', 990000, 'N', NULL, 15, 'ASUS 비보북 노트북 입니다(대여X)', 'Y', 35, 0),
+-- (641, 43, '[RAZER] ROG 제피러스 G16', 'ASUS', 'GU606AP-TB025W', 'Y', 1500000, 'N', NULL, 32, 'ASUS 제피러스 G16 게이밍 노트북입니다. (대여X)', 'Y', 32, 0),
+-- (642, 42, '[RAZER] ExpertBook P1', 'ASUS', 'PM1503CDA-S70237', 'Y', 1760000, 'N', NULL, 88, 'AsUS ExpertBook P1 노트북입니다. (대여X)', 'N', 99, 0),
 
--- (650, 43, '[HP] HyperX 오멘, Intel_i7-14650HX', 'HP', '15-ga0030TX', 'Y', 3259000, 'N', NULL, 12, 'HP HyperX오멘 게이밍 노트북입니다. (대여X)', 'Y', 111, 0),
--- (651, 42, '[HP] 엘리트북 860 G11 울트라5-125H', 'HP', 'A1VH4PT', 'Y', 2280000, 'Y', 68000, 423, 'HP 엘리트북 860 G11 울트라5-125H 노트북입니다.', 'Y', 123, 33),
--- (652, 42, '[HP] 옴니북5 AI 코어5-320', 'HP', '14-kf0024TU', 'Y', 1700000, 'Y', 52000, 100, 'HP 옴니북5 AI 코어5-320 노트북입니다', 'Y', 79, 8),
+-- (650, 43, '[VGN] HyperX 오멘, Intel_i7-14650HX', 'HP', '15-ga0030TX', 'Y', 3259000, 'N', NULL, 12, 'HP HyperX오멘 게이밍 노트북입니다. (대여X)', 'Y', 111, 0),
+-- (651, 42, '[코드웨이] 엘리트북 860 G11 울트라5-125H', 'HP', 'A1VH4PT', 'Y', 2280000, 'Y', 68000, 423, 'HP 엘리트북 860 G11 울트라5-125H 노트북입니다.', 'Y', 123, 33),
+-- (652, 42, '[마하링크] 옴니북5 AI 코어5-320', 'HP', '14-kf0024TU', 'Y', 1700000, 'Y', 52000, 100, 'HP 옴니북5 AI 코어5-320 노트북입니다', 'Y', 79, 8),
 
 
 --7. 서버/워크스테이션 (서버 (랙/타워형): 71, 고성능 워크스테이션: 72, NAS / 스토리지: 73)
@@ -350,29 +334,29 @@ INSERT INTO product (
 -- (703, 41, '[Apple] MacBook Air 13, M5, Silver', 'Apple', 'Z1L0000Q0', 'Y', 2250000, 'Y', 69000, 24, '애플 맥북 에어 13 M5 실버 색상 노트북입니다.', 'Y', 520, 22),
 -- (704, 41, '[Apple] MacBook Neo, A18, Silver', 'Apple', 'Z1TN0000F', 'Y', 1700000, 'N', NULL, 38, '애플 맥북 네오 A18 실버 색상 노트북입니다(대여불가)', 'Y', 388, 0),
 
--- (710, 42, '[삼성] 갤럭시북5 프로, IntelCore-Ultra_7, Coplit+ PC', 'Samsung', 'NT960XHA-KC71G', 'Y', 2499999, 'Y', 75000, 100, '삼성 갤럭시북5 프로, 인텔 코어 울트라 7, Copliot+ 노트북입니다', 'Y', 800, 12),
--- (711, 42, '[삼성] 갤럭시북6 프로, 그레이', 'Samsung', 'NT940XJG-K72A', 'Y', 3650000, 'N', NULL, 110, '삼성 갤럭시북6 프로 그레이 색상 노트북입니다(대여불가)', 'Y', 777, 0),
--- (712, 41, '[삼성] 갤럭시북6 엣지, Snapdragon X2 Elite, Copliot+ PC', 'Samsung', 'NT960XRD-KC01B', 'Y', 2870000, 'Y', 80000, 99, '삼성 갤럭시북6 엣지, 스냅드래곤X2엘리트 copliot+PC 노트북입니다', 'N', 500, 42),
--- (713, 41, '[삼성] 갤럭시북5, 그레이', 'Samsung', 'NT750XHD-K71A', 'Y', 2200000, 'N', NULL, 70, '삼성 갤럭시북5 그레이 색상 노트북입니다', 'Y', 76, 0),
--- (714, 41, '[삼성] 갤럭시북4, 그레이', 'Samsung', 'NT750XGR-A71A', 'Y', 1140000, 'N', NULL, 20, '삼성 갤럭시북4 그레이 색상 노트북입니다','N', 23, 0),
+-- (710, 42, '[DELL] 갤럭시북5 프로, IntelCore-Ultra_7, Coplit+ PC', 'Samsung', 'NT960XHA-KC71G', 'Y', 2499999, 'Y', 75000, 100, '삼성 갤럭시북5 프로, 인텔 코어 울트라 7, Copliot+ 노트북입니다', 'Y', 800, 12),
+-- (711, 42, '[DELL] 갤럭시북6 프로, 그레이', 'Samsung', 'NT940XJG-K72A', 'Y', 3650000, 'N', NULL, 110, '삼성 갤럭시북6 프로 그레이 색상 노트북입니다(대여불가)', 'Y', 777, 0),
+-- (712, 41, '[DELL] 갤럭시북6 엣지, Snapdragon X2 Elite, Copliot+ PC', 'Samsung', 'NT960XRD-KC01B', 'Y', 2870000, 'Y', 80000, 99, '삼성 갤럭시북6 엣지, 스냅드래곤X2엘리트 copliot+PC 노트북입니다', 'N', 500, 42),
+-- (713, 41, '[DELL] 갤럭시북5, 그레이', 'Samsung', 'NT750XHD-K71A', 'Y', 2200000, 'N', NULL, 70, '삼성 갤럭시북5 그레이 색상 노트북입니다', 'Y', 76, 0),
+-- (714, 41, '[DELL] 갤럭시북4, 그레이', 'Samsung', 'NT750XGR-A71A', 'Y', 1140000, 'N', NULL, 20, '삼성 갤럭시북4 그레이 색상 노트북입니다','N', 23, 0),
 
--- (720, 42, '[LG] 그램 Pro 360 AI, IntelCore-Ultra_7', 'LG', '16T90TP-GD7BK', 'Y', 2350000, 'Y', 70000, 100, 'LG 그램 프로 360 AI 인텔코어 울트라 7 노트북입니다', 'Y', 888, 28),
--- (721, 42, '[LG] 그램 Pro AI 2026, IntelCore-Ultra_5, Copilot+ PC', 'LG', '16Z90U-KS5WK', 'Y', 3240000, 'Y', 97000, 25, 'LG노트북입니다', 'Y', 120, 20),
--- (722, 42, '[LG] 그램 Pro AI 2026, AMD Ryzen-AI_5, Copilot+ PC', 'LG', '16Z95U-GS5W', 'Y', 3000000, 'Y', 95000, 33, 'LG노트북입니다', 'N', 100, 42 ),
--- (723, 41, '[LG] 그램 AI 2026, AMD Ryzen_AI-5, Copilot+ PC', 'LG', '15Z95U-GS5SK', 'Y', 2500000, 'Y', 72000, 12, 'LG노트북입니다', 'Y', 99, 9),
--- (724, 41, '[LG] 그램, IntelCore_Ultra-5', 'LG', '14ZB90S-GA5WK', 'Y', 1300000, 'N', NULL, 77, 'LG 노트북입니다(대여불가)', 'N', 43, 0),
+-- (720, 42, '[HPE] 그램 Pro 360 AI, IntelCore-Ultra_7', 'LG', '16T90TP-GD7BK', 'Y', 2350000, 'Y', 70000, 100, 'LG 그램 프로 360 AI 인텔코어 울트라 7 노트북입니다', 'Y', 888, 28),
+-- (721, 42, '[HPE] 그램 Pro AI 2026, IntelCore-Ultra_5, Copilot+ PC', 'LG', '16Z90U-KS5WK', 'Y', 3240000, 'Y', 97000, 25, 'LG노트북입니다', 'Y', 120, 20),
+-- (722, 42, '[HPE] 그램 Pro AI 2026, AMD Ryzen-AI_5, Copilot+ PC', 'LG', '16Z95U-GS5W', 'Y', 3000000, 'Y', 95000, 33, 'LG노트북입니다', 'N', 100, 42 ),
+-- (723, 41, '[HPE] 그램 AI 2026, AMD Ryzen_AI-5, Copilot+ PC', 'LG', '15Z95U-GS5SK', 'Y', 2500000, 'Y', 72000, 12, 'LG노트북입니다', 'Y', 99, 9),
+-- (724, 41, '[HPE] 그램, IntelCore_Ultra-5', 'LG', '14ZB90S-GA5WK', 'Y', 1300000, 'N', NULL, 77, 'LG 노트북입니다(대여불가)', 'N', 43, 0),
 
 -- (730, 42, '[Lenovo] Thinkpad E14 IPL G8 U7 3K AI', 'Lenovo', '21Y60065KR', 'Y', 1899000, 'Y', 60000, 200, 'Lenovo Thinkpad 노트북 입니다', 'N', 66, 21),
 -- (731, 41, '[Lenovo] Ideapad Slim3-15IRU8', 'Lenovo', '82X700HWKR', 'Y', 1200000, 'N', NULL, 11, 'Lenovo Ideapad노트북 입니다(대여X)', 'N', 87, 0),
 -- (732, 42, '[Lenovo] Thinkpad X1 carbone Gen 13', 'Lenovo', '21NSS02W00', 'Y', 2100000, 'Y', 62000, 15, 'Lenovo Thinkpad X1 노트북입니다', 'Y', 180, 8),
 
--- (740, 41, '[ASUS] 비보북 S16 QLED', 'ASUS', 'M3607HA-SH113', 'Y', 990000, 'N', NULL, 15, 'ASUS 비보북 노트북 입니다(대여X)', 'Y', 35, 0),
--- (741, 43, '[ASUS] ROG 제피러스 G16', 'ASUS', 'GU606AP-TB025W', 'Y', 1500000, 'N', NULL, 32, 'ASUS 제피러스 G16 게이밍 노트북입니다. (대여X)', 'Y', 32, 0),
--- (742, 42, '[ASUS] ExpertBook P1', 'ASUS', 'PM1503CDA-S70237', 'Y', 1760000, 'N', NULL, 88, 'AsUS ExpertBook P1 노트북입니다. (대여X)', 'N', 99, 0),
+-- (740, 41, '[HP] 비보북 S16 QLED', 'ASUS', 'M3607HA-SH113', 'Y', 990000, 'N', NULL, 15, 'ASUS 비보북 노트북 입니다(대여X)', 'Y', 35, 0),
+-- (741, 43, '[HP] ROG 제피러스 G16', 'ASUS', 'GU606AP-TB025W', 'Y', 1500000, 'N', NULL, 32, 'ASUS 제피러스 G16 게이밍 노트북입니다. (대여X)', 'Y', 32, 0),
+-- (742, 42, '[HP] ExpertBook P1', 'ASUS', 'PM1503CDA-S70237', 'Y', 1760000, 'N', NULL, 88, 'AsUS ExpertBook P1 노트북입니다. (대여X)', 'N', 99, 0),
 
--- (750, 43, '[HP] HyperX 오멘, Intel_i7-14650HX', 'HP', '15-ga0030TX', 'Y', 3259000, 'N', NULL, 12, 'HP HyperX오멘 게이밍 노트북입니다. (대여X)', 'Y', 111, 0),
--- (751, 42, '[HP] 엘리트북 860 G11 울트라5-125H', 'HP', 'A1VH4PT', 'Y', 2280000, 'Y', 68000, 423, 'HP 엘리트북 860 G11 울트라5-125H 노트북입니다.', 'Y', 123, 33),
--- (752, 42, '[HP] 옴니북5 AI 코어5-320', 'HP', '14-kf0024TU', 'Y', 1700000, 'Y', 52000, 100, 'HP 옴니북5 AI 코어5-320 노트북입니다', 'Y', 79, 8),
+-- (750, 43, '[Synology] HyperX 오멘, Intel_i7-14650HX', 'HP', '15-ga0030TX', 'Y', 3259000, 'N', NULL, 12, 'HP HyperX오멘 게이밍 노트북입니다. (대여X)', 'Y', 111, 0),
+-- (751, 42, '[Synology] 엘리트북 860 G11 울트라5-125H', 'HP', 'A1VH4PT', 'Y', 2280000, 'Y', 68000, 423, 'HP 엘리트북 860 G11 울트라5-125H 노트북입니다.', 'Y', 123, 33),
+-- (752, 42, '[QNAP] 옴니북5 AI 코어5-320', 'HP', '14-kf0024TU', 'Y', 1700000, 'Y', 52000, 100, 'HP 옴니북5 AI 코어5-320 노트북입니다', 'Y', 79, 8),
 
 
 
@@ -380,25 +364,25 @@ INSERT INTO product (
 (11, 82, '지포스 RTX 4090 D6X 24GB', 'NVIDIA', 'RTX-4090', 'Y', 2800000, 'Y', 200000, 10, '고수익 단기 렌탈용 하이엔드 그래픽카드', 'Y', 600, 10),
 (12, 83, 'DDR5-5600 16GB RAM', '삼성전자', 'DDR5-16G', 'Y', 60000, 'N', NULL, 300, '단순 판매 및 조립 옵션용 (대여 불가)', 'N', 50, 0);
 
--- (800, 42, '[Apple] MacBook Pro 16, M5, Silver', 'Apple', 'Z1N00005U', 'Y', 3000000, 'N', NULL, 250, '애플 맥북 프로 16 M5 실버 색상 노트북입니다(대여 불가)', 'Y', 300, 0),
--- (801, 42, '[Apple] MacBook Pro 14, M5, Silver', 'Apple', 'MGDR4KH/A', 'Y', 2500000, 'Y', 75000, 3, '애플 맥북 프로 14 M5 실버 색상 노트북입니다', 'Y', 400, 7),
--- (802, 41, '[Apple] MacBook Air 15, M3, StarLight', 'Apple', 'Z1GF00013', 'Y', 2000000, 'Y', 60000, 30, '애플 맥북 에어 15 M3 스타라이트 색상 노트북입니다', 'N', 520, 45),
--- (803, 41, '[Apple] MacBook Air 13, M5, Silver', 'Apple', 'Z1L0000Q0', 'Y', 2250000, 'Y', 69000, 24, '애플 맥북 에어 13 M5 실버 색상 노트북입니다.', 'Y', 520, 22),
--- (804, 41, '[Apple] MacBook Neo, A18, Silver', 'Apple', 'Z1TN0000F', 'Y', 1700000, 'N', NULL, 38, '애플 맥북 네오 A18 실버 색상 노트북입니다(대여불가)', 'Y', 388, 0),
+-- (800, 81, '[CPU - Intel] MacBook Pro 16, M5, Silver', 'Apple', 'Z1N00005U', 'Y', 3000000, 'N', NULL, 250, '애플 맥북 프로 16 M5 실버 색상 노트북입니다(대여 불가)', 'Y', 300, 0),
+-- (801, 42, '[CPU - Intel] MacBook Pro 14, M5, Silver', 'Apple', 'MGDR4KH/A', 'Y', 2500000, 'Y', 75000, 3, '애플 맥북 프로 14 M5 실버 색상 노트북입니다', 'Y', 400, 7),
+-- (802, 41, '[CPU - Intel] MacBook Air 15, M3, StarLight', 'Apple', 'Z1GF00013', 'Y', 2000000, 'Y', 60000, 30, '애플 맥북 에어 15 M3 스타라이트 색상 노트북입니다', 'N', 520, 45),
+-- (803, 41, '[CPU - Intel] MacBook Air 13, M5, Silver', 'Apple', 'Z1L0000Q0', 'Y', 2250000, 'Y', 69000, 24, '애플 맥북 에어 13 M5 실버 색상 노트북입니다.', 'Y', 520, 22),
+-- (804, 41, '[CPU - Intel] MacBook Neo, A18, Silver', 'Apple', 'Z1TN0000F', 'Y', 1700000, 'N', NULL, 38, '애플 맥북 네오 A18 실버 색상 노트북입니다(대여불가)', 'Y', 388, 0),
 
--- (810, 42, '[삼성] 갤럭시북5 프로, IntelCore-Ultra_7, Coplit+ PC', 'Samsung', 'NT960XHA-KC71G', 'Y', 2499999, 'Y', 75000, 100, '삼성 갤럭시북5 프로, 인텔 코어 울트라 7, Copliot+ 노트북입니다', 'Y', 800, 12),
--- (811, 42, '[삼성] 갤럭시북6 프로, 그레이', 'Samsung', 'NT940XJG-K72A', 'Y', 3650000, 'N', NULL, 110, '삼성 갤럭시북6 프로 그레이 색상 노트북입니다(대여불가)', 'Y', 777, 0),
--- (812, 41, '[삼성] 갤럭시북6 엣지, Snapdragon X2 Elite, Copliot+ PC', 'Samsung', 'NT960XRD-KC01B', 'Y', 2870000, 'Y', 80000, 99, '삼성 갤럭시북6 엣지, 스냅드래곤X2엘리트 copliot+PC 노트북입니다', 'N', 500, 42),
--- (813, 41, '[삼성] 갤럭시북5, 그레이', 'Samsung', 'NT750XHD-K71A', 'Y', 2200000, 'N', NULL, 70, '삼성 갤럭시북5 그레이 색상 노트북입니다', 'Y', 76, 0),
--- (814, 41, '[삼성] 갤럭시북4, 그레이', 'Samsung', 'NT750XGR-A71A', 'Y', 1140000, 'N', NULL, 20, '삼성 갤럭시북4 그레이 색상 노트북입니다','N', 23, 0),
+-- (810, 81, '[CPU - AMD] 갤럭시북5 프로, IntelCore-Ultra_7, Coplit+ PC', 'Samsung', 'NT960XHA-KC71G', 'Y', 2499999, 'Y', 75000, 100, '삼성 갤럭시북5 프로, 인텔 코어 울트라 7, Copliot+ 노트북입니다', 'Y', 800, 12),
+-- (811, 42, '[CPU - AMD] 갤럭시북6 프로, 그레이', 'Samsung', 'NT940XJG-K72A', 'Y', 3650000, 'N', NULL, 110, '삼성 갤럭시북6 프로 그레이 색상 노트북입니다(대여불가)', 'Y', 777, 0),
+-- (812, 41, '[CPU - AMD] 갤럭시북6 엣지, Snapdragon X2 Elite, Copliot+ PC', 'Samsung', 'NT960XRD-KC01B', 'Y', 2870000, 'Y', 80000, 99, '삼성 갤럭시북6 엣지, 스냅드래곤X2엘리트 copliot+PC 노트북입니다', 'N', 500, 42),
+-- (813, 41, '[CPU - AMD] 갤럭시북5, 그레이', 'Samsung', 'NT750XHD-K71A', 'Y', 2200000, 'N', NULL, 70, '삼성 갤럭시북5 그레이 색상 노트북입니다', 'Y', 76, 0),
+-- (814, 41, '[CPU - AMD] 갤럭시북4, 그레이', 'Samsung', 'NT750XGR-A71A', 'Y', 1140000, 'N', NULL, 20, '삼성 갤럭시북4 그레이 색상 노트북입니다','N', 23, 0),
 
--- (820, 42, '[LG] 그램 Pro 360 AI, IntelCore-Ultra_7', 'LG', '16T90TP-GD7BK', 'Y', 2350000, 'Y', 70000, 100, 'LG 그램 프로 360 AI 인텔코어 울트라 7 노트북입니다', 'Y', 888, 28),
+-- (820, 82, '[VGA - NVIDIA] 그램 Pro 360 AI, IntelCore-Ultra_7', 'LG', '16T90TP-GD7BK', 'Y', 2350000, 'Y', 70000, 100, 'LG 그램 프로 360 AI 인텔코어 울트라 7 노트북입니다', 'Y', 888, 28),
 -- (821, 42, '[LG] 그램 Pro AI 2026, IntelCore-Ultra_5, Copilot+ PC', 'LG', '16Z90U-KS5WK', 'Y', 3240000, 'Y', 97000, 25, 'LG노트북입니다', 'Y', 120, 20),
 -- (822, 42, '[LG] 그램 Pro AI 2026, AMD Ryzen-AI_5, Copilot+ PC', 'LG', '16Z95U-GS5W', 'Y', 3000000, 'Y', 95000, 33, 'LG노트북입니다', 'N', 100, 42 ),
 -- (823, 41, '[LG] 그램 AI 2026, AMD Ryzen_AI-5, Copilot+ PC', 'LG', '15Z95U-GS5SK', 'Y', 2500000, 'Y', 72000, 12, 'LG노트북입니다', 'Y', 99, 9),
 -- (824, 41, '[LG] 그램, IntelCore_Ultra-5', 'LG', '14ZB90S-GA5WK', 'Y', 1300000, 'N', NULL, 77, 'LG 노트북입니다(대여불가)', 'N', 43, 0),
 
--- (830, 42, '[Lenovo] Thinkpad E14 IPL G8 U7 3K AI', 'Lenovo', '21Y60065KR', 'Y', 1899000, 'Y', 60000, 200, 'Lenovo Thinkpad 노트북 입니다', 'N', 66, 21),
+-- (830, 83, '[RAM - SK] Thinkpad E14 IPL G8 U7 3K AI', 'Lenovo', '21Y60065KR', 'Y', 1899000, 'Y', 60000, 200, 'Lenovo Thinkpad 노트북 입니다', 'N', 66, 21),
 -- (831, 41, '[Lenovo] Ideapad Slim3-15IRU8', 'Lenovo', '82X700HWKR', 'Y', 1200000, 'N', NULL, 11, 'Lenovo Ideapad노트북 입니다(대여X)', 'N', 87, 0),
 -- (832, 42, '[Lenovo] Thinkpad X1 carbone Gen 13', 'Lenovo', '21NSS02W00', 'Y', 2100000, 'Y', 62000, 15, 'Lenovo Thinkpad X1 노트북입니다', 'Y', 180, 8),
 
@@ -414,23 +398,22 @@ INSERT INTO product (
 
 
 --======이미지 경로=======--
-
 -- 예시 데이터 --
--- UPDATE product SET image_url = '/images/product/MacBook Air 15 M3.jpg'        WHERE product_id = 2; 
+-- UPDATE product SET image_url = '/images/product/MacBook Air 15 M3.jpg'        WHERE product_id = 2; //노트북
 UPDATE product SET image_url = '/images/product/rtx4090-workstation.jpg' WHERE product_id = 3;
 UPDATE product SET image_url = '/images/product/rog-4070.jpg'           WHERE product_id = 4;
-UPDATE product SET image_url = '/images/product/lg-4k-monitor.jpg'      WHERE product_id = 5;
--- UPDATE product SET image_url = '/images/product/LG 그램북 AI 2026.jpg'       WHERE product_id = 6; 
--- UPDATE product SET image_url = '/images/product/레노버 씽크패드 X1 카본 Gen 13.jpg'        WHERE product_id = 7; 
-UPDATE product SET image_url = '/images/product/intel-nuc.jpg'          WHERE product_id = 8;
-UPDATE product SET image_url = '/images/product/lg-gaming-monitor.jpg'  WHERE product_id = 9;
+-- UPDATE product SET image_url = '/images/product/lg-4k-monitor.jpg'      WHERE product_id = 5; //모니터
+-- UPDATE product SET image_url = '/images/product/LG 그램북 AI 2026.jpg'       WHERE product_id = 6; //노트북 
+-- UPDATE product SET image_url = '/images/product/레노버 씽크패드 X1 카본 Gen 13.jpg'        WHERE product_id = 7; //노트북 
+-- UPDATE product SET image_url = '/images/product/intel-nuc.jpg'          WHERE product_id = 8; //PC
+-- UPDATE product SET image_url = '/images/product/lg-gaming-monitor.jpg'  WHERE product_id = 9; //모니터
 UPDATE product SET image_url = '/images/product/mac-studio.jpg'         WHERE product_id = 10;
 UPDATE product SET image_url = '/images/product/rtx4090.jpg'            WHERE product_id = 11;
 UPDATE product SET image_url = '/images/product/ddr5-ram.jpg'           WHERE product_id = 12;
-UPDATE product SET image_url = '/images/product/galaxy-tab.jpg'           WHERE product_id = 13;
+-- UPDATE product SET image_url = '/images/product/galaxy-tab.jpg'           WHERE product_id = 13; //스마트 기기
 UPDATE product SET image_url = '/images/product/ipad.jpg'           WHERE product_id = 14;
-UPDATE product SET image_url = '/images/product/applewatch.jpg'           WHERE product_id = 15;
-UPDATE product SET image_url = '/images/product/meta-vr.jpg'           WHERE product_id = 16;
+-- UPDATE product SET image_url = '/images/product/applewatch.jpg'           WHERE product_id = 15; //스마트 기기
+-- UPDATE product SET image_url = '/images/product/meta-vr.jpg'           WHERE product_id = 16; //스마트 기기
 UPDATE product SET image_url = '/images/product/canonprint.jpg'           WHERE product_id = 17;
 UPDATE product SET image_url = '/images/product/sonyvim.jpg'           WHERE product_id = 18;
 UPDATE product SET image_url = '/images/product/dragonfly.jpg'           WHERE product_id = 19;
@@ -439,11 +422,12 @@ UPDATE product SET image_url = '/images/product/hdmi.jpg'           WHERE produc
 
 
 --1.PC
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 100;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 101;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 102;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 103;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 104;
+UPDATE product SET image_url = '/images/product/desktop/Apple-iMac-24-2024-M4.jpg'  WHERE product_id = 100; 
+UPDATE product SET image_url = '/images/product/desktop/Apple-iMac-27-2020-i7.jpg' WHERE product_id = 101;
+UPDATE product SET image_url = '/images/product/desktop/Apple-iMac-27-2019-i9.jpg' WHERE product_id = 102;
+UPDATE product SET image_url = '/images/product/desktop/Apple-iMac-G3-1998.jpg' WHERE product_id = 103;
+UPDATE product SET image_url = '/images/product/desktop/Apple-Macintosh-1984.jpg' WHERE product_id = 104;
+UPDATE product SET image_url = '/images/product/desktop/Apple-MacMini-2023-M2.jpg' WHERE product_id = 105;
 
 -- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 110;
 -- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 111;
@@ -457,15 +441,15 @@ UPDATE product SET image_url = '/images/product/hdmi.jpg'           WHERE produc
 -- UPDATE product SET image_url = '/images/product/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 123;
 -- UPDATE product SET image_url = '/images/product/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 124;
 
--- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 130;
+UPDATE product SET image_url = '/images/product/desktop/Lenovo-Thinkcentre-Neo-30t-Gen5-12K8S00A00.jpg' WHERE product_id = 130;
 -- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Ideapad-Slim3-15IRU8.jpg' WHERE product_id = 131;
 -- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-X1-carbon-Gen13-AuraEdition.jpg' WHERE product_id = 132;
 
--- UPDATE product SET image_url = '/images/product/laptop/ASUS-비보북-S16-OLED.jpg' WHERE product_id = 140;
+UPDATE product SET image_url = '/images/product/desktop/ASUS-TUFGaming-Ryzen5-TM500MH-R560W.jpg' WHERE product_id = 140;
 -- UPDATE product SET image_url = '/images/product/laptop/ASUS-ROG-제피러스-G16.jpg' WHERE product_id = 141;
 -- UPDATE product SET image_url = '/images/product/laptop/ASUS-ExpertBook-P1.jpg' WHERE product_id = 142;
 
--- UPDATE product SET image_url = '/images/product/laptop/HP-HyperX-오멘-인텔i7-14650HX.jpg' WHERE product_id = 150;
+UPDATE product SET image_url = '/images/product/desktop/HP-Omen-35L-GT16-1001KL-Ryzen7-9800X3D.jpg' WHERE product_id = 150;
 -- UPDATE product SET image_url = '/images/product/laptop/HP-엘리트북-860-G11-A1VH4PT-울트라5-125H.jpg' WHERE product_id = 151;
 -- UPDATE product SET image_url = '/images/product/laptop/HP-옴니북5-AI-코어5-320.jpg' WHERE product_id = 152;
 
@@ -511,16 +495,16 @@ UPDATE product SET image_url = '/images/product/hdmi.jpg'           WHERE produc
 -- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 303;
 -- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 304;
 
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 310;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 311;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 312;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 313;
+UPDATE product SET image_url = '/images/product/monitor/삼성-모니터-S24C750P-61cm.jpg' WHERE product_id = 310;
+UPDATE product SET image_url = '/images/product/monitor/삼성-오디세이-OLED-G8-G80SH-4K-240Hz-LS27HG802S.jpg' WHERE product_id = 311;
+UPDATE product SET image_url = '/images/product/monitor/삼성-뷰피니티-S8-S85TH-5K2K-WUHD-LS40H852.jpg' WHERE product_id = 312;
+UPDATE product SET image_url = '/images/product/monitor/삼성-오디세이-OLED-G8-G81SF-4K-240HZ-LS32FG812.jpg' WHERE product_id = 313;
 -- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 314;
 
 UPDATE product SET image_url = '/images/product/monitor/LG-PC모니터-U4-FHD.jpg' WHERE product_id = 320;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 321;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 322;
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 323;
+UPDATE product SET image_url = '/images/product/monitor/LG-울트라HD-4K-모니터.jpg' WHERE product_id = 321;
+UPDATE product SET image_url = '/images/product/monitor/LG-울트라기어-evo-AI-올레드-게이밍모니터-GX9-5K.jpg' WHERE product_id = 322;
+UPDATE product SET image_url = '/images/product/monitor/LG-울트라기어-게이밍모니터-QHD.jpg' WHERE product_id = 323;
 -- UPDATE product SET image_url = '/images/product/laptop/LG-그램-IntelCoreUltra5.jpg' WHERE product_id = 324;
 
 -- UPDATE product SET image_url = '/images/product/laptop/Lenovo-Thinkpad-E14IPLG8U7-3K-AI.jpg' WHERE product_id = 330;
@@ -569,19 +553,19 @@ UPDATE product SET image_url = '/images/product/laptop/HP-옴니북5-AI-코어5-
 
 
 --5.스마트 기기 
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro16-M5-Silver.jpg'  WHERE product_id = 500;
+UPDATE product SET image_url = '/images/product/device/Apple-iPad-Pro13-2025-M5-스탠다드글래스.jpg'  WHERE product_id = 500;
 -- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Pro14-M5-Silver.jpg' WHERE product_id = 501;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air15-M3-Starlight.jpg' WHERE product_id = 502;
--- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Air13-M5-Silver.jpg' WHERE product_id = 503;
+-- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 502;
+UPDATE product SET image_url = '/images/product/device/AppleWatch-11-GPS-스페이스그레이-알루미늄46mm-블랙스포츠밴드.jpg' WHERE product_id = 503;
 -- UPDATE product SET image_url = '/images/product/laptop/Apple-MacBook-Neo-A18-Silver.jpg' WHERE product_id = 504;
 
 -- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-프로-IntelCoreUltra7-Copilot+PC.jpg' WHERE product_id = 510;
 -- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-프로-그레이.jpg' WHERE product_id = 511;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북6-엣지-Snapdragon X2Elite-Copilot+PC.jpg' WHERE product_id = 512;
--- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북5-그레이.jpg' WHERE product_id = 513;
+UPDATE product SET image_url = '/images/product/device/삼성-갤럭시탭-S10-Lite-128GB-그레이-WIFI.jpg' WHERE product_id = 512;
+UPDATE product SET image_url = '/images/product/device/Samsung-GalaxyWatch-8-Classic-SM-L500N-46mm-Black-Bluetooth.jpg' WHERE product_id = 513;
 -- UPDATE product SET image_url = '/images/product/laptop/삼성-갤럭시북4-그레이.jpg' WHERE product_id = 514;
 
--- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-360 AI-IntelCoreUltra7.jpg' WHERE product_id = 520;
+UPDATE product SET image_url = '/images/product/device/Meta-Quest-3S-128GB-VR.jpg' WHERE product_id = 520;
 -- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-IntelCoreUltra5.jpg' WHERE product_id = 521;
 -- UPDATE product SET image_url = '/images/product/laptop/LG-그램-Pro-AI2026-Copilot+PC-AMDRyzenAI5.jpg' WHERE product_id = 522;
 -- UPDATE product SET image_url = '/images/product/laptop/LG-그램-AI2026-Copilot+PC-AMD RyzenAI5.jpg' WHERE product_id = 523;
