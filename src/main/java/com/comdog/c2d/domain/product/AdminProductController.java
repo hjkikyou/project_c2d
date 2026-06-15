@@ -1,4 +1,4 @@
-package com.comdog.c2d.admin;
+package com.comdog.c2d.domain.product;
 
 import java.util.List;
 
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.comdog.c2d.domain.product.ProductService;
 import com.comdog.c2d.dto.ProductDto;
 
 @Controller
@@ -30,8 +29,7 @@ public class AdminProductController {
 		return "admin/product/list";
 	}
 	
-	// "데이터베이스(DB)에서 전체 상품 목록을 싹 긁어와서, 화면(HTML)에 테이블 형태로 예쁘게 뿌려주는 역할"
-	// '상품 목록 조회 화면'을 만들어주는 핵심 관문
+
 
 	/*---추가---*/
 	

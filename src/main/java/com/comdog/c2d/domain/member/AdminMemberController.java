@@ -1,4 +1,4 @@
-package com.comdog.c2d.admin;
+package com.comdog.c2d.domain.member;
 
 import java.util.List;
 
@@ -14,43 +14,23 @@ import com.comdog.c2d.dto.MemberDto;
 
 @Controller
 @RequestMapping("/admin/member")
-public class MemberController {
+public class AdminMemberController {
 	
 	@Autowired
-	MemberService service;
-
+	AdminMemberService service;
+	
 	/* -- 조회 -- */
 	@GetMapping("/list")
-	public String getMemberListPage(
-	
-	//검색 기능 추가	
-	@org.springframework.web.bind.annotation.RequestParam(value = "search", required = false) String search,
-	@org.springframework.web.bind.annotation.RequestParam(value = "keyword", required = false) String keyword,
-	//-------------
-		Model model) {
-		
+	public String getMemberListPage(Model model) {
 		List<MemberDto> memberList;
-
-		// 검색어(keyword)가 입력되었는지 확인 (공백 제외)
-		if (keyword != null && !keyword.trim().isEmpty()) {
-			// select 박스의 value 값(email, name, phone)에 따라 서비스 메서드 분기 처리
-			if ("email".equals(search)) {
-				memberList = service.findMembersByEmail(keyword); // 💡 이메일 검색
-			} else if ("name".equals(search)) {
-				memberList = service.findMembersByName(keyword);  // 💡 이름 검색
-			} else if ("phone".equals(search)) {
-				memberList = service.findMembersByPhone(keyword); // 💡 전화번호 검색
-			} else {
-				memberList = service.findAllMembers();
-			}
-		} else {
-			// 검색어가 없으면 기존처럼 전체 목록 조회
-			memberList = service.findAllMembers();
-		}
-		
+		memberList = service.findAllMembers();
 		model.addAttribute("viewMemberList", memberList);
 		return "admin/member/list";
 	}
+	
+	// "데이터베이스(DB)에서 전체 상품 목록을 가져와서, 화면(HTML)에 뿌려주는 역할"
+	// '상품 목록 조회 화면'을 만들어주는 핵심 관문
+	
 	 /* -- 추가 --*/
 	 @GetMapping("/add")
 	 public String showAddForm() {
@@ -64,6 +44,8 @@ public class MemberController {
 		 return "redirect:/admin/member/list";
 	 }
 	 
+
+ 
 	 /* -- 변경 -- */
 	 @GetMapping("/update/{id}")
 	 public String showUpdateForm(@PathVariable Long id, Model model) {
@@ -81,14 +63,21 @@ public class MemberController {
 		 return "redirect:/admin/member/list";
 	 }
 	 
+	 
 	 /*---삭제---*/
 	 
 	 @GetMapping("/delete/{id}")
 	 public String delete(@PathVariable Long id) {
-			service.delete(id);
-			
-			return "redirect:/admin/member/list";
-	 	}
+		service.delete(id);
+		
+		return "redirect:/admin/member/list";
+ 	}
+	 
+	 
+	 
+	 
 	 
 }
+	
+	
 	

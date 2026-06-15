@@ -131,5 +131,10 @@
         SET is_deleted = 'Y'
         WHERE product_id = #{productId}
     </update>
+    
+    <delete id="deleteOrderItemByProductId" parameterType="Long">
+        DELETE FROM order_item
+        WHERE product_id = #{productId}
+    </delete>
 
 </mapper>
