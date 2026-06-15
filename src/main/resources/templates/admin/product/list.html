@@ -37,10 +37,10 @@
 					<td th:text="${#numbers.formatInteger(item.stockQuantity, 3, 'COMMA') + '개'}">재고 수량</td>
 					<td th:text="${item.description}">상품 설명</td> 
 					<td>
-						<a th:href="@{|/admin/product/update/${item.id}|}">변경</a>
+						<a th:href="@{|/admin/product/update/${item.productId}|}">변경</a>
 					</td>
 					<td>
-						<a th:href="@{|/admin/product/delete/${item.id}|}">삭제</a>
+						<a th:href="@{|/admin/product/delete/${item.productId}|}">삭제</a>
 					</td>
 				</tr>
 			</tbody>
