@@ -18,8 +18,8 @@ public class OrderDaoImpl implements OrderDao {
 	
 	// 조회 [검색]
 	@Override
-	public List<OrderListDto> searchOrders(Map<String, String> map) {
-		return sql.selectList("order.searchedOrderList", map);
+	public List<OrderListDto> findAllOrders() {
+		return sql.selectList("order.findAllOrders");
 	}
 
 

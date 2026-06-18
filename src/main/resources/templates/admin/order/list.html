@@ -12,23 +12,7 @@
         </div>
     </div>
     
-    <div>
-        <form th:action="@{/admin/order/list}" method="get">
-            <div>
-                <select name="search">
-                    <option value="memberName" th:selected="${param.search == 'memberName'}">주문자명</option>
-                    <option value="orderId" th:selected="${param.search == 'orderId'}">주문번호</option>
-                </select>
-            </div>
-            <div>
-                <input name="keyword" type="text" th:value="${param.keyword}" placeholder="검색어 입력">
-            </div>
-            <div>
-                <button type="submit">검색</button>
-                <a th:href="@{/admin/order/list}"><button type="button">초기화</button></a>
-            </div>
-        </form>
-    </div>
+  
 
     <div style="margin-top: 20px;">
         <table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">
@@ -90,7 +74,7 @@
     </div>
     
     	<div>
-		    <div>사용자 등록</div>				    				    
+		    <div><a th:href="@{/admin/order/detail}">주문 등록 </a></div>				    				    
 		    <div><a th:href="@{/admin/order/list}">초기화</a></div>				    
 		    <div><a th:href="@{/admin}">이전</a></div>
 		</div>

@@ -11,23 +11,6 @@
 		</div>
 	</div>
 	
-<div>
-    <form th:action="@{/admin/member/list}" method="get">
-        <div>
-            <select name="search">
-                <option value="email" th:selected="${param.search == 'email'}">아이디</option>
-                <option value="name" th:selected="${param.search == 'name'}">성명</option>
-                <option value="phone" th:selected="${param.search == 'phone'}">전화번호</option>				
-            </select>
-        </div>
-        <div>
-            <input name="keyword" type="text" th:value="${param.keyword}">
-        </div>
-        <div>
-            <button type="submit">검색</button>
-        </div>
-    </form>
-</div>
 
 	<div>
 		<table border="1">

@@ -5,7 +5,7 @@
 
 <mapper namespace="order">
 
-    <select id="searchedOrderList" parameterType="map" resultType="com.comdog.c2d.dto.OrderListDto">
+    <select id="findAllOrders" parameterType="map" resultType="com.comdog.c2d.dto.OrderListDto">
         SELECT 
             o.order_id       AS orderId,
             o.total_amount   AS totalAmount,
