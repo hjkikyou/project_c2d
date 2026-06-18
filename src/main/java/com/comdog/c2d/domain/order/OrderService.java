@@ -8,9 +8,9 @@ import com.comdog.c2d.dto.OrderListDto;
 
 public interface OrderService {
 
-	//조회 [검색]
-	// Controller가 던진 걸 params로 받아서 그대로 DAO로 바통 터치! (짧게 params로 이름 재설정)
-	List<OrderListDto> searchOrders(Map<String, String> params);
+	//조회
+	// Controller가 던진 걸 DAO로 
+	List<OrderListDto> findAllOrders();
 	
 	//상세 조회
 	OrderDetailDto findOrderDetail(Long orderId);

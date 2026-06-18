@@ -28,20 +28,10 @@ public class OrderController {
 	// 1. 주문 목록 조회 (검색 추가)
 	
 	@GetMapping("/list")
-    public String orderList(Model model, 
-        @RequestParam(value = "search", required = false) String search,
-        @RequestParam(value = "keyword", required = false) String keyword) {
-        
-		// TODO: OrderDao를 통해 검색 조건에 맞는 주문 목록을 가져와서 model에 담기
-		// Service(또는 Dao)를 호출할 때 검색 조건(search, keyword)를 함께 넘겨준다
-		
-		// 검색 조건을 Map에 담기	
-		Map<String, String> searchParams = new HashMap<>();
-		searchParams.put("search", search);
-		searchParams.put("keyword", keyword);
-		
+    public String orderList(Model model) { 
 		// Map을 서비스(그리고 DAO)로 넘겨주기
-		List<OrderListDto> orderList = service.searchOrders(searchParams);
+		List<OrderListDto> orderList;
+    	orderList = service.findAllOrders();
 		
 		// 타임리프 화면(list.html)에서 사용할 수 있도록 model에 담아준다.
 		// HTML에서 th:each="item : ${viewOrderList}"

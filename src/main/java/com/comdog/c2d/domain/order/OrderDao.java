@@ -9,10 +9,10 @@ import com.comdog.c2d.dto.OrderListDto;
 
 public interface OrderDao {
 	
-	// 조회 [검색]
+	// 조회 
 	
 	// Service가 던진 걸 map으로 받아서 MyBatis로 최종 전달!
-	List<OrderListDto> searchOrders(Map<String, String> map);
+	List<OrderListDto> findAllOrders();
 
 	
 	
