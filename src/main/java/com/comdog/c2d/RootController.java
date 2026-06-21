@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.comdog.c2d.dto.ProductDto;
 
+//1
 @Controller
 public class RootController {
 
