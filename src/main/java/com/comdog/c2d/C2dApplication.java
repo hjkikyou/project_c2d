@@ -2,12 +2,18 @@ package com.comdog.c2d;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class C2dApplication {
+public class C2dApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) {
-		SpringApplication.run(C2dApplication.class, args);
-	}
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(C2dApplication.class); 
+    }
 
+    public static void main(String[] args) {
+        SpringApplication.run(C2dApplication.class, args);
+    }
 }

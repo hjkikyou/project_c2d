@@ -16,22 +16,6 @@
 		<result property="createdAt" column="created_at" />
 	</resultMap>
 
-	<!-- 검색 -->
-	<select id="selectMembersByEmail" resultMap="MemberResultMap">
-		SELECT * FROM member
-		WHERE email LIKE CONCAT('%', #{keyword}, '%')
-	</select>
-
-	<select id="selectMembersByName" resultMap="MemberResultMap">
-		SELECT * FROM member
-		WHERE name LIKE CONCAT('%', #{keyword}, '%')
-	</select>
-
-	<select id="selectMembersByPhone" resultMap="MemberResultMap">
-		SELECT * FROM member
-		WHERE phone LIKE CONCAT('%', #{keyword}, '%')
-	</select>
-
 
 	<!-- 조회 -->
 	<select id="findAllMembers" resultMap="MemberResultMap">
