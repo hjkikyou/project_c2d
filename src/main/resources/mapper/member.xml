@@ -1,128 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC
-"-//mybatis.org//DTD Mapper 3.0//EN"
-"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 
-	<resultMap id="MemberResultMap"
-		type="com.comdog.c2d.dto.MemberDto">
-		<id property="id" column="member_id" />
-		<result property="email" column="email" />
-		<result property="password" column="password" />
-		<result property="name" column="name" />
-		<result property="phone" column="phone" />
-		<result property="userType" column="user_type" />
-		<result property="isSubscribed" column="is_subscribed" />
-		<result property="createdAt" column="created_at" />
-	</resultMap>
+    <resultMap id="MemberResultMap" type="com.comdog.c2d.dto.MemberDto">
+        <id property="id" column="member_id" />
+        <result property="email" column="email" />
+        <result property="password" column="password" />
+        <result property="name" column="name" />
+        <result property="phone" column="phone" />
+        <result property="birthDate" column="birth_date" />
+        <result property="genderDigit" column="gender_digit" />
+        <result property="userType" column="user_type" />
+        <result property="isSubscribed" column="is_subscribed" />
+        <result property="createdAt" column="created_at" />
+    </resultMap>
 
+    <select id="findAllMembers" resultMap="MemberResultMap">
+        SELECT * FROM member
+    </select>
 
-	<!-- 조회 -->
-	<select id="findAllMembers" resultMap="MemberResultMap">
-		SELECT * FROM member
-	</select>
+    <select id="findMemberById" resultMap="MemberResultMap">
+        SELECT * FROM member
+        WHERE member_id = #{id}
+    </select>
 
-	<!-- 추가 -->
-	<insert id="add" parameterType="com.comdog.c2d.dto.MemberDto">
-		INSERT INTO member
-		(
-		email,
-		password,
-		name,
-		phone,
-		user_type,
-		is_subscribed
-		)
-		VALUES
-		(
-		#{email},
-		#{password},
-		#{name},
-		#{phone},
-		#{userType},
-		#{isSubscribed}
-		)
-	</insert>
+    <insert id="insertMember" parameterType="com.comdog.c2d.dto.MemberDto">
+        INSERT INTO member (
+            email, password, name, phone,
+            birth_date, gender_digit, user_type, is_subscribed
+        ) VALUES (
+            #{email}, #{password}, #{name}, #{phone},
+            #{birthDate}, #{genderDigit}, #{userType}, #{isSubscribed}
+        )
+    </insert>
 
-	<!-- member_id와 created_at은 왜 뺐나요? member_id: 보통 DB 설계할 때 자동으로 번호가 증가하는 
-		AUTO_INCREMENT를 주기 때문에 회원가입 시점에 개발자가 직접 넣지 않고 DB에게 맡깁니다. created_at: 테이블 
-		스키마에 DEFAULT CURRENT_TIMESTAMP가 걸려있어서, 데이터를 넣는 순간 DB가 자동으로 현재 시간을 기록해 주므로 
-		굳이 자바에서 안 보내도 됩니다. -->
+    <select id="login" parameterType="com.comdog.c2d.dto.MemberDto" resultType="com.comdog.c2d.dto.MemberDto">
+        SELECT 
+            member_id AS id, email, password, name, user_type AS userType
+        FROM member
+        WHERE email = #{email}
+    </select>
 
-	<!-- 변경 -->
-	<select id="findMemberById" resultMap="MemberResultMap">
-		SELECT * FROM member
-		WHERE
-		member_id = #{id}
-	</select>
+    <select id="countByEmail" parameterType="string" resultType="int">
+        SELECT COUNT(*)
+        FROM member
+        WHERE email = #{email}
+    </select>
 
-	<update id="update" parameterType="com.comdog.c2d.dto.MemberDto">
-		UPDATE member
-		SET
-		email =
-		#{email},
-		password = #{password},
-		name = #{name},
-		phone = #{phone},
-		user_type = #{userType},
-		is_subscribed = #{isSubscribed}
-		WHERE
-		member_id
-		= #{id}
-	</update>
+    <update id="update" parameterType="com.comdog.c2d.dto.MemberDto">
+        UPDATE member
+        SET
+            email = #{email},
+            password = #{password},
+            name = #{name},
+            phone = #{phone},
+            user_type = #{userType},
+            is_subscribed = #{isSubscribed}
+        WHERE member_id = #{id}
+    </update>
 
-	<!-- created_at(가입일)은 제외 회원 정보가 수정된다고 해서 처음 가입한 날짜가 바뀌면 안 되기 때문에 SET 절에서 
-		created_at 컬럼은 제외 -->
+    <delete id="deleteDeliveryByMemberId" parameterType="long">
+        DELETE FROM delivery WHERE order_id IN (SELECT order_id FROM orders WHERE member_id = #{id})
+    </delete>
 
-	<!-- 삭제 -->
-	<delete id="deleteDeliveryByMemberId" parameterType="long">
-		DELETE FROM delivery
-		WHERE order_id IN (SELECT order_id FROM orders WHERE member_id = #{id})
-	</delete>
+    <delete id="deleteOrderItemByMemberId" parameterType="long">
+        DELETE FROM order_item WHERE order_id IN (SELECT order_id FROM orders WHERE member_id = #{id})
+    </delete>
 
-	<delete id="deleteOrderItemByMemberId" parameterType="long">
-		DELETE FROM order_item
-		WHERE order_id IN (SELECT order_id FROM orders WHERE member_id = #{id})
-	</delete>
+    <delete id="deleteOrdersByMemberId" parameterType="long">
+        DELETE FROM orders WHERE member_id = #{id}
+    </delete>
 
-	<delete id="deleteOrdersByMemberId" parameterType="long">
-		DELETE FROM orders
-		WHERE member_id = #{id}
-	</delete>
-
-	<delete id="delete">
-		DELETE FROM member
-		WHERE member_id = #{id}
-	</delete>
-	
-	<!-- 로그인기능 -->
-	<select id="login" parameterType="com.comdog.c2d.dto.MemberDto" resultType="com.comdog.c2d.dto.MemberDto">
-    SELECT 
-        member_id AS id,   email,
-        password, name,
-        user_type AS userType
-    FROM 
-        member
-    WHERE 
-        email = #{email} 
-	</select>
-	<!-- 회원가입: 회원 정보 INSERT -->
-	<insert id="insertMember" parameterType="com.comdog.c2d.dto.MemberDto">
-	    INSERT INTO member (
-	        email, password, name, phone,
-	        birth_date, gender_digit, user_type, is_subscribed
-	    ) VALUES (
-	        #{email}, #{password}, #{name}, #{phone},
-	        #{birthDate}, #{genderDigit}, #{userType}, #{isSubscribed}
-	    )
-	</insert>
-	
-	<!-- 이메일 중복 확인용 카운트 -->
-	<select id="countByEmail" parameterType="string" resultType="int">
-	    SELECT COUNT(*)
-	    FROM member
-	    WHERE email = #{email}
-	</select>
-
+    <delete id="delete" parameterType="long">
+        DELETE FROM member WHERE member_id = #{id}
+    </delete>
 
 </mapper>
